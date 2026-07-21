@@ -1,0 +1,90 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "bg_tili",
+    "atlas": "",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 164,
+      "height": 70
+    },
+    "offset": {
+      "x": 0,
+      "y": 0
+    },
+    "originalSize": {
+      "width": 164,
+      "height": 70
+    },
+    "rotated": false,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "vertices": {
+      "rawPosition": [
+        -82,
+        -35,
+        0,
+        82,
+        -35,
+        0,
+        -82,
+        35,
+        0,
+        82,
+        35,
+        0
+      ],
+      "indexes": [
+        0,
+        1,
+        2,
+        2,
+        1,
+        3
+      ],
+      "uv": [
+        0,
+        70,
+        164,
+        70,
+        0,
+        0,
+        164,
+        0
+      ],
+      "nuv": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "minPos": {
+        "x": -82,
+        "y": -35,
+        "z": 0
+      },
+      "maxPos": {
+        "x": 82,
+        "y": 35,
+        "z": 0
+      }
+    },
+    "texture": "3020f9b0-1f2e-4d1a-b23a-62b912d1b028@6c48a",
+    "packable": true,
+    "pixelsToUnit": 100,
+    "pivot": {
+      "x": 0.5,
+      "y": 0.5
+    },
+    "meshType": 0
+  }
+}

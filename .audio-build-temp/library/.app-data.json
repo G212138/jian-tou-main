@@ -1,0 +1,358 @@
+{
+  "2fb050e0-159f-4a3b-b24c-3d76e43ac54d": {
+    "url": "db://app/base",
+    "value": {},
+    "versionCode": 1
+  },
+  "6ff04fb4-44cd-4fc4-a4b8-28ac28d83a0b": {
+    "url": "db://app/lib",
+    "value": {},
+    "versionCode": 1
+  },
+  "b50df186-2646-40b3-83c5-5dca8bf01803": {
+    "url": "db://app/manager",
+    "value": {},
+    "versionCode": 1
+  },
+  "e939f63c-c853-403c-aed7-b8f0925106f0": {
+    "url": "db://app/lib/debug",
+    "value": {},
+    "versionCode": 1
+  },
+  "140d98c1-6885-4e37-bf16-2ee67ffe087e": {
+    "url": "db://app/lib/logger",
+    "value": {},
+    "versionCode": 1
+  },
+  "0c157f59-fd16-449c-b42c-d0efa2dc1401": {
+    "url": "db://app/lib/storage",
+    "value": {},
+    "versionCode": 1
+  },
+  "54e30e53-aef2-4e16-8969-e38bea0ea336": {
+    "url": "db://app/lib/task",
+    "value": {},
+    "versionCode": 1
+  },
+  "4f12d0c8-895c-48a5-8805-79653aadb7e4": {
+    "url": "db://app/manager/event",
+    "value": {},
+    "versionCode": 1
+  },
+  "d8954580-884f-4927-b59a-dfb9553d4ce6": {
+    "url": "db://app/manager/loader",
+    "value": {},
+    "versionCode": 1
+  },
+  "a99e9a5e-e037-428c-b8f4-e5ad266db8ee": {
+    "url": "db://app/manager/sound",
+    "value": {},
+    "versionCode": 1
+  },
+  "ea45b442-c58f-49d1-9b11-edc7bc719a73": {
+    "url": "db://app/manager/timer",
+    "value": {},
+    "versionCode": 1
+  },
+  "714739c4-f4c0-4313-bc98-2d350df6b208": {
+    "url": "db://app/manager/ui",
+    "value": {},
+    "versionCode": 1
+  },
+  "cc9c8895-27f9-49df-aca5-a0d1b9ba6480": {
+    "url": "db://app/manager/ui/comp",
+    "value": {},
+    "versionCode": 1
+  },
+  "e3ac29f9-11a4-461c-a404-9e478271b953": {
+    "url": "db://app/manager/ui/effect",
+    "value": {},
+    "versionCode": 1
+  },
+  "a32ee073-dc9a-4d81-b3c1-54283a151627": {
+    "url": "db://app/manager/ui/prefab",
+    "value": {},
+    "versionCode": 1
+  },
+  "f5f10a35-ca33-4eb2-81f1-52459832001b": {
+    "url": "db://app/manager/ui/texture",
+    "value": {},
+    "versionCode": 1
+  },
+  "b5376e0b-9e5d-4c91-b0a4-19448fd39179": {
+    "url": "db://app/manager/ui/effect/blur.effect",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "b4a49372-fa9e-4448-b91b-29bc9701d9ff": {
+    "url": "db://app/Core.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "2110b07a-1c6c-430e-b9d9-926db06c8b30": {
+    "url": "db://app/base/BaseAppInit.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "fb1039b9-17f2-43b5-ad26-8d74e691b4f5": {
+    "url": "db://app/base/BaseControl.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "a7da7081-e604-487e-8e0c-7d458fdbb356": {
+    "url": "db://app/base/BaseController.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "30205eac-9b1e-4f44-8081-7b70ff8d6c52": {
+    "url": "db://app/base/BaseManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "7a377ceb-e086-4e71-99bd-f44dab40d24f": {
+    "url": "db://app/base/BaseModel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "eddc0411-4239-423d-8710-77fdf92affc2": {
+    "url": "db://app/base/BaseView.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "c0d5da3b-23f0-400e-85bb-6c754b9c08eb": {
+    "url": "db://app/lib/debug/debug.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "0b5812e8-b67d-4ba9-83d8-12ca1e46cfd0": {
+    "url": "db://app/lib/logger/logger.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "be3da7ca-1bb5-4a41-894b-f82751c78ef2": {
+    "url": "db://app/lib/storage/storage.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "721e6dcc-aab3-48d6-aa4e-e1baf821263b": {
+    "url": "db://app/lib/task/task.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "b4ea6344-3778-423d-98aa-a7785155bbd4": {
+    "url": "db://app/manager/event/EventManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "b3bf5337-0c73-4771-87b5-9e735962be81": {
+    "url": "db://app/manager/loader/LoaderManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "a40e77a6-cdac-445c-a50c-a8ced2411dbc": {
+    "url": "db://app/manager/sound/Audio.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "7a638f5c-801f-4e69-88cc-3fc72e1be985": {
+    "url": "db://app/manager/sound/AudioEngine.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "5902cecf-4966-4675-95a9-ab0f0f271857": {
+    "url": "db://app/manager/sound/AudioManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "580021da-d9a7-4e59-bb76-2c3afcae6053": {
+    "url": "db://app/manager/sound/SoundManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "b5636f8d-3516-4510-aaba-74f9202b8a9f": {
+    "url": "db://app/manager/timer/TimerManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "234f62f1-ebd3-4d14-9f6f-0b69c7096449": {
+    "url": "db://app/manager/ui/UIManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "4a8e5697-ae78-4a4a-8d08-17acc6823a27": {
+    "url": "db://app/manager/ui/comp/UIMgrLoading.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "d0295d9b-b01d-493c-9e31-5ed78e6c33ab": {
+    "url": "db://app/manager/ui/comp/UIMgrShade.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "cde1528c-f66c-40f4-bdd2-27bf138ce1df": {
+    "url": "db://app/manager/ui/comp/UIMgrToast.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "6cc631d6-b08e-4ee3-8bde-e307c4288734": {
+    "url": "db://app/manager/ui/comp/UIMgrToastCell.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "ad5cb510-639e-40c2-acdd-399ad00629b9": {
+    "url": "db://app/manager/ui/comp/UIMgrZOrder.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "5e43bb09-848f-434a-b3a5-a6b6602e00af": {
+    "url": "db://app/manager/MainManager.prefab",
+    "value": {
+      "depends": [
+        "fe542035-b018-493e-bea8-084fe4e01905",
+        "000cee21-922c-4fcd-bd39-6f80ac2436a4",
+        "b2a00c44-d199-4031-8fa7-ea681618b9d4"
+      ],
+      "dependScripts": [
+        "b4ea6344-3778-423d-98aa-a7785155bbd4",
+        "b5636f8d-3516-4510-aaba-74f9202b8a9f",
+        "b3bf5337-0c73-4771-87b5-9e735962be81",
+        "580021da-d9a7-4e59-bb76-2c3afcae6053",
+        "234f62f1-ebd3-4d14-9f6f-0b69c7096449"
+      ]
+    },
+    "versionCode": 2
+  },
+  "a313b5eb-b939-4c44-affc-32c713440cea": {
+    "url": "db://app/manager/ui/effect/blur.mtl",
+    "value": {
+      "depends": [
+        "b5376e0b-9e5d-4c91-b0a4-19448fd39179"
+      ]
+    },
+    "versionCode": 1
+  },
+  "fe542035-b018-493e-bea8-084fe4e01905": {
+    "url": "db://app/manager/ui/prefab/UIMgrLoading.prefab",
+    "value": {
+      "depends": [],
+      "dependScripts": [
+        "4a8e5697-ae78-4a4a-8d08-17acc6823a27"
+      ]
+    },
+    "versionCode": 2
+  },
+  "000cee21-922c-4fcd-bd39-6f80ac2436a4": {
+    "url": "db://app/manager/ui/prefab/UIMgrShade.prefab",
+    "value": {
+      "depends": [
+        "5512993f-89ea-46fe-b788-0ecc0c2cd51c@f9941",
+        "a313b5eb-b939-4c44-affc-32c713440cea"
+      ],
+      "dependScripts": [
+        "d0295d9b-b01d-493c-9e31-5ed78e6c33ab"
+      ]
+    },
+    "versionCode": 2
+  },
+  "b2a00c44-d199-4031-8fa7-ea681618b9d4": {
+    "url": "db://app/manager/ui/prefab/UIMgrToast.prefab",
+    "value": {
+      "depends": [
+        "5aa9450d-6710-4fac-a82c-ee2939cf9411"
+      ],
+      "dependScripts": [
+        "cde1528c-f66c-40f4-bdd2-27bf138ce1df"
+      ]
+    },
+    "versionCode": 2
+  },
+  "5aa9450d-6710-4fac-a82c-ee2939cf9411": {
+    "url": "db://app/manager/ui/prefab/UIMgrToastCell.prefab",
+    "value": {
+      "depends": [
+        "7922bee9-7eb5-449b-884e-14ac57ae515c@f9941"
+      ],
+      "dependScripts": [
+        "6cc631d6-b08e-4ee3-8bde-e307c4288734"
+      ]
+    },
+    "versionCode": 2
+  },
+  "5512993f-89ea-46fe-b788-0ecc0c2cd51c": {
+    "url": "db://app/manager/ui/texture/singleColor.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "b250e49c-5d79-4d07-a85f-a980fca36170": {
+    "url": "db://app/manager/ui/texture/toastBox.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "7922bee9-7eb5-449b-884e-14ac57ae515c": {
+    "url": "db://app/manager/ui/texture/toastCell.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "7922bee9-7eb5-449b-884e-14ac57ae515c@6c48a": {
+    "url": "db://app/manager/ui/texture/toastCell.png@6c48a",
+    "value": {
+      "depends": [
+        "7922bee9-7eb5-449b-884e-14ac57ae515c"
+      ]
+    },
+    "versionCode": 1
+  },
+  "7922bee9-7eb5-449b-884e-14ac57ae515c@f9941": {
+    "url": "db://app/manager/ui/texture/toastCell.png@f9941",
+    "value": {
+      "depends": [
+        "7922bee9-7eb5-449b-884e-14ac57ae515c@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "5512993f-89ea-46fe-b788-0ecc0c2cd51c@6c48a": {
+    "url": "db://app/manager/ui/texture/singleColor.png@6c48a",
+    "value": {
+      "depends": [
+        "5512993f-89ea-46fe-b788-0ecc0c2cd51c"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b250e49c-5d79-4d07-a85f-a980fca36170@6c48a": {
+    "url": "db://app/manager/ui/texture/toastBox.png@6c48a",
+    "value": {
+      "depends": [
+        "b250e49c-5d79-4d07-a85f-a980fca36170"
+      ]
+    },
+    "versionCode": 1
+  },
+  "5512993f-89ea-46fe-b788-0ecc0c2cd51c@f9941": {
+    "url": "db://app/manager/ui/texture/singleColor.png@f9941",
+    "value": {
+      "depends": [
+        "5512993f-89ea-46fe-b788-0ecc0c2cd51c@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b250e49c-5d79-4d07-a85f-a980fca36170@f9941": {
+    "url": "db://app/manager/ui/texture/toastBox.png@f9941",
+    "value": {
+      "depends": [
+        "b250e49c-5d79-4d07-a85f-a980fca36170@6c48a"
+      ]
+    },
+    "versionCode": 1
+  }
+}

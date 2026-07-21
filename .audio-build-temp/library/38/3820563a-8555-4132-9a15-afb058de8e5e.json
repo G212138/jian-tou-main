@@ -1,0 +1,11 @@
+{
+  "__type__": "cc.ParticleAsset",
+  "_name": "display",
+  "_objFlags": 0,
+  "__editorExtras__": {},
+  "_native": ".plist",
+  "spriteFrame": {
+    "__uuid__": "834a5722-ad72-48d4-bc39-c999c60033cc@f9941",
+    "__expectedType__": "cc.SpriteFrame"
+  }
+}

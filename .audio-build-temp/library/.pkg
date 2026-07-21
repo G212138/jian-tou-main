@@ -1,0 +1,13 @@
+{
+    "version": "1.0.1",
+    "data": {
+        "paths": [
+            "@gamex",
+            "@gamex\\cc-store",
+            "@gamex\\cc-store\\assets",
+            "@gamex\\cc-store\\index.ts",
+            "@gamex\\cc-store\\assets\\Store.ts",
+            "@gamex\\cc-store\\package.json"
+        ]
+    }
+}

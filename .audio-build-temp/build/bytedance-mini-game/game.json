@@ -1,0 +1,68 @@
+{
+    "deviceOrientation": "portrait",
+    "showStatusBar": false,
+    "networkTimeout": {
+        "request": 5000,
+        "connectSocket": 5000,
+        "uploadFile": 5000,
+        "downloadFile": 500000
+    },
+    "subpackages": [
+        {
+            "name": "app-sound",
+            "root": "subpackages/app-sound/"
+        },
+        {
+            "name": "page-home-res",
+            "root": "subpackages/page-home-res/"
+        },
+        {
+            "name": "page-main-res",
+            "root": "subpackages/page-main-res/"
+        },
+        {
+            "name": "page-sp-level-res",
+            "root": "subpackages/page-sp-level-res/"
+        },
+        {
+            "name": "pop-result-res",
+            "root": "subpackages/pop-result-res/"
+        },
+        {
+            "name": "pop-setting-res",
+            "root": "subpackages/pop-setting-res/"
+        },
+        {
+            "name": "app-admin",
+            "root": "subpackages/app-admin/"
+        },
+        {
+            "name": "app-manager",
+            "root": "subpackages/app-manager/"
+        },
+        {
+            "name": "app-model",
+            "root": "subpackages/app-model/"
+        },
+        {
+            "name": "page-home",
+            "root": "subpackages/page-home/"
+        },
+        {
+            "name": "page-main",
+            "root": "subpackages/page-main/"
+        },
+        {
+            "name": "page-sp-level",
+            "root": "subpackages/page-sp-level/"
+        },
+        {
+            "name": "pop-result",
+            "root": "subpackages/pop-result/"
+        },
+        {
+            "name": "pop-setting",
+            "root": "subpackages/pop-setting/"
+        }
+    ]
+}

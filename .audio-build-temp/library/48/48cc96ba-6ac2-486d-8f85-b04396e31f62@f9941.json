@@ -1,0 +1,90 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "img_sy1",
+    "atlas": "",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 66,
+      "height": 65
+    },
+    "offset": {
+      "x": 0,
+      "y": 0
+    },
+    "originalSize": {
+      "width": 66,
+      "height": 65
+    },
+    "rotated": false,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "vertices": {
+      "rawPosition": [
+        -33,
+        -32.5,
+        0,
+        33,
+        -32.5,
+        0,
+        -33,
+        32.5,
+        0,
+        33,
+        32.5,
+        0
+      ],
+      "indexes": [
+        0,
+        1,
+        2,
+        2,
+        1,
+        3
+      ],
+      "uv": [
+        0,
+        65,
+        66,
+        65,
+        0,
+        0,
+        66,
+        0
+      ],
+      "nuv": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "minPos": {
+        "x": -33,
+        "y": -32.5,
+        "z": 0
+      },
+      "maxPos": {
+        "x": 33,
+        "y": 32.5,
+        "z": 0
+      }
+    },
+    "texture": "48cc96ba-6ac2-486d-8f85-b04396e31f62@6c48a",
+    "packable": true,
+    "pixelsToUnit": 100,
+    "pivot": {
+      "x": 0.5,
+      "y": 0.5
+    },
+    "meshType": 0
+  }
+}

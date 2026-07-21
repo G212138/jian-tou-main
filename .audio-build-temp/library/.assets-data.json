@@ -1,0 +1,3081 @@
+{
+  "a7084ee0-ab27-4f9f-a846-6d4b38db50ba": {
+    "url": "db://assets/app",
+    "value": {},
+    "versionCode": 1
+  },
+  "5aa02f13-d2f9-4d73-a79e-58b9fe6eca78": {
+    "url": "db://assets/app-appinit",
+    "value": {},
+    "versionCode": 1
+  },
+  "8564f435-63c9-4e21-bda9-2927d8c7b90d": {
+    "url": "db://assets/app-builtin",
+    "value": {},
+    "versionCode": 1
+  },
+  "d67c5b3b-9069-4d28-907c-920dd80c213a": {
+    "url": "db://assets/app-bundle",
+    "value": {},
+    "versionCode": 1
+  },
+  "104c58a7-687b-47fb-b7b0-dac627418567": {
+    "url": "db://assets/app-scene",
+    "value": {},
+    "versionCode": 1
+  },
+  "5cc72314-03f8-4d1e-b7a5-8e0ab48e37d3": {
+    "url": "db://assets/pkg-export",
+    "value": {},
+    "versionCode": 1
+  },
+  "e1ee8c84-c9c2-4a48-8e6e-9e242ed718f3": {
+    "url": "db://assets/app-appinit/res",
+    "value": {},
+    "versionCode": 1
+  },
+  "2d1f88c5-c88d-43c1-9bad-8c188f9314e0": {
+    "url": "db://assets/app-appinit/view",
+    "value": {},
+    "versionCode": 1
+  },
+  "95e76f7f-cbcf-4726-87bf-efbf19fb0e33": {
+    "url": "db://assets/app-builtin/app-admin",
+    "value": {},
+    "versionCode": 1
+  },
+  "73c22ccc-dd8f-4e7e-a627-bd37f23b226a": {
+    "url": "db://assets/app-builtin/app-manager",
+    "value": {},
+    "versionCode": 1
+  },
+  "dc075555-2d36-4194-b1cb-5048abe81e59": {
+    "url": "db://assets/app-builtin/app-model",
+    "value": {},
+    "versionCode": 1
+  },
+  "37b8cfbb-6d13-49c3-8b8f-7aabca52666b": {
+    "url": "db://assets/app-bundle/app-sound",
+    "value": {},
+    "versionCode": 1
+  },
+  "db4bdbbf-4cd7-4fec-9eab-49a18b57c61c": {
+    "url": "db://assets/app-bundle/app-view",
+    "value": {},
+    "versionCode": 1
+  },
+  "d49b99e5-b11a-4d81-838e-90a5af9e632d": {
+    "url": "db://assets/pkg-export/@gamex",
+    "value": {},
+    "versionCode": 1
+  },
+  "e0cd66a1-d3fc-4edf-a845-4cdd2408f8ab": {
+    "url": "db://assets/app-builtin/app-manager/globaldata",
+    "value": {},
+    "versionCode": 1
+  },
+  "c70f42f2-e78a-4b63-b836-08661cd723eb": {
+    "url": "db://assets/app-builtin/app-manager/report",
+    "value": {},
+    "versionCode": 1
+  },
+  "4136420f-4a65-413b-9f4e-4ac207c7251d": {
+    "url": "db://assets/app-builtin/app-manager/tili",
+    "value": {},
+    "versionCode": 1
+  },
+  "be9c2f2a-99d9-48b4-90af-08a6a9eaa105": {
+    "url": "db://assets/app-builtin/app-manager/vibrate",
+    "value": {},
+    "versionCode": 1
+  },
+  "369f11f8-e5de-4d53-9fe1-27d64b603674": {
+    "url": "db://assets/app-bundle/app-sound/effect",
+    "value": {},
+    "versionCode": 1
+  },
+  "d787a1c3-d73c-49de-96c1-e39f920b969a": {
+    "url": "db://assets/app-bundle/app-sound/music",
+    "value": {},
+    "versionCode": 1
+  },
+  "09fdb7ff-3b9b-4f34-bae4-b0b7532b0ad1": {
+    "url": "db://assets/app-bundle/app-view/page",
+    "value": {},
+    "versionCode": 1
+  },
+  "33927638-f93c-47a8-9890-f7e275b35e3e": {
+    "url": "db://assets/app-bundle/app-view/pop",
+    "value": {},
+    "versionCode": 1
+  },
+  "356f69fa-de9b-4c7e-90cd-626086c32a83": {
+    "url": "db://assets/app-bundle/app-sound/effect/piano",
+    "value": {},
+    "versionCode": 1
+  },
+  "7adadd92-cd69-4233-95eb-36bc29f5cbcf": {
+    "url": "db://assets/app-bundle/app-view/page/home",
+    "value": {},
+    "versionCode": 1
+  },
+  "eebfe206-976c-4bb2-bb7e-847da6df3fe7": {
+    "url": "db://assets/app-bundle/app-view/page/main",
+    "value": {},
+    "versionCode": 1
+  },
+  "3971bbe2-9009-4380-9ba3-38af30507047": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level",
+    "value": {},
+    "versionCode": 1
+  },
+  "88d26895-8622-4a4b-b9fc-afade00a9555": {
+    "url": "db://assets/app-bundle/app-view/pop/result",
+    "value": {},
+    "versionCode": 1
+  },
+  "cd251696-85e8-4509-9b9e-4de53d2134a1": {
+    "url": "db://assets/app-bundle/app-view/pop/setting",
+    "value": {},
+    "versionCode": 1
+  },
+  "8102c124-590b-4d37-98b5-6d5307393bd3": {
+    "url": "db://assets/app-bundle/app-view/page/home/native",
+    "value": {},
+    "versionCode": 1
+  },
+  "a2cb1da0-174c-432e-abf5-33fb2463d18c": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources",
+    "value": {},
+    "versionCode": 1
+  },
+  "177e9e9e-d8ec-45a0-9400-0cb6bcb6e98d": {
+    "url": "db://assets/app-bundle/app-view/page/main/native",
+    "value": {},
+    "versionCode": 1
+  },
+  "b0d75960-fbe1-4cd1-9aaa-b71eb9a6a23b": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources",
+    "value": {},
+    "versionCode": 1
+  },
+  "72255640-b25b-4850-bad5-f5d296522efb": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/native",
+    "value": {},
+    "versionCode": 1
+  },
+  "3c33a12d-b3aa-40fd-b9ac-3a3e7193f1df": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources",
+    "value": {},
+    "versionCode": 1
+  },
+  "7a4ced74-75e1-4450-8d6c-12afbba335c4": {
+    "url": "db://assets/app-bundle/app-view/pop/result/native",
+    "value": {},
+    "versionCode": 1
+  },
+  "e09214b2-2722-4e0a-a912-a4eb1157e472": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources",
+    "value": {},
+    "versionCode": 1
+  },
+  "d6918f11-198a-42b6-b607-fa811f84661f": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/native",
+    "value": {},
+    "versionCode": 1
+  },
+  "778c65a4-933f-472d-8b59-39ba3463d4a1": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources",
+    "value": {},
+    "versionCode": 1
+  },
+  "6b8aa492-b2ef-449f-9c2e-0f5d331e1f0d": {
+    "url": "db://assets/app-bundle/app-view/page/home/native/expansion",
+    "value": {},
+    "versionCode": 1
+  },
+  "3a34c265-5564-4bd5-82b0-598c7560466a": {
+    "url": "db://assets/app-bundle/app-view/page/main/native/expansion",
+    "value": {},
+    "versionCode": 1
+  },
+  "802b1d1b-e5f1-4c93-8d07-263a5effa7a0": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/guide",
+    "value": {},
+    "versionCode": 1
+  },
+  "8a22dfef-9c35-490e-894c-392eb76c156a": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/native/expansion",
+    "value": {},
+    "versionCode": 1
+  },
+  "e4bd2e57-bcee-405a-918d-f0a5c12aeabd": {
+    "url": "db://assets/app-bundle/app-view/pop/result/native/expansion",
+    "value": {},
+    "versionCode": 1
+  },
+  "a03f1260-b69d-42d7-85f8-bd840403610e": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/lihua",
+    "value": {},
+    "versionCode": 1
+  },
+  "3a253076-8565-47a4-a2a3-160c5208d7dd": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/native/expansion",
+    "value": {},
+    "versionCode": 1
+  },
+  "121df84f-631d-4557-831a-19641e7deea8": {
+    "url": "db://assets/app/app.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "52cea29f-b6cd-42d1-81db-1737388f6192": {
+    "url": "db://assets/app/config.ads.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "b1fe052c-a75d-4167-a570-97e3d8272442": {
+    "url": "db://assets/app/config.tiktok.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "8afaf85a-fbcd-4213-aacb-2e9337926fee": {
+    "url": "db://assets/app/handle.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "4ce8832f-d96b-4b2b-a5e7-fdb0de8c5a32": {
+    "url": "db://assets/app/platform.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "9a8d2a40-9eb2-4058-8883-a7de0fedbd33": {
+    "url": "db://assets/app/setting.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "cde7042d-6423-4133-93b3-6e75b3c485b1": {
+    "url": "db://assets/app/tiktok.ads.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "246211de-90a2-418f-adce-dfe46e4f2789": {
+    "url": "db://assets/app/tiktok.required.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "598f2121-5288-4479-b533-b2ac171e8a25": {
+    "url": "db://assets/app-appinit/view/AppInit.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "f187b639-0be1-421c-ac96-f3891a260321": {
+    "url": "db://assets/app-builtin/app-admin/executor.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "7a75b772-1be7-4632-993e-0541423a8662": {
+    "url": "db://assets/app-builtin/app-model/config.eventname.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "78156e2b-81a3-4914-82e2-501101e0c8ab": {
+    "url": "db://assets/app-builtin/app-model/config.localkey.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "cb64a8e3-ffea-4cad-b542-21ebd0f2294b": {
+    "url": "db://assets/app-builtin/app-model/store.game.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "9c1d354e-82df-4936-96ce-1ba4fefeda8a": {
+    "url": "db://assets/pkg-export/@gamex/cc-store.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "f8619be6-1812-4dcf-b502-247b8eff59bd": {
+    "url": "db://assets/app-builtin/app-manager/globaldata/GlobaldataManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "40802ded-45d3-4065-89f2-dd62aa1a47ab": {
+    "url": "db://assets/app-builtin/app-manager/report/ReportManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "527bbb03-af5a-4acb-8c83-bdede48c91f6": {
+    "url": "db://assets/app-builtin/app-manager/tili/TiliManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "fdb709a3-efbd-440d-9405-ec30b9c804a9": {
+    "url": "db://assets/app-builtin/app-manager/vibrate/VibrateManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "3c964335-dbed-4631-b7c3-8a8df16d2c8a": {
+    "url": "db://assets/app-bundle/app-view/page/home/native/PageHome.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "faa7c1e0-e5dc-4c32-b6a1-8c65fab1e592": {
+    "url": "db://assets/app-bundle/app-view/page/main/native/PageMain.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "3d129735-8c72-47d5-8c12-bfe6cfe144fc": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/native/PageSpLevel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "77c6b0f6-7aac-46d6-ba2c-f052032825a5": {
+    "url": "db://assets/app-bundle/app-view/pop/result/native/PopResult.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "c5afa92d-5cca-43dd-ab36-1c8404ef7572": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/native/PopSetting.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "668afdbd-5eec-4260-b888-830b284aff6b": {
+    "url": "db://assets/app-bundle/app-view/page/home/native/expansion/SpecialLevel.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "480478c0-5092-469b-abfa-4f4099e72a3f": {
+    "url": "db://assets/app-bundle/app-view/page/home/native/expansion/TiLiHome.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "cc1da096-56e6-4327-ba59-70c87b6135a1": {
+    "url": "db://assets/app-bundle/app-view/page/main/native/expansion/DaoJu.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "83d2984f-e29a-491a-9ee6-1f579e2c527f": {
+    "url": "db://assets/app-bundle/app-view/page/main/native/expansion/Debug.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "234ae517-e420-4a3a-8d9a-e110a920776f": {
+    "url": "db://assets/app-bundle/app-view/page/main/native/expansion/DianTool.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "a5146c93-3b24-47bf-b255-adcfea960848": {
+    "url": "db://assets/app-bundle/app-view/page/main/native/expansion/Drag.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "2840d2e3-e8e4-4c11-a0c2-830ed83684cb": {
+    "url": "db://assets/app-bundle/app-view/page/main/native/expansion/gameHeartManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "81660851-dd67-4a2b-9574-22c11dd83e11": {
+    "url": "db://assets/app-bundle/app-view/page/main/native/expansion/Guide.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "d039534e-ed08-440b-80e8-9223288b1f39": {
+    "url": "db://assets/app-bundle/app-view/page/main/native/expansion/RopeManager.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "36d01dd8-a135-4950-8bdc-51d85b9b4546": {
+    "url": "db://assets/app-bundle/app-view/page/main/native/expansion/RopeRun.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "9e5024a8-5d97-4b25-8864-2c9d6d5d000b": {
+    "url": "db://assets/app-bundle/app-view/page/main/native/expansion/TiLi.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "f53ad518-02c6-4a6c-bcb8-ee7ce1cce8ca": {
+    "url": "db://assets/app-bundle/app-view/page/main/native/expansion/Time.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "d0fe0d1f-e0d7-43f2-a9bc-e1e571a971c1": {
+    "url": "db://assets/app-bundle/app-view/page/main/native/expansion/TouchZoomPan.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "2cfe7164-8e83-4c36-9b35-d202f5991359": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/native/expansion/spLevelItem.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "4ff7e1b6-053e-41ef-9947-769c2cde9d36": {
+    "url": "db://assets/app-bundle/app-view/pop/result/native/expansion/FailDialog.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "dba5b7fd-1e57-4b34-a3c7-663b99970929": {
+    "url": "db://assets/app-bundle/app-view/pop/result/native/expansion/FuoHuoDialog.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "d322f1c3-f645-4f5c-a478-e7e1bf720a2d": {
+    "url": "db://assets/app-bundle/app-view/pop/result/native/expansion/NoTimeDialog.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "7d6f8fce-6750-44d9-a503-fd8f85019403": {
+    "url": "db://assets/app-bundle/app-view/pop/result/native/expansion/ShouChangDialog.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "eb3cf304-44b6-439e-9f83-ee1532f61292": {
+    "url": "db://assets/app-bundle/app-view/pop/result/native/expansion/SuccessDialog.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "5536a7f3-daec-442e-86ce-57cfa02894b1": {
+    "url": "db://assets/app-bundle/app-view/pop/result/native/expansion/TiLiDialog.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "5298bb0b-166e-4978-af98-0047d43757de": {
+    "url": "db://assets/app-scene/main.scene",
+    "value": {
+      "depends": [
+        "19a93f71-0300-44b3-9bd9-efbc15271e7d",
+        "5e43bb09-848f-434a-b3a5-a6b6602e00af"
+      ],
+      "dependScripts": [
+        "CC3eba29-7abb-723a-f7ab-ae275e2277e8"
+      ]
+    },
+    "versionCode": 2
+  },
+  "021e07b9-8c4f-42d7-a840-14e0b602c0cd": {
+    "url": "db://assets/app-appinit/res/app_icon_brain_arrows_1024.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "0d223064-db04-4798-a62a-bdf3587850bb": {
+    "url": "db://assets/app-appinit/res/app_icon_brain_arrows_v2_1024.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "afe717fc-9abd-4325-a183-2e9f748fbdb6": {
+    "url": "db://assets/app-appinit/res/app_icon_brain_arrows_v3_1024.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "024fab1b-1fcd-441b-97d7-e2110ca33695": {
+    "url": "db://assets/app-appinit/res/img-bj.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "dd4710e5-9903-46cb-993a-7634401928d5": {
+    "url": "db://assets/app-appinit/res/img_progress_01.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "024fab1b-1fcd-441b-97d7-e2110ca33695@6c48a": {
+    "url": "db://assets/app-appinit/res/img-bj.png@6c48a",
+    "value": {
+      "depends": [
+        "024fab1b-1fcd-441b-97d7-e2110ca33695"
+      ]
+    },
+    "versionCode": 1
+  },
+  "afe717fc-9abd-4325-a183-2e9f748fbdb6@6c48a": {
+    "url": "db://assets/app-appinit/res/app_icon_brain_arrows_v3_1024.png@6c48a",
+    "value": {
+      "depends": [
+        "afe717fc-9abd-4325-a183-2e9f748fbdb6"
+      ]
+    },
+    "versionCode": 1
+  },
+  "0d223064-db04-4798-a62a-bdf3587850bb@6c48a": {
+    "url": "db://assets/app-appinit/res/app_icon_brain_arrows_v2_1024.png@6c48a",
+    "value": {
+      "depends": [
+        "0d223064-db04-4798-a62a-bdf3587850bb"
+      ]
+    },
+    "versionCode": 1
+  },
+  "021e07b9-8c4f-42d7-a840-14e0b602c0cd@6c48a": {
+    "url": "db://assets/app-appinit/res/app_icon_brain_arrows_1024.png@6c48a",
+    "value": {
+      "depends": [
+        "021e07b9-8c4f-42d7-a840-14e0b602c0cd"
+      ]
+    },
+    "versionCode": 1
+  },
+  "dd4710e5-9903-46cb-993a-7634401928d5@6c48a": {
+    "url": "db://assets/app-appinit/res/img_progress_01.png@6c48a",
+    "value": {
+      "depends": [
+        "dd4710e5-9903-46cb-993a-7634401928d5"
+      ]
+    },
+    "versionCode": 1
+  },
+  "024fab1b-1fcd-441b-97d7-e2110ca33695@f9941": {
+    "url": "db://assets/app-appinit/res/img-bj.png@f9941",
+    "value": {
+      "depends": [
+        "024fab1b-1fcd-441b-97d7-e2110ca33695@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "190f729f-d562-47c6-9e4b-4c703380f4a4": {
+    "url": "db://assets/app-appinit/res/img_progress_02.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "dd4710e5-9903-46cb-993a-7634401928d5@f9941": {
+    "url": "db://assets/app-appinit/res/img_progress_01.png@f9941",
+    "value": {
+      "depends": [
+        "dd4710e5-9903-46cb-993a-7634401928d5@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "6f93b88a-2c02-40af-adb3-9f291b1115a8": {
+    "url": "db://assets/app-appinit/res/jianjianhaowan.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "afe717fc-9abd-4325-a183-2e9f748fbdb6@f9941": {
+    "url": "db://assets/app-appinit/res/app_icon_brain_arrows_v3_1024.png@f9941",
+    "value": {
+      "depends": [
+        "afe717fc-9abd-4325-a183-2e9f748fbdb6@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "4e718d44-127d-43f5-b317-8175b4821f10": {
+    "url": "db://assets/app-appinit/res/logo-001.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "021e07b9-8c4f-42d7-a840-14e0b602c0cd@f9941": {
+    "url": "db://assets/app-appinit/res/app_icon_brain_arrows_1024.png@f9941",
+    "value": {
+      "depends": [
+        "021e07b9-8c4f-42d7-a840-14e0b602c0cd@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "0d223064-db04-4798-a62a-bdf3587850bb@f9941": {
+    "url": "db://assets/app-appinit/res/app_icon_brain_arrows_v2_1024.png@f9941",
+    "value": {
+      "depends": [
+        "0d223064-db04-4798-a62a-bdf3587850bb@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "dfe50988-ed13-434b-b726-a08a718aa8e8": {
+    "url": "db://assets/app-appinit/res/logo02.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "b02dea0b-f1e7-44f3-aee4-8344257d0eed": {
+    "url": "db://assets/app-appinit/res/logo3.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "190f729f-d562-47c6-9e4b-4c703380f4a4@6c48a": {
+    "url": "db://assets/app-appinit/res/img_progress_02.png@6c48a",
+    "value": {
+      "depends": [
+        "190f729f-d562-47c6-9e4b-4c703380f4a4"
+      ]
+    },
+    "versionCode": 1
+  },
+  "6f93b88a-2c02-40af-adb3-9f291b1115a8@6c48a": {
+    "url": "db://assets/app-appinit/res/jianjianhaowan.png@6c48a",
+    "value": {
+      "depends": [
+        "6f93b88a-2c02-40af-adb3-9f291b1115a8"
+      ]
+    },
+    "versionCode": 1
+  },
+  "190f729f-d562-47c6-9e4b-4c703380f4a4@f9941": {
+    "url": "db://assets/app-appinit/res/img_progress_02.png@f9941",
+    "value": {
+      "depends": [
+        "190f729f-d562-47c6-9e4b-4c703380f4a4@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "1def8914-a908-48b1-ba12-f86e657f93e6": {
+    "url": "db://assets/app-appinit/res/logo4.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "dfe50988-ed13-434b-b726-a08a718aa8e8@6c48a": {
+    "url": "db://assets/app-appinit/res/logo02.png@6c48a",
+    "value": {
+      "depends": [
+        "dfe50988-ed13-434b-b726-a08a718aa8e8"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b02dea0b-f1e7-44f3-aee4-8344257d0eed@6c48a": {
+    "url": "db://assets/app-appinit/res/logo3.png@6c48a",
+    "value": {
+      "depends": [
+        "b02dea0b-f1e7-44f3-aee4-8344257d0eed"
+      ]
+    },
+    "versionCode": 1
+  },
+  "4e718d44-127d-43f5-b317-8175b4821f10@6c48a": {
+    "url": "db://assets/app-appinit/res/logo-001.png@6c48a",
+    "value": {
+      "depends": [
+        "4e718d44-127d-43f5-b317-8175b4821f10"
+      ]
+    },
+    "versionCode": 1
+  },
+  "6f93b88a-2c02-40af-adb3-9f291b1115a8@f9941": {
+    "url": "db://assets/app-appinit/res/jianjianhaowan.png@f9941",
+    "value": {
+      "depends": [
+        "6f93b88a-2c02-40af-adb3-9f291b1115a8@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "4b29e10a-b9d0-4151-89ff-6070b20da21c": {
+    "url": "db://assets/app-appinit/res/zhijiandarenwang.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "dfe50988-ed13-434b-b726-a08a718aa8e8@f9941": {
+    "url": "db://assets/app-appinit/res/logo02.png@f9941",
+    "value": {
+      "depends": [
+        "dfe50988-ed13-434b-b726-a08a718aa8e8@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "19a93f71-0300-44b3-9bd9-efbc15271e7d": {
+    "url": "db://assets/app-appinit/view/AppInit.prefab",
+    "value": {
+      "depends": [
+        "024fab1b-1fcd-441b-97d7-e2110ca33695@f9941",
+        "6f93b88a-2c02-40af-adb3-9f291b1115a8@f9941",
+        "190f729f-d562-47c6-9e4b-4c703380f4a4@f9941",
+        "dd4710e5-9903-46cb-993a-7634401928d5@f9941"
+      ],
+      "dependScripts": [
+        "598f2121-5288-4479-b533-b2ac171e8a25"
+      ]
+    },
+    "versionCode": 2
+  },
+  "4e718d44-127d-43f5-b317-8175b4821f10@f9941": {
+    "url": "db://assets/app-appinit/res/logo-001.png@f9941",
+    "value": {
+      "depends": [
+        "4e718d44-127d-43f5-b317-8175b4821f10@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b02dea0b-f1e7-44f3-aee4-8344257d0eed@f9941": {
+    "url": "db://assets/app-appinit/res/logo3.png@f9941",
+    "value": {
+      "depends": [
+        "b02dea0b-f1e7-44f3-aee4-8344257d0eed@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b9c4b287-ad24-41d6-b20f-8983b4b92fa3": {
+    "url": "db://assets/app-builtin/app-manager/globaldata/ceil.prefab",
+    "value": {
+      "depends": [],
+      "dependScripts": []
+    },
+    "versionCode": 2
+  },
+  "a79b791a-e7db-4c29-b25f-e6bb22a3e639": {
+    "url": "db://assets/app-builtin/app-manager/globaldata/GlobaldataManager.prefab",
+    "value": {
+      "depends": [
+        "b9c4b287-ad24-41d6-b20f-8983b4b92fa3"
+      ],
+      "dependScripts": [
+        "f8619be6-1812-4dcf-b502-247b8eff59bd"
+      ]
+    },
+    "versionCode": 2
+  },
+  "a27c8c00-e6ba-4212-825f-db7448ba4034": {
+    "url": "db://assets/app-builtin/app-manager/report/ReportManager.prefab",
+    "value": {
+      "depends": [],
+      "dependScripts": [
+        "40802ded-45d3-4065-89f2-dd62aa1a47ab"
+      ]
+    },
+    "versionCode": 2
+  },
+  "1def8914-a908-48b1-ba12-f86e657f93e6@6c48a": {
+    "url": "db://assets/app-appinit/res/logo4.png@6c48a",
+    "value": {
+      "depends": [
+        "1def8914-a908-48b1-ba12-f86e657f93e6"
+      ]
+    },
+    "versionCode": 1
+  },
+  "ada1f476-6387-4015-a90f-f93c32ee7a1b": {
+    "url": "db://assets/app-builtin/app-manager/tili/TiliManager.prefab",
+    "value": {
+      "depends": [],
+      "dependScripts": [
+        "527bbb03-af5a-4acb-8c83-bdede48c91f6"
+      ]
+    },
+    "versionCode": 2
+  },
+  "ab52802f-b4f7-41da-a481-13a33d9b5daf": {
+    "url": "db://assets/app-builtin/app-manager/vibrate/VibrateManager.prefab",
+    "value": {
+      "depends": [],
+      "dependScripts": [
+        "fdb709a3-efbd-440d-9405-ec30b9c804a9"
+      ]
+    },
+    "versionCode": 2
+  },
+  "4b29e10a-b9d0-4151-89ff-6070b20da21c@6c48a": {
+    "url": "db://assets/app-appinit/res/zhijiandarenwang.png@6c48a",
+    "value": {
+      "depends": [
+        "4b29e10a-b9d0-4151-89ff-6070b20da21c"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d008f981-a3ae-4a1d-a688-08bedbbde566": {
+    "url": "db://assets/app-bundle/app-sound/effect/Button.mp3",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "07007508-13ae-4b6f-9f58-44b78ddff969": {
+    "url": "db://assets/app-bundle/app-sound/effect/error.mp3",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "9af4309f-6ac8-42fb-9ccf-58c624a5ae5d": {
+    "url": "db://assets/app-bundle/app-sound/effect/fail.mp3",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "1def8914-a908-48b1-ba12-f86e657f93e6@f9941": {
+    "url": "db://assets/app-appinit/res/logo4.png@f9941",
+    "value": {
+      "depends": [
+        "1def8914-a908-48b1-ba12-f86e657f93e6@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "aee71f7d-c20b-4905-8b64-54be56a4b0f2": {
+    "url": "db://assets/app-bundle/app-sound/effect/qiaoSui.mp3",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "4b29e10a-b9d0-4151-89ff-6070b20da21c@f9941": {
+    "url": "db://assets/app-appinit/res/zhijiandarenwang.png@f9941",
+    "value": {
+      "depends": [
+        "4b29e10a-b9d0-4151-89ff-6070b20da21c@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "6422b423-ac84-4c7d-ab2b-bea4e00a4487": {
+    "url": "db://assets/app-bundle/app-sound/effect/success.mp3",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "6b6415ed-c91f-499b-8e53-66d1cedf4585": {
+    "url": "db://assets/app-bundle/app-sound/music/bgm.mp3",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "6cecf2be-f9c7-4161-ac83-10c8720421f7": {
+    "url": "db://assets/app-bundle/app-sound/effect/piano/A.mp3",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "51e124fb-a967-45fe-81b2-bd312fd61abf": {
+    "url": "db://assets/app-bundle/app-sound/effect/piano/B.mp3",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "b99ec3ab-16fd-4140-9dbc-0b7741c4f88f": {
+    "url": "db://assets/app-bundle/app-sound/effect/piano/C.mp3",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "699fdece-4cf6-4a85-9bd1-1d9c47ca7a18": {
+    "url": "db://assets/app-bundle/app-sound/effect/piano/D.mp3",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "217286ea-760f-4404-b9e6-54db41420612": {
+    "url": "db://assets/app-bundle/app-sound/effect/piano/E.mp3",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "0e716cc8-52df-4616-98cf-de5adbed81ea": {
+    "url": "db://assets/app-bundle/app-sound/effect/piano/F.mp3",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "2f13fbce-9edb-45f0-9f66-0fa31e775d02": {
+    "url": "db://assets/app-bundle/app-sound/effect/piano/G.mp3",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "084d3d58-cf65-48b7-95cd-0077512c3e5c": {
+    "url": "db://assets/app-bundle/app-view/page/home/native/PageHome.prefab",
+    "value": {
+      "depends": [
+        "d4d9e27a-d8ee-483a-be8b-ec0fecacc3ce@f9941",
+        "f8825e6f-f06b-4708-b2de-6b09c9ff0f35@f9941",
+        "72080b37-7c2b-44a3-8182-af196df2f66b@f9941",
+        "4ba9ded2-a07d-486b-ab54-acdcb394e911@f9941",
+        "b41a2376-c15b-412e-9fae-31599d8e7ebf@f9941",
+        "dd4ad56a-c4c4-41d0-9012-dab6052e4f33@f9941",
+        "f803793a-ff1a-40eb-8515-841e2f8d947d@f9941",
+        "39405053-ef04-4b4f-ac24-d1d624ef0d3f@f9941"
+      ],
+      "dependScripts": [
+        "480478c0-5092-469b-abfa-4f4099e72a3f",
+        "668afdbd-5eec-4260-b888-830b284aff6b",
+        "3c964335-dbed-4631-b7c3-8a8df16d2c8a"
+      ]
+    },
+    "versionCode": 2
+  },
+  "72080b37-7c2b-44a3-8182-af196df2f66b": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/bg_tili.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "dd4ad56a-c4c4-41d0-9012-dab6052e4f33": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/btn_menu_01.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "f803793a-ff1a-40eb-8515-841e2f8d947d": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/btn_menu_02.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "d246bb36-ebd5-4a26-ac6f-1c2c76d33115": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/btn_menu_start.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "4ba9ded2-a07d-486b-ab54-acdcb394e911": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/btn_setting.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "72080b37-7c2b-44a3-8182-af196df2f66b@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/bg_tili.png@6c48a",
+    "value": {
+      "depends": [
+        "72080b37-7c2b-44a3-8182-af196df2f66b"
+      ]
+    },
+    "versionCode": 1
+  },
+  "dd4ad56a-c4c4-41d0-9012-dab6052e4f33@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/btn_menu_01.png@6c48a",
+    "value": {
+      "depends": [
+        "dd4ad56a-c4c4-41d0-9012-dab6052e4f33"
+      ]
+    },
+    "versionCode": 1
+  },
+  "4ba9ded2-a07d-486b-ab54-acdcb394e911@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/btn_setting.png@6c48a",
+    "value": {
+      "depends": [
+        "4ba9ded2-a07d-486b-ab54-acdcb394e911"
+      ]
+    },
+    "versionCode": 1
+  },
+  "f803793a-ff1a-40eb-8515-841e2f8d947d@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/btn_menu_02.png@6c48a",
+    "value": {
+      "depends": [
+        "f803793a-ff1a-40eb-8515-841e2f8d947d"
+      ]
+    },
+    "versionCode": 1
+  },
+  "72080b37-7c2b-44a3-8182-af196df2f66b@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/bg_tili.png@f9941",
+    "value": {
+      "depends": [
+        "72080b37-7c2b-44a3-8182-af196df2f66b@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d4d9e27a-d8ee-483a-be8b-ec0fecacc3ce": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/img-bj.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "d246bb36-ebd5-4a26-ac6f-1c2c76d33115@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/btn_menu_start.png@6c48a",
+    "value": {
+      "depends": [
+        "d246bb36-ebd5-4a26-ac6f-1c2c76d33115"
+      ]
+    },
+    "versionCode": 1
+  },
+  "dd4ad56a-c4c4-41d0-9012-dab6052e4f33@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/btn_menu_01.png@f9941",
+    "value": {
+      "depends": [
+        "dd4ad56a-c4c4-41d0-9012-dab6052e4f33@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "f8825e6f-f06b-4708-b2de-6b09c9ff0f35": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/jianjianhaowan.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "4ba9ded2-a07d-486b-ab54-acdcb394e911@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/btn_setting.png@f9941",
+    "value": {
+      "depends": [
+        "4ba9ded2-a07d-486b-ab54-acdcb394e911@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "cf642b63-f3f2-4000-9f2f-baa49fa8e2b4": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/logo.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "f803793a-ff1a-40eb-8515-841e2f8d947d@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/btn_menu_02.png@f9941",
+    "value": {
+      "depends": [
+        "f803793a-ff1a-40eb-8515-841e2f8d947d@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "987815c9-3a5a-437a-b512-5862b7c217fa": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/logo02.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "d246bb36-ebd5-4a26-ac6f-1c2c76d33115@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/btn_menu_start.png@f9941",
+    "value": {
+      "depends": [
+        "d246bb36-ebd5-4a26-ac6f-1c2c76d33115@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e44c00b7-42e6-4f3f-b491-cea27a226def": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/logo3.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "d4d9e27a-d8ee-483a-be8b-ec0fecacc3ce@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/img-bj.png@6c48a",
+    "value": {
+      "depends": [
+        "d4d9e27a-d8ee-483a-be8b-ec0fecacc3ce"
+      ]
+    },
+    "versionCode": 1
+  },
+  "f8825e6f-f06b-4708-b2de-6b09c9ff0f35@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/jianjianhaowan.png@6c48a",
+    "value": {
+      "depends": [
+        "f8825e6f-f06b-4708-b2de-6b09c9ff0f35"
+      ]
+    },
+    "versionCode": 1
+  },
+  "cf642b63-f3f2-4000-9f2f-baa49fa8e2b4@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/logo.png@6c48a",
+    "value": {
+      "depends": [
+        "cf642b63-f3f2-4000-9f2f-baa49fa8e2b4"
+      ]
+    },
+    "versionCode": 1
+  },
+  "987815c9-3a5a-437a-b512-5862b7c217fa@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/logo02.png@6c48a",
+    "value": {
+      "depends": [
+        "987815c9-3a5a-437a-b512-5862b7c217fa"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e44c00b7-42e6-4f3f-b491-cea27a226def@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/logo3.png@6c48a",
+    "value": {
+      "depends": [
+        "e44c00b7-42e6-4f3f-b491-cea27a226def"
+      ]
+    },
+    "versionCode": 1
+  },
+  "f8825e6f-f06b-4708-b2de-6b09c9ff0f35@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/jianjianhaowan.png@f9941",
+    "value": {
+      "depends": [
+        "f8825e6f-f06b-4708-b2de-6b09c9ff0f35@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "cf642b63-f3f2-4000-9f2f-baa49fa8e2b4@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/logo.png@f9941",
+    "value": {
+      "depends": [
+        "cf642b63-f3f2-4000-9f2f-baa49fa8e2b4@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "23f30be4-93ea-46fb-b574-7b1593767923": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/logo4.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "39405053-ef04-4b4f-ac24-d1d624ef0d3f": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/menu_01.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "987815c9-3a5a-437a-b512-5862b7c217fa@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/logo02.png@f9941",
+    "value": {
+      "depends": [
+        "987815c9-3a5a-437a-b512-5862b7c217fa@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b41a2376-c15b-412e-9fae-31599d8e7ebf": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/menu_02.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "d4d9e27a-d8ee-483a-be8b-ec0fecacc3ce@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/img-bj.png@f9941",
+    "value": {
+      "depends": [
+        "d4d9e27a-d8ee-483a-be8b-ec0fecacc3ce@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "0135d22a-8c5b-4ffc-ae0e-43b0ab80bc5e": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/singleColor.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "e44c00b7-42e6-4f3f-b491-cea27a226def@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/logo3.png@f9941",
+    "value": {
+      "depends": [
+        "e44c00b7-42e6-4f3f-b491-cea27a226def@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "9c7830d9-7be2-4597-9ddc-f807d201c81d": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/zhijiandarenwang.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "0135d22a-8c5b-4ffc-ae0e-43b0ab80bc5e@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/singleColor.png@6c48a",
+    "value": {
+      "depends": [
+        "0135d22a-8c5b-4ffc-ae0e-43b0ab80bc5e"
+      ]
+    },
+    "versionCode": 1
+  },
+  "23f30be4-93ea-46fb-b574-7b1593767923@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/logo4.png@6c48a",
+    "value": {
+      "depends": [
+        "23f30be4-93ea-46fb-b574-7b1593767923"
+      ]
+    },
+    "versionCode": 1
+  },
+  "39405053-ef04-4b4f-ac24-d1d624ef0d3f@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/menu_01.png@6c48a",
+    "value": {
+      "depends": [
+        "39405053-ef04-4b4f-ac24-d1d624ef0d3f"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b41a2376-c15b-412e-9fae-31599d8e7ebf@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/menu_02.png@6c48a",
+    "value": {
+      "depends": [
+        "b41a2376-c15b-412e-9fae-31599d8e7ebf"
+      ]
+    },
+    "versionCode": 1
+  },
+  "9c7830d9-7be2-4597-9ddc-f807d201c81d@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/zhijiandarenwang.png@6c48a",
+    "value": {
+      "depends": [
+        "9c7830d9-7be2-4597-9ddc-f807d201c81d"
+      ]
+    },
+    "versionCode": 1
+  },
+  "0135d22a-8c5b-4ffc-ae0e-43b0ab80bc5e@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/singleColor.png@f9941",
+    "value": {
+      "depends": [
+        "0135d22a-8c5b-4ffc-ae0e-43b0ab80bc5e@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "dae68f85-bcbb-4285-808f-d673dd2a3696": {
+    "url": "db://assets/app-bundle/app-view/page/main/native/hand.prefab",
+    "value": {
+      "depends": [
+        "e1d7aa22-4128-43cb-bc56-2dc945a9f7cc"
+      ],
+      "dependScripts": []
+    },
+    "versionCode": 2
+  },
+  "39405053-ef04-4b4f-ac24-d1d624ef0d3f@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/menu_01.png@f9941",
+    "value": {
+      "depends": [
+        "39405053-ef04-4b4f-ac24-d1d624ef0d3f@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b090bef3-3ed0-4ac8-988c-3b7c87e941e5": {
+    "url": "db://assets/app-bundle/app-view/page/main/native/PageMain.prefab",
+    "value": {
+      "depends": [
+        "2c3728cc-05d3-4af6-b073-4eb2b1980a00@f9941",
+        "4e2ac15c-4752-4f4b-97db-a9697d843274@f9941",
+        "17b53c47-ad51-4488-bbd2-2340db1e082c@f9941",
+        "dae68f85-bcbb-4285-808f-d673dd2a3696",
+        "5d6e1e4b-4e64-4c94-8204-951fb9ea4bab",
+        "3020f9b0-1f2e-4d1a-b23a-62b912d1b028@f9941",
+        "d49a76c3-1f7f-46da-bd4d-f30db09cce60@f9941",
+        "c3679055-0af8-44ff-a10e-7b5648eafaa8@f9941",
+        "ed789ffc-07e1-46aa-869e-0093beef76b0@f9941",
+        "6602e982-5307-4175-aaa4-532275304cd0@f9941",
+        "e8147fe2-f8d1-4557-8034-5272516dc04e@f9941",
+        "a7f1bbd1-f52e-4af1-a36e-2f67c8ab1669@f9941",
+        "debdfdd0-e704-4f03-8ef6-c0b67a751131@f9941",
+        "20835ba4-6145-4fbc-a58a-051ce700aa3e@f9941",
+        "544e49d6-3f05-4fa8-9a9e-091f98fc2ce8@f9941",
+        "951249e0-9f16-456d-8b85-a6ca954da16b@f9941"
+      ],
+      "dependScripts": [
+        "d039534e-ed08-440b-80e8-9223288b1f39",
+        "234ae517-e420-4a3a-8d9a-e110a920776f",
+        "d0fe0d1f-e0d7-43f2-a9bc-e1e571a971c1",
+        "81660851-dd67-4a2b-9574-22c11dd83e11",
+        "9e5024a8-5d97-4b25-8864-2c9d6d5d000b",
+        "f53ad518-02c6-4a6c-bcb8-ee7ce1cce8ca",
+        "2840d2e3-e8e4-4c11-a0c2-830ed83684cb",
+        "83d2984f-e29a-491a-9ee6-1f579e2c527f",
+        "cc1da096-56e6-4327-ba59-70c87b6135a1",
+        "faa7c1e0-e5dc-4c32-b6a1-8c65fab1e592"
+      ]
+    },
+    "versionCode": 2
+  },
+  "23f30be4-93ea-46fb-b574-7b1593767923@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/logo4.png@f9941",
+    "value": {
+      "depends": [
+        "23f30be4-93ea-46fb-b574-7b1593767923@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "5d6e1e4b-4e64-4c94-8204-951fb9ea4bab": {
+    "url": "db://assets/app-bundle/app-view/page/main/native/suofang.prefab",
+    "value": {
+      "depends": [
+        "cc814289-c54e-407a-95f9-095b5097e6ec@f9941",
+        "48f035e7-5586-4979-8872-ced80ac216c6"
+      ],
+      "dependScripts": []
+    },
+    "versionCode": 2
+  },
+  "b41a2376-c15b-412e-9fae-31599d8e7ebf@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/menu_02.png@f9941",
+    "value": {
+      "depends": [
+        "b41a2376-c15b-412e-9fae-31599d8e7ebf@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "2c3728cc-05d3-4af6-b073-4eb2b1980a00": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/bg_game_01.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "17b53c47-ad51-4488-bbd2-2340db1e082c": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/bg_game_02.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "9c7830d9-7be2-4597-9ddc-f807d201c81d@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/home/resources/zhijiandarenwang.png@f9941",
+    "value": {
+      "depends": [
+        "9c7830d9-7be2-4597-9ddc-f807d201c81d@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "3020f9b0-1f2e-4d1a-b23a-62b912d1b028": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/bg_tili.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "e8147fe2-f8d1-4557-8034-5272516dc04e": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/btn_hammer.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "d49a76c3-1f7f-46da-bd4d-f30db09cce60": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/btn_setting.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "2c3728cc-05d3-4af6-b073-4eb2b1980a00@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/bg_game_01.png@6c48a",
+    "value": {
+      "depends": [
+        "2c3728cc-05d3-4af6-b073-4eb2b1980a00"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d49a76c3-1f7f-46da-bd4d-f30db09cce60@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/btn_setting.png@6c48a",
+    "value": {
+      "depends": [
+        "d49a76c3-1f7f-46da-bd4d-f30db09cce60"
+      ]
+    },
+    "versionCode": 1
+  },
+  "17b53c47-ad51-4488-bbd2-2340db1e082c@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/bg_game_02.png@6c48a",
+    "value": {
+      "depends": [
+        "17b53c47-ad51-4488-bbd2-2340db1e082c"
+      ]
+    },
+    "versionCode": 1
+  },
+  "3020f9b0-1f2e-4d1a-b23a-62b912d1b028@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/bg_tili.png@6c48a",
+    "value": {
+      "depends": [
+        "3020f9b0-1f2e-4d1a-b23a-62b912d1b028"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e8147fe2-f8d1-4557-8034-5272516dc04e@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/btn_hammer.png@6c48a",
+    "value": {
+      "depends": [
+        "e8147fe2-f8d1-4557-8034-5272516dc04e"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d49a76c3-1f7f-46da-bd4d-f30db09cce60@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/btn_setting.png@f9941",
+    "value": {
+      "depends": [
+        "d49a76c3-1f7f-46da-bd4d-f30db09cce60@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a7f1bbd1-f52e-4af1-a36e-2f67c8ab1669": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/btn_tips.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "3020f9b0-1f2e-4d1a-b23a-62b912d1b028@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/bg_tili.png@f9941",
+    "value": {
+      "depends": [
+        "3020f9b0-1f2e-4d1a-b23a-62b912d1b028@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "6602e982-5307-4175-aaa4-532275304cd0": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/img_ad.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "e8147fe2-f8d1-4557-8034-5272516dc04e@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/btn_hammer.png@f9941",
+    "value": {
+      "depends": [
+        "e8147fe2-f8d1-4557-8034-5272516dc04e@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "4e2ac15c-4752-4f4b-97db-a9697d843274": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/img_error.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "17b53c47-ad51-4488-bbd2-2340db1e082c@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/bg_game_02.png@f9941",
+    "value": {
+      "depends": [
+        "17b53c47-ad51-4488-bbd2-2340db1e082c@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "c3679055-0af8-44ff-a10e-7b5648eafaa8": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/img_heart_01.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "2c3728cc-05d3-4af6-b073-4eb2b1980a00@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/bg_game_01.png@f9941",
+    "value": {
+      "depends": [
+        "2c3728cc-05d3-4af6-b073-4eb2b1980a00@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "ed789ffc-07e1-46aa-869e-0093beef76b0": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/img_heart_02.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "a7f1bbd1-f52e-4af1-a36e-2f67c8ab1669@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/btn_tips.png@6c48a",
+    "value": {
+      "depends": [
+        "a7f1bbd1-f52e-4af1-a36e-2f67c8ab1669"
+      ]
+    },
+    "versionCode": 1
+  },
+  "6602e982-5307-4175-aaa4-532275304cd0@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/img_ad.png@6c48a",
+    "value": {
+      "depends": [
+        "6602e982-5307-4175-aaa4-532275304cd0"
+      ]
+    },
+    "versionCode": 1
+  },
+  "4e2ac15c-4752-4f4b-97db-a9697d843274@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/img_error.png@6c48a",
+    "value": {
+      "depends": [
+        "4e2ac15c-4752-4f4b-97db-a9697d843274"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a7f1bbd1-f52e-4af1-a36e-2f67c8ab1669@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/btn_tips.png@f9941",
+    "value": {
+      "depends": [
+        "a7f1bbd1-f52e-4af1-a36e-2f67c8ab1669@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "26d8c4e6-e274-46bf-be39-2b25aefcf94c": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/mapdata.txt",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "c3679055-0af8-44ff-a10e-7b5648eafaa8@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/img_heart_01.png@6c48a",
+    "value": {
+      "depends": [
+        "c3679055-0af8-44ff-a10e-7b5648eafaa8"
+      ]
+    },
+    "versionCode": 1
+  },
+  "6602e982-5307-4175-aaa4-532275304cd0@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/img_ad.png@f9941",
+    "value": {
+      "depends": [
+        "6602e982-5307-4175-aaa4-532275304cd0@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "6646c44b-f74a-4365-a6b4-ee846cbc533b": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/singleColor.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "ed789ffc-07e1-46aa-869e-0093beef76b0@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/img_heart_02.png@6c48a",
+    "value": {
+      "depends": [
+        "ed789ffc-07e1-46aa-869e-0093beef76b0"
+      ]
+    },
+    "versionCode": 1
+  },
+  "c3679055-0af8-44ff-a10e-7b5648eafaa8@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/img_heart_01.png@f9941",
+    "value": {
+      "depends": [
+        "c3679055-0af8-44ff-a10e-7b5648eafaa8@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "debdfdd0-e704-4f03-8ef6-c0b67a751131": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/toastBox.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "ed789ffc-07e1-46aa-869e-0093beef76b0@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/img_heart_02.png@f9941",
+    "value": {
+      "depends": [
+        "ed789ffc-07e1-46aa-869e-0093beef76b0@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "4e2ac15c-4752-4f4b-97db-a9697d843274@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/img_error.png@f9941",
+    "value": {
+      "depends": [
+        "4e2ac15c-4752-4f4b-97db-a9697d843274@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e0228a9c-a9b9-45d5-bf34-996026060529": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/native/item_lv.prefab",
+    "value": {
+      "depends": [
+        "5dd6d2a7-1f5d-44b9-a770-6a85075d723b@f9941",
+        "4235235f-198c-45dc-90f2-ce40935007bc@f9941",
+        "4cb53719-36ef-438b-86a9-619ea286555b@f9941",
+        "0e383321-4677-462a-aa80-996eb561f6aa@f9941",
+        "d1ee3ec2-edc4-4855-9559-f03eabd29cfa@f9941"
+      ],
+      "dependScripts": [
+        "2cfe7164-8e83-4c36-9b35-d202f5991359"
+      ]
+    },
+    "versionCode": 2
+  },
+  "289dc7c4-aeb0-4e0e-af13-85bf7af94f51": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/native/PageSpLevel.prefab",
+    "value": {
+      "depends": [
+        "c5fec52c-dd64-4a2e-a16a-2760ea758b54@f9941",
+        "db434479-620b-4a24-9717-518374f7d77b@f9941",
+        "e0e40d46-ab41-4449-a2b7-6cf06dbe02e9@f9941",
+        "e0228a9c-a9b9-45d5-bf34-996026060529"
+      ],
+      "dependScripts": [
+        "3d129735-8c72-47d5-8c12-bfe6cfe144fc"
+      ]
+    },
+    "versionCode": 2
+  },
+  "e0e40d46-ab41-4449-a2b7-6cf06dbe02e9": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/bg-cygq.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "6646c44b-f74a-4365-a6b4-ee846cbc533b@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/singleColor.png@6c48a",
+    "value": {
+      "depends": [
+        "6646c44b-f74a-4365-a6b4-ee846cbc533b"
+      ]
+    },
+    "versionCode": 1
+  },
+  "db434479-620b-4a24-9717-518374f7d77b": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/btn_home.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "c5fec52c-dd64-4a2e-a16a-2760ea758b54": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/img-bj.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "6646c44b-f74a-4365-a6b4-ee846cbc533b@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/singleColor.png@f9941",
+    "value": {
+      "depends": [
+        "6646c44b-f74a-4365-a6b4-ee846cbc533b@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "4cb53719-36ef-438b-86a9-619ea286555b": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/img-kuan1.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "e0e40d46-ab41-4449-a2b7-6cf06dbe02e9@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/bg-cygq.png@6c48a",
+    "value": {
+      "depends": [
+        "e0e40d46-ab41-4449-a2b7-6cf06dbe02e9"
+      ]
+    },
+    "versionCode": 1
+  },
+  "debdfdd0-e704-4f03-8ef6-c0b67a751131@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/toastBox.png@6c48a",
+    "value": {
+      "depends": [
+        "debdfdd0-e704-4f03-8ef6-c0b67a751131"
+      ]
+    },
+    "versionCode": 1
+  },
+  "c5fec52c-dd64-4a2e-a16a-2760ea758b54@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/img-bj.png@6c48a",
+    "value": {
+      "depends": [
+        "c5fec52c-dd64-4a2e-a16a-2760ea758b54"
+      ]
+    },
+    "versionCode": 1
+  },
+  "db434479-620b-4a24-9717-518374f7d77b@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/btn_home.png@6c48a",
+    "value": {
+      "depends": [
+        "db434479-620b-4a24-9717-518374f7d77b"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e0e40d46-ab41-4449-a2b7-6cf06dbe02e9@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/bg-cygq.png@f9941",
+    "value": {
+      "depends": [
+        "e0e40d46-ab41-4449-a2b7-6cf06dbe02e9@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "4235235f-198c-45dc-90f2-ce40935007bc": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/img_ad.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "4cb53719-36ef-438b-86a9-619ea286555b@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/img-kuan1.png@6c48a",
+    "value": {
+      "depends": [
+        "4cb53719-36ef-438b-86a9-619ea286555b"
+      ]
+    },
+    "versionCode": 1
+  },
+  "db434479-620b-4a24-9717-518374f7d77b@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/btn_home.png@f9941",
+    "value": {
+      "depends": [
+        "db434479-620b-4a24-9717-518374f7d77b@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e4d2a14e-bdde-455d-bee3-da3a1162616b": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/mapdata.txt",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "debdfdd0-e704-4f03-8ef6-c0b67a751131@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/toastBox.png@f9941",
+    "value": {
+      "depends": [
+        "debdfdd0-e704-4f03-8ef6-c0b67a751131@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "da8dddbb-0e24-4ceb-9de8-dcecdaa0a627": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/singleColor.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "5dd6d2a7-1f5d-44b9-a770-6a85075d723b": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/tag_01.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "4cb53719-36ef-438b-86a9-619ea286555b@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/img-kuan1.png@f9941",
+    "value": {
+      "depends": [
+        "4cb53719-36ef-438b-86a9-619ea286555b@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d1ee3ec2-edc4-4855-9559-f03eabd29cfa": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/tag_02.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "c5fec52c-dd64-4a2e-a16a-2760ea758b54@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/img-bj.png@f9941",
+    "value": {
+      "depends": [
+        "c5fec52c-dd64-4a2e-a16a-2760ea758b54@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "0e383321-4677-462a-aa80-996eb561f6aa": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/tag_03.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "4235235f-198c-45dc-90f2-ce40935007bc@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/img_ad.png@6c48a",
+    "value": {
+      "depends": [
+        "4235235f-198c-45dc-90f2-ce40935007bc"
+      ]
+    },
+    "versionCode": 1
+  },
+  "da8dddbb-0e24-4ceb-9de8-dcecdaa0a627@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/singleColor.png@6c48a",
+    "value": {
+      "depends": [
+        "da8dddbb-0e24-4ceb-9de8-dcecdaa0a627"
+      ]
+    },
+    "versionCode": 1
+  },
+  "5dd6d2a7-1f5d-44b9-a770-6a85075d723b@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/tag_01.png@6c48a",
+    "value": {
+      "depends": [
+        "5dd6d2a7-1f5d-44b9-a770-6a85075d723b"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d1ee3ec2-edc4-4855-9559-f03eabd29cfa@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/tag_02.png@6c48a",
+    "value": {
+      "depends": [
+        "d1ee3ec2-edc4-4855-9559-f03eabd29cfa"
+      ]
+    },
+    "versionCode": 1
+  },
+  "4235235f-198c-45dc-90f2-ce40935007bc@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/img_ad.png@f9941",
+    "value": {
+      "depends": [
+        "4235235f-198c-45dc-90f2-ce40935007bc@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "ae2eaabe-39ad-4042-9ac9-a6c7c2c12cfb": {
+    "url": "db://assets/app-bundle/app-view/pop/result/native/PopResult.prefab",
+    "value": {
+      "depends": [
+        "9c114ced-c219-49ef-b462-72aac531a929@f9941",
+        "5991e251-051c-4006-8d58-e7bbc59b74fa@f9941",
+        "eb6def0d-545a-42c5-8705-57743a6193bb@f9941",
+        "2c5b83f6-efd9-4775-87d2-6b4fc18b75ae@f9941",
+        "e83d304c-6104-4191-8f06-9a8ad3e643ed@f9941",
+        "a465010b-5351-47e3-a8f7-3ddee74d18e2@f9941",
+        "3591149f-92e1-4e93-8685-323806bdaeaa@f9941",
+        "20835ba4-6145-4fbc-a58a-051ce700aa3e@f9941",
+        "544e49d6-3f05-4fa8-9a9e-091f98fc2ce8@f9941",
+        "951249e0-9f16-456d-8b85-a6ca954da16b@f9941",
+        "749f8349-8587-4053-915c-6d9bc7f75cfd@f9941",
+        "77f07bf0-474a-4374-8f6f-f94ea1aaa8f0@f9941",
+        "a2de500d-2035-46e1-9663-8dd5cb54108e@f9941",
+        "d9812aa3-ba83-47c2-a006-d2cf5f5d912e@f9941",
+        "d448e24d-3078-4171-aea9-c1d44083b39c@f9941",
+        "28c21874-d044-4a9d-b10f-52c9abf0dc4f@f9941",
+        "4d3682a4-62a8-428b-96b0-721c8b842ef8@f9941",
+        "e12b6c25-6f72-429a-be00-7699988cebc6@f9941",
+        "202b8693-22a0-450f-820b-b2859603ca3b@f9941",
+        "564a807f-e8cd-4086-9152-a6ebf28cbe64@f9941",
+        "1728076f-6736-47ac-aff7-93a5de5621b5@f9941",
+        "9c4bbdd6-f8a5-4290-b599-b797ce1f78b2@f9941",
+        "edccdbc0-36c2-433a-bc00-09e534eba48d@f9941",
+        "5c65d129-9199-4496-915e-70a1d9b8476f@f9941",
+        "e1202a79-1c85-480c-ae21-5cc0139f38a8@f9941",
+        "3820563a-8555-4132-9a15-afb058de8e5e",
+        "834a5722-ad72-48d4-bc39-c999c60033cc@f9941",
+        "457bd96b-0ef0-44f5-8172-0f065cce015a@f9941",
+        "2cf34b46-0691-4728-ba88-6cad511f7e6f@f9941"
+      ],
+      "dependScripts": [
+        "dba5b7fd-1e57-4b34-a3c7-663b99970929",
+        "4ff7e1b6-053e-41ef-9947-769c2cde9d36",
+        "d322f1c3-f645-4f5c-a478-e7e1bf720a2d",
+        "5536a7f3-daec-442e-86ce-57cfa02894b1",
+        "eb3cf304-44b6-439e-9f83-ee1532f61292",
+        "7d6f8fce-6750-44d9-a503-fd8f85019403",
+        "77c6b0f6-7aac-46d6-ba2c-f052032825a5"
+      ]
+    },
+    "versionCode": 2
+  },
+  "0e383321-4677-462a-aa80-996eb561f6aa@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/tag_03.png@6c48a",
+    "value": {
+      "depends": [
+        "0e383321-4677-462a-aa80-996eb561f6aa"
+      ]
+    },
+    "versionCode": 1
+  },
+  "da8dddbb-0e24-4ceb-9de8-dcecdaa0a627@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/singleColor.png@f9941",
+    "value": {
+      "depends": [
+        "da8dddbb-0e24-4ceb-9de8-dcecdaa0a627@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "77f07bf0-474a-4374-8f6f-f94ea1aaa8f0": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/bg_game_01.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "5dd6d2a7-1f5d-44b9-a770-6a85075d723b@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/tag_01.png@f9941",
+    "value": {
+      "depends": [
+        "5dd6d2a7-1f5d-44b9-a770-6a85075d723b@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e83d304c-6104-4191-8f06-9a8ad3e643ed": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/bg_kuan2.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "d1ee3ec2-edc4-4855-9559-f03eabd29cfa@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/tag_02.png@f9941",
+    "value": {
+      "depends": [
+        "d1ee3ec2-edc4-4855-9559-f03eabd29cfa@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "749f8349-8587-4053-915c-6d9bc7f75cfd": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/bg_popup.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "0e383321-4677-462a-aa80-996eb561f6aa@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/sp-level/resources/tag_03.png@f9941",
+    "value": {
+      "depends": [
+        "0e383321-4677-462a-aa80-996eb561f6aa@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "2c5b83f6-efd9-4775-87d2-6b4fc18b75ae": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/bg_progress_01.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "5991e251-051c-4006-8d58-e7bbc59b74fa": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/bg_progress_02.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "77f07bf0-474a-4374-8f6f-f94ea1aaa8f0@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/bg_game_01.png@6c48a",
+    "value": {
+      "depends": [
+        "77f07bf0-474a-4374-8f6f-f94ea1aaa8f0"
+      ]
+    },
+    "versionCode": 1
+  },
+  "749f8349-8587-4053-915c-6d9bc7f75cfd@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/bg_popup.png@6c48a",
+    "value": {
+      "depends": [
+        "749f8349-8587-4053-915c-6d9bc7f75cfd"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e83d304c-6104-4191-8f06-9a8ad3e643ed@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/bg_kuan2.png@6c48a",
+    "value": {
+      "depends": [
+        "e83d304c-6104-4191-8f06-9a8ad3e643ed"
+      ]
+    },
+    "versionCode": 1
+  },
+  "2c5b83f6-efd9-4775-87d2-6b4fc18b75ae@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/bg_progress_01.png@6c48a",
+    "value": {
+      "depends": [
+        "2c5b83f6-efd9-4775-87d2-6b4fc18b75ae"
+      ]
+    },
+    "versionCode": 1
+  },
+  "5991e251-051c-4006-8d58-e7bbc59b74fa@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/bg_progress_02.png@6c48a",
+    "value": {
+      "depends": [
+        "5991e251-051c-4006-8d58-e7bbc59b74fa"
+      ]
+    },
+    "versionCode": 1
+  },
+  "2c5b83f6-efd9-4775-87d2-6b4fc18b75ae@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/bg_progress_01.png@f9941",
+    "value": {
+      "depends": [
+        "2c5b83f6-efd9-4775-87d2-6b4fc18b75ae@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "2cf34b46-0691-4728-ba88-6cad511f7e6f": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_blue.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "e83d304c-6104-4191-8f06-9a8ad3e643ed@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/bg_kuan2.png@f9941",
+    "value": {
+      "depends": [
+        "e83d304c-6104-4191-8f06-9a8ad3e643ed@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "8976f7f0-ad5c-49d0-b2b0-311028e14b97": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_green.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "749f8349-8587-4053-915c-6d9bc7f75cfd@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/bg_popup.png@f9941",
+    "value": {
+      "depends": [
+        "749f8349-8587-4053-915c-6d9bc7f75cfd@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "5991e251-051c-4006-8d58-e7bbc59b74fa@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/bg_progress_02.png@f9941",
+    "value": {
+      "depends": [
+        "5991e251-051c-4006-8d58-e7bbc59b74fa@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d9812aa3-ba83-47c2-a006-d2cf5f5d912e": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_home.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "4d3682a4-62a8-428b-96b0-721c8b842ef8": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_menu_01.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "77f07bf0-474a-4374-8f6f-f94ea1aaa8f0@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/bg_game_01.png@f9941",
+    "value": {
+      "depends": [
+        "77f07bf0-474a-4374-8f6f-f94ea1aaa8f0@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "28c21874-d044-4a9d-b10f-52c9abf0dc4f": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_menu_02.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "2cf34b46-0691-4728-ba88-6cad511f7e6f@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_blue.png@6c48a",
+    "value": {
+      "depends": [
+        "2cf34b46-0691-4728-ba88-6cad511f7e6f"
+      ]
+    },
+    "versionCode": 1
+  },
+  "8976f7f0-ad5c-49d0-b2b0-311028e14b97@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_green.png@6c48a",
+    "value": {
+      "depends": [
+        "8976f7f0-ad5c-49d0-b2b0-311028e14b97"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d9812aa3-ba83-47c2-a006-d2cf5f5d912e@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_home.png@6c48a",
+    "value": {
+      "depends": [
+        "d9812aa3-ba83-47c2-a006-d2cf5f5d912e"
+      ]
+    },
+    "versionCode": 1
+  },
+  "4d3682a4-62a8-428b-96b0-721c8b842ef8@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_menu_01.png@6c48a",
+    "value": {
+      "depends": [
+        "4d3682a4-62a8-428b-96b0-721c8b842ef8"
+      ]
+    },
+    "versionCode": 1
+  },
+  "28c21874-d044-4a9d-b10f-52c9abf0dc4f@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_menu_02.png@6c48a",
+    "value": {
+      "depends": [
+        "28c21874-d044-4a9d-b10f-52c9abf0dc4f"
+      ]
+    },
+    "versionCode": 1
+  },
+  "2cf34b46-0691-4728-ba88-6cad511f7e6f@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_blue.png@f9941",
+    "value": {
+      "depends": [
+        "2cf34b46-0691-4728-ba88-6cad511f7e6f@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e1202a79-1c85-480c-ae21-5cc0139f38a8": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_menu_03.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "8976f7f0-ad5c-49d0-b2b0-311028e14b97@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_green.png@f9941",
+    "value": {
+      "depends": [
+        "8976f7f0-ad5c-49d0-b2b0-311028e14b97@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "3591149f-92e1-4e93-8685-323806bdaeaa": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_orange.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "d9812aa3-ba83-47c2-a006-d2cf5f5d912e@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_home.png@f9941",
+    "value": {
+      "depends": [
+        "d9812aa3-ba83-47c2-a006-d2cf5f5d912e@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "9c114ced-c219-49ef-b462-72aac531a929": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_x.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "4d3682a4-62a8-428b-96b0-721c8b842ef8@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_menu_01.png@f9941",
+    "value": {
+      "depends": [
+        "4d3682a4-62a8-428b-96b0-721c8b842ef8@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a465010b-5351-47e3-a8f7-3ddee74d18e2": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_ad.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "28c21874-d044-4a9d-b10f-52c9abf0dc4f@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_menu_02.png@f9941",
+    "value": {
+      "depends": [
+        "28c21874-d044-4a9d-b10f-52c9abf0dc4f@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d448e24d-3078-4171-aea9-c1d44083b39c": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_dog_failed.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "e1202a79-1c85-480c-ae21-5cc0139f38a8@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_menu_03.png@6c48a",
+    "value": {
+      "depends": [
+        "e1202a79-1c85-480c-ae21-5cc0139f38a8"
+      ]
+    },
+    "versionCode": 1
+  },
+  "9c114ced-c219-49ef-b462-72aac531a929@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_x.png@6c48a",
+    "value": {
+      "depends": [
+        "9c114ced-c219-49ef-b462-72aac531a929"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a465010b-5351-47e3-a8f7-3ddee74d18e2@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_ad.png@6c48a",
+    "value": {
+      "depends": [
+        "a465010b-5351-47e3-a8f7-3ddee74d18e2"
+      ]
+    },
+    "versionCode": 1
+  },
+  "3591149f-92e1-4e93-8685-323806bdaeaa@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_orange.png@6c48a",
+    "value": {
+      "depends": [
+        "3591149f-92e1-4e93-8685-323806bdaeaa"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d448e24d-3078-4171-aea9-c1d44083b39c@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_dog_failed.png@6c48a",
+    "value": {
+      "depends": [
+        "d448e24d-3078-4171-aea9-c1d44083b39c"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e1202a79-1c85-480c-ae21-5cc0139f38a8@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_menu_03.png@f9941",
+    "value": {
+      "depends": [
+        "e1202a79-1c85-480c-ae21-5cc0139f38a8@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "5c65d129-9199-4496-915e-70a1d9b8476f": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_dog_succeed.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "9c114ced-c219-49ef-b462-72aac531a929@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_x.png@f9941",
+    "value": {
+      "depends": [
+        "9c114ced-c219-49ef-b462-72aac531a929@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "457bd96b-0ef0-44f5-8172-0f065cce015a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_favorite.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "a465010b-5351-47e3-a8f7-3ddee74d18e2@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_ad.png@f9941",
+    "value": {
+      "depends": [
+        "a465010b-5351-47e3-a8f7-3ddee74d18e2@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "3591149f-92e1-4e93-8685-323806bdaeaa@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/btn_orange.png@f9941",
+    "value": {
+      "depends": [
+        "3591149f-92e1-4e93-8685-323806bdaeaa@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "eb6def0d-545a-42c5-8705-57743a6193bb": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_heart.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "202b8693-22a0-450f-820b-b2859603ca3b": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_progress_01.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "d448e24d-3078-4171-aea9-c1d44083b39c@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_dog_failed.png@f9941",
+    "value": {
+      "depends": [
+        "d448e24d-3078-4171-aea9-c1d44083b39c@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e12b6c25-6f72-429a-be00-7699988cebc6": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_progress_02.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "202b8693-22a0-450f-820b-b2859603ca3b@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_progress_01.png@6c48a",
+    "value": {
+      "depends": [
+        "202b8693-22a0-450f-820b-b2859603ca3b"
+      ]
+    },
+    "versionCode": 1
+  },
+  "5c65d129-9199-4496-915e-70a1d9b8476f@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_dog_succeed.png@6c48a",
+    "value": {
+      "depends": [
+        "5c65d129-9199-4496-915e-70a1d9b8476f"
+      ]
+    },
+    "versionCode": 1
+  },
+  "457bd96b-0ef0-44f5-8172-0f065cce015a@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_favorite.png@6c48a",
+    "value": {
+      "depends": [
+        "457bd96b-0ef0-44f5-8172-0f065cce015a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "eb6def0d-545a-42c5-8705-57743a6193bb@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_heart.png@6c48a",
+    "value": {
+      "depends": [
+        "eb6def0d-545a-42c5-8705-57743a6193bb"
+      ]
+    },
+    "versionCode": 1
+  },
+  "202b8693-22a0-450f-820b-b2859603ca3b@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_progress_01.png@f9941",
+    "value": {
+      "depends": [
+        "202b8693-22a0-450f-820b-b2859603ca3b@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e12b6c25-6f72-429a-be00-7699988cebc6@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_progress_02.png@6c48a",
+    "value": {
+      "depends": [
+        "e12b6c25-6f72-429a-be00-7699988cebc6"
+      ]
+    },
+    "versionCode": 1
+  },
+  "1728076f-6736-47ac-aff7-93a5de5621b5": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_tili.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "5c65d129-9199-4496-915e-70a1d9b8476f@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_dog_succeed.png@f9941",
+    "value": {
+      "depends": [
+        "5c65d129-9199-4496-915e-70a1d9b8476f@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "564a807f-e8cd-4086-9152-a6ebf28cbe64": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_time.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "e12b6c25-6f72-429a-be00-7699988cebc6@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_progress_02.png@f9941",
+    "value": {
+      "depends": [
+        "e12b6c25-6f72-429a-be00-7699988cebc6@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a2de500d-2035-46e1-9663-8dd5cb54108e": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_title_failed.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "457bd96b-0ef0-44f5-8172-0f065cce015a@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_favorite.png@f9941",
+    "value": {
+      "depends": [
+        "457bd96b-0ef0-44f5-8172-0f065cce015a@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "eb6def0d-545a-42c5-8705-57743a6193bb@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_heart.png@f9941",
+    "value": {
+      "depends": [
+        "eb6def0d-545a-42c5-8705-57743a6193bb@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "9c4bbdd6-f8a5-4290-b599-b797ce1f78b2": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_title_succeed.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "edccdbc0-36c2-433a-bc00-09e534eba48d": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_tx.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "1728076f-6736-47ac-aff7-93a5de5621b5@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_tili.png@6c48a",
+    "value": {
+      "depends": [
+        "1728076f-6736-47ac-aff7-93a5de5621b5"
+      ]
+    },
+    "versionCode": 1
+  },
+  "9c4bbdd6-f8a5-4290-b599-b797ce1f78b2@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_title_succeed.png@6c48a",
+    "value": {
+      "depends": [
+        "9c4bbdd6-f8a5-4290-b599-b797ce1f78b2"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a2de500d-2035-46e1-9663-8dd5cb54108e@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_title_failed.png@6c48a",
+    "value": {
+      "depends": [
+        "a2de500d-2035-46e1-9663-8dd5cb54108e"
+      ]
+    },
+    "versionCode": 1
+  },
+  "564a807f-e8cd-4086-9152-a6ebf28cbe64@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_time.png@6c48a",
+    "value": {
+      "depends": [
+        "564a807f-e8cd-4086-9152-a6ebf28cbe64"
+      ]
+    },
+    "versionCode": 1
+  },
+  "edccdbc0-36c2-433a-bc00-09e534eba48d@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_tx.png@6c48a",
+    "value": {
+      "depends": [
+        "edccdbc0-36c2-433a-bc00-09e534eba48d"
+      ]
+    },
+    "versionCode": 1
+  },
+  "1728076f-6736-47ac-aff7-93a5de5621b5@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_tili.png@f9941",
+    "value": {
+      "depends": [
+        "1728076f-6736-47ac-aff7-93a5de5621b5@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "87118d0f-1c75-46d3-abec-85d425664e45": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/singleColor.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "9c4bbdd6-f8a5-4290-b599-b797ce1f78b2@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_title_succeed.png@f9941",
+    "value": {
+      "depends": [
+        "9c4bbdd6-f8a5-4290-b599-b797ce1f78b2@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d625e0ef-7c6e-4c55-86d2-3445eafd1274": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/native/PopSetting.prefab",
+    "value": {
+      "depends": [
+        "bb14a1fb-ddcd-4a63-8e0e-e3b8703e4b1b@f9941",
+        "fa67b26f-a083-4f3d-8a95-964433b58ef1@f9941",
+        "0a63d3ae-edcb-4972-b1a1-687dbfd59614@f9941",
+        "48cc96ba-6ac2-486d-8f85-b04396e31f62@f9941",
+        "398e0804-a397-497e-87e2-3961a4895014@f9941",
+        "a8948272-7a90-42c4-91f1-e651bb3bb9fc@f9941",
+        "32693e10-537c-4f50-8dd4-fca20aa2a8dd@f9941",
+        "3ac68844-5b94-4853-83be-83aea5fa510d@f9941",
+        "910e5802-ef0b-4a9f-b2cc-bb5c523fe0ef@f9941",
+        "e90609f7-e1cf-456e-a26e-31e8ffa641ed@f9941",
+        "a9941c74-8913-4d92-8763-1877623c18fe@f9941"
+      ],
+      "dependScripts": [
+        "c5afa92d-5cca-43dd-ab36-1c8404ef7572"
+      ]
+    },
+    "versionCode": 2
+  },
+  "564a807f-e8cd-4086-9152-a6ebf28cbe64@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_time.png@f9941",
+    "value": {
+      "depends": [
+        "564a807f-e8cd-4086-9152-a6ebf28cbe64@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a2de500d-2035-46e1-9663-8dd5cb54108e@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_title_failed.png@f9941",
+    "value": {
+      "depends": [
+        "a2de500d-2035-46e1-9663-8dd5cb54108e@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e90609f7-e1cf-456e-a26e-31e8ffa641ed": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/bg_popup.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "3ac68844-5b94-4853-83be-83aea5fa510d": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/btn_blue.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "edccdbc0-36c2-433a-bc00-09e534eba48d@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/img_tx.png@f9941",
+    "value": {
+      "depends": [
+        "edccdbc0-36c2-433a-bc00-09e534eba48d@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a9941c74-8913-4d92-8763-1877623c18fe": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/btn_close.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "910e5802-ef0b-4a9f-b2cc-bb5c523fe0ef": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/btn_green.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "87118d0f-1c75-46d3-abec-85d425664e45@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/singleColor.png@6c48a",
+    "value": {
+      "depends": [
+        "87118d0f-1c75-46d3-abec-85d425664e45"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e90609f7-e1cf-456e-a26e-31e8ffa641ed@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/bg_popup.png@6c48a",
+    "value": {
+      "depends": [
+        "e90609f7-e1cf-456e-a26e-31e8ffa641ed"
+      ]
+    },
+    "versionCode": 1
+  },
+  "3ac68844-5b94-4853-83be-83aea5fa510d@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/btn_blue.png@6c48a",
+    "value": {
+      "depends": [
+        "3ac68844-5b94-4853-83be-83aea5fa510d"
+      ]
+    },
+    "versionCode": 1
+  },
+  "87118d0f-1c75-46d3-abec-85d425664e45@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/singleColor.png@f9941",
+    "value": {
+      "depends": [
+        "87118d0f-1c75-46d3-abec-85d425664e45@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "0a63d3ae-edcb-4972-b1a1-687dbfd59614": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/btn_open.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "a9941c74-8913-4d92-8763-1877623c18fe@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/btn_close.png@6c48a",
+    "value": {
+      "depends": [
+        "a9941c74-8913-4d92-8763-1877623c18fe"
+      ]
+    },
+    "versionCode": 1
+  },
+  "910e5802-ef0b-4a9f-b2cc-bb5c523fe0ef@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/btn_green.png@6c48a",
+    "value": {
+      "depends": [
+        "910e5802-ef0b-4a9f-b2cc-bb5c523fe0ef"
+      ]
+    },
+    "versionCode": 1
+  },
+  "3ac68844-5b94-4853-83be-83aea5fa510d@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/btn_blue.png@f9941",
+    "value": {
+      "depends": [
+        "3ac68844-5b94-4853-83be-83aea5fa510d@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "bb14a1fb-ddcd-4a63-8e0e-e3b8703e4b1b": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/btn_x.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "910e5802-ef0b-4a9f-b2cc-bb5c523fe0ef@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/btn_green.png@f9941",
+    "value": {
+      "depends": [
+        "910e5802-ef0b-4a9f-b2cc-bb5c523fe0ef@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "32693e10-537c-4f50-8dd4-fca20aa2a8dd": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/color.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "e90609f7-e1cf-456e-a26e-31e8ffa641ed@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/bg_popup.png@f9941",
+    "value": {
+      "depends": [
+        "e90609f7-e1cf-456e-a26e-31e8ffa641ed@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a9941c74-8913-4d92-8763-1877623c18fe@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/btn_close.png@f9941",
+    "value": {
+      "depends": [
+        "a9941c74-8913-4d92-8763-1877623c18fe@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "398e0804-a397-497e-87e2-3961a4895014": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/img_kuan2.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "48cc96ba-6ac2-486d-8f85-b04396e31f62": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/img_sy1.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "0a63d3ae-edcb-4972-b1a1-687dbfd59614@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/btn_open.png@6c48a",
+    "value": {
+      "depends": [
+        "0a63d3ae-edcb-4972-b1a1-687dbfd59614"
+      ]
+    },
+    "versionCode": 1
+  },
+  "bb14a1fb-ddcd-4a63-8e0e-e3b8703e4b1b@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/btn_x.png@6c48a",
+    "value": {
+      "depends": [
+        "bb14a1fb-ddcd-4a63-8e0e-e3b8703e4b1b"
+      ]
+    },
+    "versionCode": 1
+  },
+  "32693e10-537c-4f50-8dd4-fca20aa2a8dd@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/color.png@6c48a",
+    "value": {
+      "depends": [
+        "32693e10-537c-4f50-8dd4-fca20aa2a8dd"
+      ]
+    },
+    "versionCode": 1
+  },
+  "398e0804-a397-497e-87e2-3961a4895014@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/img_kuan2.png@6c48a",
+    "value": {
+      "depends": [
+        "398e0804-a397-497e-87e2-3961a4895014"
+      ]
+    },
+    "versionCode": 1
+  },
+  "0a63d3ae-edcb-4972-b1a1-687dbfd59614@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/btn_open.png@f9941",
+    "value": {
+      "depends": [
+        "0a63d3ae-edcb-4972-b1a1-687dbfd59614@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "fa67b26f-a083-4f3d-8a95-964433b58ef1": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/img_sy2.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "bb14a1fb-ddcd-4a63-8e0e-e3b8703e4b1b@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/btn_x.png@f9941",
+    "value": {
+      "depends": [
+        "bb14a1fb-ddcd-4a63-8e0e-e3b8703e4b1b@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a8948272-7a90-42c4-91f1-e651bb3bb9fc": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/img_sy3.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "48cc96ba-6ac2-486d-8f85-b04396e31f62@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/img_sy1.png@6c48a",
+    "value": {
+      "depends": [
+        "48cc96ba-6ac2-486d-8f85-b04396e31f62"
+      ]
+    },
+    "versionCode": 1
+  },
+  "32693e10-537c-4f50-8dd4-fca20aa2a8dd@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/color.png@f9941",
+    "value": {
+      "depends": [
+        "32693e10-537c-4f50-8dd4-fca20aa2a8dd@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "e1d7aa22-4128-43cb-bc56-2dc945a9f7cc": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/guide/hand.anim",
+    "value": {
+      "depends": [
+        "2832338c-968f-4b0c-ac2a-b770f2f25089@f9941",
+        "c4f9aa24-16dc-44e6-a68e-cddc60db0f84@f9941"
+      ]
+    },
+    "versionCode": 2
+  },
+  "398e0804-a397-497e-87e2-3961a4895014@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/img_kuan2.png@f9941",
+    "value": {
+      "depends": [
+        "398e0804-a397-497e-87e2-3961a4895014@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "2832338c-968f-4b0c-ac2a-b770f2f25089": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/guide/hand1.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "48cc96ba-6ac2-486d-8f85-b04396e31f62@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/img_sy1.png@f9941",
+    "value": {
+      "depends": [
+        "48cc96ba-6ac2-486d-8f85-b04396e31f62@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "c4f9aa24-16dc-44e6-a68e-cddc60db0f84": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/guide/hand2.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "48f035e7-5586-4979-8872-ced80ac216c6": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/guide/suofang.anim",
+    "value": {
+      "depends": [
+        "cc814289-c54e-407a-95f9-095b5097e6ec@f9941",
+        "a250004e-537d-4069-a876-513b9592ac20@f9941"
+      ]
+    },
+    "versionCode": 2
+  },
+  "a8948272-7a90-42c4-91f1-e651bb3bb9fc@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/img_sy3.png@6c48a",
+    "value": {
+      "depends": [
+        "a8948272-7a90-42c4-91f1-e651bb3bb9fc"
+      ]
+    },
+    "versionCode": 1
+  },
+  "fa67b26f-a083-4f3d-8a95-964433b58ef1@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/img_sy2.png@6c48a",
+    "value": {
+      "depends": [
+        "fa67b26f-a083-4f3d-8a95-964433b58ef1"
+      ]
+    },
+    "versionCode": 1
+  },
+  "cc814289-c54e-407a-95f9-095b5097e6ec": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/guide/tips_01.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "2832338c-968f-4b0c-ac2a-b770f2f25089@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/guide/hand1.png@6c48a",
+    "value": {
+      "depends": [
+        "2832338c-968f-4b0c-ac2a-b770f2f25089"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a8948272-7a90-42c4-91f1-e651bb3bb9fc@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/img_sy3.png@f9941",
+    "value": {
+      "depends": [
+        "a8948272-7a90-42c4-91f1-e651bb3bb9fc@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "fa67b26f-a083-4f3d-8a95-964433b58ef1@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/setting/resources/img_sy2.png@f9941",
+    "value": {
+      "depends": [
+        "fa67b26f-a083-4f3d-8a95-964433b58ef1@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a250004e-537d-4069-a876-513b9592ac20": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/guide/tips_02.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "3820563a-8555-4132-9a15-afb058de8e5e": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/lihua/display.plist",
+    "value": {
+      "depends": [
+        "834a5722-ad72-48d4-bc39-c999c60033cc@f9941"
+      ]
+    },
+    "versionCode": 1
+  },
+  "c4f9aa24-16dc-44e6-a68e-cddc60db0f84@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/guide/hand2.png@6c48a",
+    "value": {
+      "depends": [
+        "c4f9aa24-16dc-44e6-a68e-cddc60db0f84"
+      ]
+    },
+    "versionCode": 1
+  },
+  "2832338c-968f-4b0c-ac2a-b770f2f25089@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/guide/hand1.png@f9941",
+    "value": {
+      "depends": [
+        "2832338c-968f-4b0c-ac2a-b770f2f25089@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "834a5722-ad72-48d4-bc39-c999c60033cc": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/lihua/display.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "c4f9aa24-16dc-44e6-a68e-cddc60db0f84@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/guide/hand2.png@f9941",
+    "value": {
+      "depends": [
+        "c4f9aa24-16dc-44e6-a68e-cddc60db0f84@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "cc814289-c54e-407a-95f9-095b5097e6ec@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/guide/tips_01.png@6c48a",
+    "value": {
+      "depends": [
+        "cc814289-c54e-407a-95f9-095b5097e6ec"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a250004e-537d-4069-a876-513b9592ac20@6c48a": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/guide/tips_02.png@6c48a",
+    "value": {
+      "depends": [
+        "a250004e-537d-4069-a876-513b9592ac20"
+      ]
+    },
+    "versionCode": 1
+  },
+  "834a5722-ad72-48d4-bc39-c999c60033cc@6c48a": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/lihua/display.png@6c48a",
+    "value": {
+      "depends": [
+        "834a5722-ad72-48d4-bc39-c999c60033cc"
+      ]
+    },
+    "versionCode": 1
+  },
+  "cc814289-c54e-407a-95f9-095b5097e6ec@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/guide/tips_01.png@f9941",
+    "value": {
+      "depends": [
+        "cc814289-c54e-407a-95f9-095b5097e6ec@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "834a5722-ad72-48d4-bc39-c999c60033cc@f9941": {
+    "url": "db://assets/app-bundle/app-view/pop/result/resources/lihua/display.png@f9941",
+    "value": {
+      "depends": [
+        "834a5722-ad72-48d4-bc39-c999c60033cc@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "a250004e-537d-4069-a876-513b9592ac20@f9941": {
+    "url": "db://assets/app-bundle/app-view/page/main/resources/guide/tips_02.png@f9941",
+    "value": {
+      "depends": [
+        "a250004e-537d-4069-a876-513b9592ac20@6c48a"
+      ]
+    },
+    "versionCode": 1
+  }
+}

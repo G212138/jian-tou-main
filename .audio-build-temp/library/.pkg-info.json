@@ -1,0 +1,48 @@
+{
+  "version": "1.0.1",
+  "map": {
+    "@gamex": {
+      "time": 1784620412471.8289,
+      "uuid": "6073bd22-8295-4636-8e59-fc49fabcd142"
+    },
+    "@gamex\\cc-store": {
+      "time": 1784620412491.776,
+      "uuid": "6b68241a-333c-4656-a2d6-7d0a8fef0b2b"
+    },
+    "@gamex\\cc-store\\assets": {
+      "time": 1784620412494.6355,
+      "uuid": "62cc1b54-55b4-4e6c-bf67-5a3a63b503c9"
+    },
+    "@gamex\\cc-store\\index.ts": {
+      "time": 1784617924854.6238,
+      "uuid": "fb31266d-8569-4765-a029-43f2a28511f1"
+    },
+    "@gamex\\cc-store\\assets\\Store.ts": {
+      "time": 1784617924856.6375,
+      "uuid": "c224fc1f-5a76-4d27-a5aa-16659e8085dc"
+    },
+    "@gamex.meta": {
+      "time": 1770018076000
+    },
+    "@gamex\\cc-store.meta": {
+      "time": 1770018076000
+    },
+    "@gamex\\cc-store\\assets.meta": {
+      "time": 1784617965864.9565
+    },
+    "@gamex\\cc-store\\index.ts.meta": {
+      "time": 1784617965870.9387
+    },
+    "@gamex\\cc-store\\assets\\Store.ts.meta": {
+      "time": 1784617965873.9312
+    },
+    "@gamex\\cc-store\\package.json": {
+      "time": 1784617924842.5544,
+      "uuid": "d18c9aa6-0b10-45e9-b23a-48e729d49ec2"
+    },
+    "@gamex\\cc-store\\package.json.meta": {
+      "time": 1784617965887.4114
+    }
+  },
+  "missing": {}
+}

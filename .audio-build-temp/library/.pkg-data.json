@@ -1,0 +1,34 @@
+{
+  "6073bd22-8295-4636-8e59-fc49fabcd142": {
+    "url": "db://pkg/@gamex",
+    "value": {},
+    "versionCode": 1
+  },
+  "6b68241a-333c-4656-a2d6-7d0a8fef0b2b": {
+    "url": "db://pkg/@gamex/cc-store",
+    "value": {},
+    "versionCode": 1
+  },
+  "62cc1b54-55b4-4e6c-bf67-5a3a63b503c9": {
+    "url": "db://pkg/@gamex/cc-store/assets",
+    "value": {},
+    "versionCode": 1
+  },
+  "fb31266d-8569-4765-a029-43f2a28511f1": {
+    "url": "db://pkg/@gamex/cc-store/index.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "c224fc1f-5a76-4d27-a5aa-16659e8085dc": {
+    "url": "db://pkg/@gamex/cc-store/assets/Store.ts",
+    "value": {},
+    "versionCode": 1
+  },
+  "d18c9aa6-0b10-45e9-b23a-48e729d49ec2": {
+    "url": "db://pkg/@gamex/cc-store/package.json",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  }
+}
