@@ -17,7 +17,8 @@ export class gameHeartManager extends Component {
         this.heartLayout.children.forEach((heart) => {
             heart.active = true;
         })
-        this.time.active = false;
+        // 保持计时器节点启用，等待箭头绘制完成事件。
+        this.time.active = true;
 
         app.manager.event.on(app.config.eventname.gameHeartJian, this.updateGameHeartJian, this);
         app.manager.event.on(app.config.eventname.gameHeartAdd, this.updateGameHeartAdd, this);
@@ -53,9 +54,6 @@ export class gameHeartManager extends Component {
             return;
         }
 
-        //启动时间显示恢复生命值
-        this.time.active = true;
-        app.manager.event.emit(app.config.eventname.startGameDaoJiShi);
     }
 
     updateGameHeartAdd() {

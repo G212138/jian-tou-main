@@ -26,7 +26,12 @@ export class RopeRun extends Component {
 
     private runSpeed: number = 0.01;
 
-    private runSpeedError: number = 0.03;
+    // 正常移出倍率：1 为原速度，1.5 表示提升 50%。
+    private runSpeedMultiplier: number = 2;
+
+    private runStepAccumulator: number = 0;
+
+    private runSpeedError: number = 0.01;
 
     //插针1个值
     private chazhenTimes: number = 2;
@@ -116,10 +121,11 @@ export class RopeRun extends Component {
         app.manager.event.emit(app.config.eventname.playPianoSound);
         
         this.isRunning = true;
-        // this.runOutTool.ropeArrays = ropeConfig;
+        this.runStepAccumulator = 0;
+        // 通过每帧累计移动步数突破帧率对极短 schedule 间隔的限制。
         this.schedule(
-            this.moveRunOut.bind(this, this.runOutTool), 
-            this.runSpeed, 
+            this.moveRunOutBySpeed.bind(this, this.runOutTool),
+            this.runSpeed,
             this._currentStep
         );
         //记录一下当前关卡已经逃逸了多少个绳子
@@ -166,6 +172,22 @@ export class RopeRun extends Component {
             }
         }
         return false;
+    }
+
+    /** 按倍率累计移动更新；1.5 倍速时按 1、2、1、2 次交替刷新。 */
+    private moveRunOutBySpeed(ropeConfig: IRopeRunConfig) {
+        this.runStepAccumulator += this.runSpeedMultiplier;
+        const updateCount = Math.floor(this.runStepAccumulator);
+        this.runStepAccumulator -= updateCount;
+
+        for (let i = 0; i < updateCount; i++) {
+            if (this._currentStep <= 0) {
+                this.unscheduleAllCallbacks();
+                this.node.destroy();
+                return;
+            }
+            this.moveRunOut(ropeConfig);
+        }
     }
 
     // 出逃

@@ -24,9 +24,9 @@ export class RopeRun extends Component {
 
     private isRunning: boolean = false;
 
-    private runSpeed: number = 0.01;
+    private runSpeed: number = 0.00;
 
-    private runSpeedError: number = 0.03;
+    private runSpeedError: number = 0.01;
 
     //插针1个值
     private chazhenTimes: number = 2;

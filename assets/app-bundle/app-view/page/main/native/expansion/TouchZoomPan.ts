@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, EventTouch, EventMouse, Vec3, UITransform, Vec2, math, macro } from 'cc';
+import { _decorator, Component, Node, EventTouch, EventMouse, Vec3, UITransform, Vec2, math, macro, Slider } from 'cc';
 import { app } from 'db://assets/app/app';
 const { ccclass, property } = _decorator;
 
@@ -9,10 +9,10 @@ export class TouchZoomPan extends Component {
     targetNode: Node = null!;
 
     @property({ tooltip: "最小缩放值" })
-    minScale: number = 1;
+    minScale: number = 0.7;
 
     @property({ tooltip: "最大缩放值" })
-    maxScale: number = 2;
+    maxScale: number = 1.5;
 
     @property({ tooltip: "鼠标滚轮缩放速度" })
     wheelSpeed: number = 0.1;
@@ -24,6 +24,7 @@ export class TouchZoomPan extends Component {
     private _viewSize: math.Size = new math.Size();
     private _contentSize: math.Size = new math.Size();
     private _isZooming: boolean = false; // 标记是否正在缩放中
+    private _zoomSlider: Slider | null = null;
 
     onLoad() {
         // 开启多点触控（保险起见）
@@ -45,10 +46,20 @@ export class TouchZoomPan extends Component {
         app.manager.event.on(app.config.eventname.restart, this._onRestart, this);
     }
 
+    start() {
+        // 缩放条位于 PageMain/UI 下，运行时自动关联。
+        const pageRoot = this.node.parent?.parent;
+        this._zoomSlider = pageRoot?.getChildByPath('UI/ZoomSlider')?.getComponent(Slider) || null;
+        if (this._zoomSlider) {
+            this._zoomSlider.node.on('slide', this.onZoomSliderChanged, this);
+            this.syncZoomSlider();
+        }
+    }
+
     private _onRestart() {
-        // 重置拖动状态
-        this.node.setPosition(0, 0);
-        this.node.setScale(1, 1);
+        // 重置拖动和缩放状态。
+        this.targetNode.setPosition(0, 0);
+        this.applyScale(1);
     }
 
     onDestroy() {
@@ -57,6 +68,8 @@ export class TouchZoomPan extends Component {
         this.node.off(Node.EventType.TOUCH_END, this.onTouchEnd, this);
         this.node.off(Node.EventType.TOUCH_CANCEL, this.onTouchEnd, this);
         this.node.off(Node.EventType.MOUSE_WHEEL, this.onMouseWheel, this);
+        this._zoomSlider?.node.off('slide', this.onZoomSliderChanged, this);
+        app.manager.event.off(app.config.eventname.restart, this._onRestart, this);
     }
 
     private onTouchStart(event: EventTouch) {
@@ -95,12 +108,7 @@ export class TouchZoomPan extends Component {
                 newScale = Math.max(this.minScale, Math.min(newScale, this.maxScale));
 
                 // 应用缩放
-                this.targetNode.setScale(new Vec3(newScale, newScale, 1));
-                
-                // 限制边界
-                this.targetNode.getPosition(this._tempVec3);
-                this.limitPosition(this._tempVec3, newScale);
-                this.targetNode.setPosition(this._tempVec3);
+                this.applyScale(newScale);
 
                  //取消缩放引导
                 if(app.manager.globaldata.getNeedGuideTwo()){
@@ -144,16 +152,45 @@ export class TouchZoomPan extends Component {
         let newScale = this.targetNode.scale.x + scaleDiff;
         newScale = Math.max(this.minScale, Math.min(newScale, this.maxScale));
 
-        this.targetNode.setScale(new Vec3(newScale, newScale, 1));
-        this.targetNode.getPosition(this._tempVec3);
-        this.limitPosition(this._tempVec3, newScale);
-        this.targetNode.setPosition(this._tempVec3);
+        this.applyScale(newScale);
          //取消缩放引导
         if(app.manager.globaldata.getNeedGuideTwo()){
             app.manager.globaldata.setNeedGuideTwo(false);
             // 移除新手引导二
             app.manager.event.emit(app.config.eventname.guideTwoEnd);
         }
+    }
+
+    /** 底部拖动条回调：把 0-1 的进度映射为实际缩放倍率。 */
+    private onZoomSliderChanged(slider: Slider) {
+        const newScale = this.minScale + (this.maxScale - this.minScale) * slider.progress;
+        this.applyScale(newScale, false);
+
+        if (app.manager.globaldata.getNeedGuideTwo()) {
+            app.manager.globaldata.setNeedGuideTwo(false);
+            app.manager.event.emit(app.config.eventname.guideTwoEnd);
+        }
+    }
+
+    /** 统一处理拖动条、双指和滚轮缩放。 */
+    private applyScale(scale: number, syncSlider: boolean = true) {
+        const newScale = Math.max(this.minScale, Math.min(scale, this.maxScale));
+        this.targetNode.setScale(new Vec3(newScale, newScale, 1));
+        this.targetNode.getPosition(this._tempVec3);
+        this.limitPosition(this._tempVec3, newScale);
+        this.targetNode.setPosition(this._tempVec3);
+
+        if (syncSlider) {
+            this.syncZoomSlider();
+        }
+    }
+
+    private syncZoomSlider() {
+        if (!this._zoomSlider) return;
+        const range = this.maxScale - this.minScale;
+        this._zoomSlider.progress = range > 0
+            ? Math.max(0, Math.min(1, (this.targetNode.scale.x - this.minScale) / range))
+            : 0;
     }
 
     /**

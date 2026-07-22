@@ -103,7 +103,7 @@
         "__id__": 65
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 85
@@ -1471,7 +1471,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 324.6845703125,
+      "width": 450,
       "height": 45.8
     },
     "_anchorPoint": {
@@ -1514,8 +1514,8 @@
     "_fontSize": 30,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
-    "_overflow": 0,
-    "_enableWrapText": true,
+    "_overflow": 2,
+    "_enableWrapText": false,
     "_font": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
@@ -1819,7 +1819,7 @@
     "_fontSize": 40,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
-    "_overflow": 1,
+    "_overflow": 2,
     "_enableWrapText": false,
     "_font": null,
     "_isSystemFontUsed": true,
@@ -2608,7 +2608,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 280,
+      "width": 400,
       "height": 88.2
     },
     "_anchorPoint": {
@@ -2651,8 +2651,8 @@
     "_fontSize": 70,
     "_fontFamily": "Arial",
     "_lineHeight": 70,
-    "_overflow": 0,
-    "_enableWrapText": true,
+    "_overflow": 2,
+    "_enableWrapText": false,
     "_font": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
@@ -2989,7 +2989,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 523.359375,
+      "width": 600,
       "height": 37.8
     },
     "_anchorPoint": {
@@ -3032,8 +3032,8 @@
     "_fontSize": 30,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
-    "_overflow": 0,
-    "_enableWrapText": true,
+    "_overflow": 2,
+    "_enableWrapText": false,
     "_font": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
@@ -3190,7 +3190,7 @@
     },
     "_type": 0,
     "_fillType": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -3344,7 +3344,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 200,
+      "width": 240,
       "height": 60
     },
     "_anchorPoint": {
@@ -3387,7 +3387,7 @@
     "_fontSize": 45,
     "_fontFamily": "Arial",
     "_lineHeight": 45,
-    "_overflow": 1,
+    "_overflow": 2,
     "_enableWrapText": false,
     "_font": null,
     "_isSystemFontUsed": true,
@@ -3837,7 +3837,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 184,
+      "width": 240,
       "height": 60.7
     },
     "_anchorPoint": {
@@ -3880,8 +3880,8 @@
     "_fontSize": 45,
     "_fontFamily": "Arial",
     "_lineHeight": 45,
-    "_overflow": 0,
-    "_enableWrapText": true,
+    "_overflow": 2,
+    "_enableWrapText": false,
     "_font": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
@@ -6091,7 +6091,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 200,
+      "width": 240,
       "height": 80
     },
     "_anchorPoint": {
@@ -6134,7 +6134,7 @@
     "_fontSize": 40,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
-    "_overflow": 1,
+    "_overflow": 2,
     "_enableWrapText": false,
     "_font": null,
     "_isSystemFontUsed": true,
@@ -8345,7 +8345,7 @@
         "__id__": 423
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 429
@@ -8640,7 +8640,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 280,
+      "width": 400,
       "height": 88.2
     },
     "_anchorPoint": {
@@ -8679,11 +8679,11 @@
     "_string": "通关成功",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 70,
+    "_actualFontSize": 71,
     "_fontSize": 70,
     "_fontFamily": "Arial",
     "_lineHeight": 70,
-    "_overflow": 0,
+    "_overflow": 2,
     "_enableWrapText": true,
     "_font": null,
     "_isSystemFontUsed": true,
@@ -9021,7 +9021,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 250,
+      "width": 600,
       "height": 63
     },
     "_anchorPoint": {
@@ -9064,8 +9064,8 @@
     "_fontSize": 50,
     "_fontFamily": "Arial",
     "_lineHeight": 50,
-    "_overflow": 0,
-    "_enableWrapText": true,
+    "_overflow": 2,
+    "_enableWrapText": false,
     "_font": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
@@ -10265,12 +10265,12 @@
     "_string": "分享",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 46,
+    "_actualFontSize": 45,
     "_fontSize": 45,
     "_fontFamily": "Arial",
     "_lineHeight": 45,
     "_overflow": 2,
-    "_enableWrapText": true,
+    "_enableWrapText": false,
     "_font": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,

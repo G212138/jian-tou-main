@@ -1,4 +1,4 @@
-import { _decorator, Label, Node, Sprite, SpriteFrame } from 'cc';
+import { _decorator, HorizontalTextAlignment, Label, Node, Sprite, SpriteFrame, Toggle, UITransform } from 'cc';
 import BaseView from 'db://app/base/BaseView';
 import { LevelActionType, LevelResultType } from 'db://assets/app-builtin/app-manager/report/ReportManager';
 import { app } from 'db://assets/app/app';
@@ -26,9 +26,12 @@ export class PopSetting extends BaseView {
 
     @property(Node) settingLayout: Node = null;
     
+    private updatingLanguageToggles = false;
+
     // 初始化的相关逻辑写在这
     onLoad() {
         i18n.apply(this.node);
+        this.bindLanguageToggles();
     }
 
     // 界面打开时的相关逻辑写在这(onShow可被多次调用-它与onHide不成对)
@@ -121,6 +124,26 @@ export class PopSetting extends BaseView {
             ? this.enabledSpriteFrame
             : this.disabledSpriteFrame;
     }
+    private bindLanguageToggles(): void {
+        const languageRow = this.settingLayout?.getChildByName('bg_language');
+        const zhToggle = languageRow?.getChildByName('ZhButton')?.getComponent(Toggle);
+        const enToggle = languageRow?.getChildByName('EnButton')?.getComponent(Toggle);
+        zhToggle?.node.on(Toggle.EventType.TOGGLE, this.onZhToggle, this);
+        enToggle?.node.on(Toggle.EventType.TOGGLE, this.onEnToggle, this);
+    }
+
+    private onZhToggle(toggle: Toggle): void {
+        if (!this.updatingLanguageToggles && toggle.isChecked) {
+            this.selectLanguage('zh-CN');
+        }
+    }
+
+    private onEnToggle(toggle: Toggle): void {
+        if (!this.updatingLanguageToggles && toggle.isChecked) {
+            this.selectLanguage('en-US');
+        }
+    }
+
 
     language_zh_click() {
         this.selectLanguage('zh-CN');
@@ -141,11 +164,21 @@ export class PopSetting extends BaseView {
         const zhButton = languageRow?.getChildByName('ZhButton');
         const enButton = languageRow?.getChildByName('EnButton');
         const rowFontSize = i18n.isEnglish ? 34 : 40;
-        ['bg_music', 'bg_effect', 'bg_vib', 'bg_color'].forEach((rowName) => {
-            const rowLabel = this.settingLayout?.getChildByName(rowName)
+
+        ['bg_music', 'bg_effect', 'bg_vib', 'bg_color', 'bg_language'].forEach((rowName) => {
+            const labelNode = this.settingLayout?.getChildByName(rowName)
                 ?.getChildByName('name')
-                ?.getComponentInChildren(Label);
-            if (!rowLabel) return;
+                ?.getChildByName('Label');
+            const rowLabel = labelNode?.getComponent(Label);
+            const labelTransform = labelNode?.getComponent(UITransform);
+            if (!labelNode || !rowLabel || !labelTransform) return;
+
+            // 所有名称使用相同左边界和固定文本区域，长文案自动缩小而不侵入控件区。
+            labelNode.setPosition(55, 0, 0);
+            labelTransform.setAnchorPoint(0, 0.5);
+            labelTransform.setContentSize(rowName === 'bg_language' ? 180 : 210, 56);
+            rowLabel.horizontalAlign = HorizontalTextAlignment.LEFT;
+            rowLabel.overflow = Label.Overflow.SHRINK;
             rowLabel.fontSize = rowFontSize;
             rowLabel.lineHeight = rowFontSize;
         });
@@ -153,12 +186,27 @@ export class PopSetting extends BaseView {
         this.refreshToggleSprites();
         if (!zhButton || !enButton) return;
 
-        const zhScale = i18n.language === 'zh-CN' ? 1.05 : 0.92;
-        const enScale = i18n.language === 'en-US' ? 1.05 : 0.92;
-        zhButton.setScale(zhScale, zhScale, 1);
-        enButton.setScale(enScale, enScale, 1);
-        zhButton.getComponentInChildren(Label).string = '中文';
-        enButton.getComponentInChildren(Label).string = 'EN';
+        // 与语言名称保持安全间距，同时确保右侧按钮不超出背景。
+        const zhToggle = zhButton.getComponent(Toggle);
+        const enToggle = enButton.getComponent(Toggle);
+        if (!zhToggle || !enToggle) return;
+
+        zhButton.setPosition(105, 0, 0);
+        enButton.setPosition(215, 0, 0);
+        zhButton.setScale(1, 1, 1);
+        enButton.setScale(1, 1, 1);
+        zhButton.getComponent(UITransform)?.setContentSize(105, 58);
+        enButton.getComponent(UITransform)?.setContentSize(105, 58);
+
+        const zhLabel = zhButton.getChildByName('Label')?.getComponent(Label);
+        const enLabel = enButton.getChildByName('Label')?.getComponent(Label);
+        if (zhLabel) zhLabel.string = '\u4E2D\u6587';
+        if (enLabel) enLabel.string = 'EN';
+
+        this.updatingLanguageToggles = true;
+        zhToggle.isChecked = i18n.language === 'zh-CN';
+        enToggle.isChecked = i18n.language === 'en-US';
+        this.updatingLanguageToggles = false;
     }
 
     back_level_click() {

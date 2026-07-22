@@ -4,8 +4,8 @@ const { ccclass, property } = _decorator;
 
 @ccclass('Time')
 export class Time extends Component {
-    // 倒计时总时长（10分钟 = 600秒）
-    private totalSeconds: number = 480;
+    // 倒计时总时长（8分钟 = 480秒）
+    private totalSeconds: number = 8 * 60;
     // 当前剩余秒数
     private remainingSeconds: number = 0;
     // Label组件引用
@@ -51,7 +51,7 @@ export class Time extends Component {
         this._isCountdownRunning = false;
         this.remainingSeconds = this.totalSeconds;
         this.updateTimeLabel();
-        this.timeLabel.node.active = false;
+        this.timeLabel.enabled = false;
         this.isStopCountDown = false;
     }
 
@@ -72,7 +72,7 @@ export class Time extends Component {
         this.unschedule(this.updateCountdown);
         // 立即更新一次时间显示
         this.updateTimeLabel();
-        this.timeLabel.node.active = true;
+        this.timeLabel.enabled = true;
         // 每1秒执行一次updateCountdown方法
         this.schedule(this.updateCountdown, 1);
     }
@@ -82,7 +82,7 @@ export class Time extends Component {
      */
     public stopCountdown(): void {
         this._isCountdownRunning = false;
-        this.timeLabel.node.active = false;
+        this.timeLabel.enabled = false;
         this.unschedule(this.updateCountdown);
     }
 

@@ -1,15 +1,6 @@
 import {
-    Button,
-    Color,
-    Graphics,
-    HorizontalTextAlignment,
     Label,
     Node,
-    Sprite,
-    SpriteFrame,
-    UITransform,
-    VerticalTextAlignment,
-    Widget,
     _decorator,
 } from 'cc';
 import BaseView from '../../../../../../extensions/app/assets/base/BaseView';
@@ -47,13 +38,6 @@ export class PageHome extends BaseView {
     @property(Node)
     specialDesc: Node = null;
 
-    @property(SpriteFrame)
-    private homeRewardIcon: SpriteFrame = null;
-
-    @property(SpriteFrame)
-    private revisitRewardIcon: SpriteFrame = null;
-
-    private tiktokEntries: Node = null;
 
     // 初始化的相关逻辑写在这
     onLoad() {
@@ -70,7 +54,7 @@ export class PageHome extends BaseView {
             force:false
         });
 
-        this.createTikTokRequiredEntries();
+        this.bindTikTokRequiredEntries();
     }
 
     // 点击设置按钮
@@ -129,94 +113,27 @@ export class PageHome extends BaseView {
     private onClickShouChang() {
         app.manager.ui.show({name: 'PopResult',data: {ShouChangDialog: true}});
     }
-    private createTikTokRequiredEntries() {
-        if (!tiktokRequiredFeatures.shouldShowEntries || this.tiktokEntries?.isValid) return;
+    private bindTikTokRequiredEntries(): void {
+        const panel = this.node.getChildByName('TikTokRequiredEntries');
 
-        const panel = new Node('TikTokRequiredEntries');
-        panel.layer = this.node.layer;
-        panel.addComponent(UITransform).setContentSize(130, 190);
-        this.node.addChild(panel);
+        if (!panel) {
+            console.warn('[PageHome] TikTokRequiredEntries is missing from PageHome.prefab');
+            return;
+        }
 
-        const widget = panel.addComponent(Widget);
-        widget.isAlignLeft = true;
-        widget.left = 18;
-        widget.isAlignTop = true;
-        widget.top = 120;
-        widget.updateAlignment();
+        panel.active = tiktokRequiredFeatures.shouldShowEntries;
+        if (!panel.active) return;
 
-        this.createTikTokEntryButton(
-            panel,
-            'HomeReward',
-            this.homeRewardIcon,
-            3,
-            50,
-            () => this.onClickTikTokShortcut(),
+        panel.getChildByName('HomeReward')?.on(
+            Node.EventType.TOUCH_END,
+            this.onClickTikTokShortcut,
+            this,
         );
-        this.createTikTokEntryButton(
-            panel,
-            'RevisitReward',
-            this.revisitRewardIcon,
-            2,
-            -50,
-            () => this.onClickTikTokRevisit(),
+        panel.getChildByName('RevisitReward')?.on(
+            Node.EventType.TOUCH_END,
+            this.onClickTikTokRevisit,
+            this,
         );
-
-        this.tiktokEntries = panel;
-    }
-
-    private createTikTokEntryButton(
-        parent: Node,
-        name: string,
-        icon: SpriteFrame,
-        rewardAmount: number,
-        y: number,
-        onClick: () => void,
-    ) {
-        const buttonNode = new Node(name);
-        buttonNode.layer = this.node.layer;
-        parent.addChild(buttonNode);
-        buttonNode.setPosition(0, y);
-        buttonNode.addComponent(UITransform).setContentSize(104, 92);
-
-        const iconNode = new Node(`${name}Icon`);
-        iconNode.layer = this.node.layer;
-        buttonNode.addChild(iconNode);
-        const iconTransform = iconNode.addComponent(UITransform);
-        const sprite = iconNode.addComponent(Sprite);
-        sprite.sizeMode = Sprite.SizeMode.CUSTOM;
-        sprite.spriteFrame = icon;
-        iconTransform.setContentSize(92, 92);
-
-        const button = buttonNode.addComponent(Button);
-        button.transition = Button.Transition.SCALE;
-        button.zoomScale = 0.92;
-        button.duration = 0.08;
-        buttonNode.on(Node.EventType.TOUCH_END, onClick, this);
-
-        const badgeNode = new Node(`${name}Badge`);
-        badgeNode.layer = this.node.layer;
-        buttonNode.addChild(badgeNode);
-        badgeNode.setPosition(32, -30);
-        badgeNode.addComponent(UITransform).setContentSize(44, 26);
-
-        const badge = badgeNode.addComponent(Graphics);
-        badge.fillColor = new Color(30, 55, 112, 245);
-        badge.roundRect(-22, -13, 44, 26, 13);
-        badge.fill();
-
-        const labelNode = new Node(`${name}Amount`);
-        labelNode.layer = this.node.layer;
-        badgeNode.addChild(labelNode);
-        labelNode.addComponent(UITransform).setContentSize(42, 24);
-
-        const label = labelNode.addComponent(Label);
-        label.string = `+${rewardAmount}`;
-        label.fontSize = 18;
-        label.lineHeight = 22;
-        label.isBold = true;
-        label.color = new Color(255, 224, 67, 255);
-        label.horizontalAlign = HorizontalTextAlignment.CENTER;
-        label.verticalAlign = VerticalTextAlignment.CENTER;
     }
 
     private async onClickTikTokShortcut() {

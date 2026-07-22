@@ -57,6 +57,9 @@ export class RopeManager extends Component {
 
     private moveDistance: number = 0;
 
+    private drawGeneration: number = 0;
+    private completedDrawCount: number = 0;
+
     onLoad() {
         //监听restart事件 和 下一关事件
         app.manager.event.on(app.config.eventname.restart, this.start, this);
@@ -211,6 +214,10 @@ export class RopeManager extends Component {
             return;
         }
 
+        const drawGeneration = ++this.drawGeneration;
+        this.completedDrawCount = 0;
+        app.manager.globaldata.setAlreadyDrawRopeCount(0);
+
         // 清空格子容器（删除之前绘制的所有绳子）
         this.gridContainer.destroyAllChildren();
         // 清空映射表
@@ -220,7 +227,8 @@ export class RopeManager extends Component {
             const ropeConfig = this.currentLevel.ropes[i];
             //异步执行
             setTimeout(() => {
-                this.drawSingleRope(ropeConfig,i);
+                if (drawGeneration !== this.drawGeneration) return;
+                this.drawSingleRope(ropeConfig, i, drawGeneration);
             }, Math.random()*1000);
 
 
@@ -230,7 +238,7 @@ export class RopeManager extends Component {
     }
 
     // 绘制单条绳子（连续线段+起点标记）
-    drawSingleRope(ropeConfig: [number, number][],index:number) {
+    drawSingleRope(ropeConfig: [number, number][], index: number, drawGeneration: number) {
         //判断是不是彩色
         const isColorful = app.manager.globaldata.getIsColorArrow();
         if(isColorful){
@@ -266,13 +274,13 @@ export class RopeManager extends Component {
         });
          
         // 绘制绳子路径和起点箭头（使用同一个Graphics组件）
-        this.drawRopePath(graphics, worldPoints, ropeNode, ropeConfig,index,this.strokeColor);
+        this.drawRopePath(graphics, worldPoints, ropeNode, ropeConfig, index, this.strokeColor, drawGeneration);
         
 
     }
 
     // 用 Graphics 绘制绳子路径和起点箭头（连续线段+圆角端点+箭头）
-    drawRopePath(graphics: Graphics, points: Vec2[], ropeNode: Node, ropeConfig: [number, number][],index:number,strokeColor:string) {
+    drawRopePath(graphics: Graphics, points: Vec2[], ropeNode: Node, ropeConfig: [number, number][], index: number, strokeColor: string, drawGeneration: number) {
         const self = this;
         if (points.length < 2) {
             console.warn('RopeManager: 路径点数量少于2，无法绘制绳子');
@@ -293,10 +301,18 @@ export class RopeManager extends Component {
                 if (currentIndex >= points.length) {
                     // 绘制完成，停止调度
                     graphics.unschedule(drawStep);
-                    //绘制箭头
+                    if (drawGeneration !== self.drawGeneration) return;
+
+                    // 绘制箭头
                     drawArrow();
 
-                    app.manager.globaldata.addAlreadyDrawRopeCount(1);
+                    self.completedDrawCount++;
+                    app.manager.globaldata.setAlreadyDrawRopeCount(self.completedDrawCount);
+
+                    // 最新批次的全部箭头绘制完成后再开始倒计时。
+                    if (self.completedDrawCount >= self.currentLevel.ropes.length) {
+                        app.manager.event.emit(app.config.eventname.startGameDaoJiShi);
+                    }
                 return;
                 }
 
