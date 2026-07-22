@@ -2,6 +2,7 @@ import { _decorator, Button, Component, Label, Node, tween } from 'cc';
 import { LevelActionType, LevelResultType } from 'db://assets/app-builtin/app-manager/report/ReportManager';
 import { app } from 'db://assets/app/app';
 import { platformService } from 'db://assets/app/platform';
+import { i18n } from 'db://assets/app/i18n';
 const { ccclass, property } = _decorator;
 
 @ccclass('SuccessDialog')
@@ -27,6 +28,10 @@ export class SuccessDialog extends Component {
     private specialTips: Label = null;
 
 
+    onEnable() {
+        i18n.apply(this.node);
+    }
+
     start() {
         this.btnHome.on(Node.EventType.TOUCH_END, this.onClickHome, this);
         this.btnNext.on(Button.EventType.CLICK, this.onClickNext, this);
@@ -42,17 +47,17 @@ export class SuccessDialog extends Component {
         //获取当前关卡值
         const lv = 5 - app.store.game.getLevel();
         if (lv > 0) {
-            this.specialTips.string = '再玩 ' + lv + ' 局解锁创意关卡！';
+            this.specialTips.string = i18n.t('result.unlock_after', { count: lv });
             this.btnShare.on(Node.EventType.TOUCH_END, this.onClickShare, this);
-            this.btnShare.getComponentInChildren(Label).string = '分享';
+            this.btnShare.getComponentInChildren(Label).string = i18n.t('share.button');
         } else if (lv === 0) {
-            this.specialTips.string = '已解锁创意关卡！';
+            this.specialTips.string = i18n.t('creative.unlocked');
             this.btnShare.on(Node.EventType.TOUCH_START, this.onClickSpecialLevel, this);
-            this.btnShare.getComponentInChildren(Label).string = '去挑战';
+            this.btnShare.getComponentInChildren(Label).string = i18n.t('creative.play');
         }else{
-            this.specialTips.string = '你太棒了！';
+            this.specialTips.string = i18n.t('result.great');
             this.btnShare.on(Node.EventType.TOUCH_END, this.onClickShare, this);
-            this.btnShare.getComponentInChildren(Label).string = '分享';
+            this.btnShare.getComponentInChildren(Label).string = i18n.t('share.button');
         }
          // 报告点击事件
         app.manager.report.reportEvent({
@@ -101,7 +106,7 @@ export class SuccessDialog extends Component {
     private onClickShare() {
        //分享游戏
       platformService.share({
-        title: "我用《箭头》通关了！",
+        title: i18n.t('share.success'),
       });
       //上报
       app.manager.report.reportEvent({

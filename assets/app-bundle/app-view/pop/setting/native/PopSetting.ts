@@ -1,7 +1,8 @@
-import { _decorator, Node, Sprite, SpriteFrame } from 'cc';
+import { _decorator, Label, Node, Sprite, SpriteFrame } from 'cc';
 import BaseView from 'db://app/base/BaseView';
 import { LevelActionType, LevelResultType } from 'db://assets/app-builtin/app-manager/report/ReportManager';
 import { app } from 'db://assets/app/app';
+import { GameLanguage, i18n } from 'db://assets/app/i18n';
 
 const { ccclass, property } = _decorator;
 @ccclass('PopSetting')
@@ -16,6 +17,10 @@ export class PopSetting extends BaseView {
     On: SpriteFrame = null;
     @property(SpriteFrame)
     Off: SpriteFrame = null;
+    @property(SpriteFrame)
+    OnEnglish: SpriteFrame = null;
+    @property(SpriteFrame)
+    OffEnglish: SpriteFrame = null;
 
     @property(Node) homeButton: Node = null;
 
@@ -23,34 +28,13 @@ export class PopSetting extends BaseView {
     
     // 初始化的相关逻辑写在这
     onLoad() {
-      
+        i18n.apply(this.node);
     }
 
     // 界面打开时的相关逻辑写在这(onShow可被多次调用-它与onHide不成对)
     onShow(params: any) {
-        if (app.manager.sound.isEffectMute) {
-            this.effect.getComponent(Sprite).spriteFrame = this.Off;
-        } else {
-            this.effect.getComponent(Sprite).spriteFrame = this.On;
-        }
-        if (app.manager.sound.isMusicMute) {
-            this.music.getComponent(Sprite).spriteFrame = this.Off;
-        } else {
-            this.music.getComponent(Sprite).spriteFrame = this.On;
-        }
-        if (app.manager.vibrate.isVibrateMute) {
-            this.vibrate.getComponent(Sprite).spriteFrame = this.Off;
-        } else {
-            this.vibrate.getComponent(Sprite).spriteFrame = this.On;
-        }
-
-        //本地读取是否是彩色箭头
-        let isColorArrow = app.manager.globaldata.getIsColorArrow();
-        if (isColorArrow) {
-            this.colorArrow.getComponent(Sprite).spriteFrame = this.On;
-        } else {
-            this.colorArrow.getComponent(Sprite).spriteFrame = this.Off;
-        }
+        i18n.apply(this.node);
+        this.refreshLanguageButtons();
 
         //判断是否是首页
         if (params.isHome) {
@@ -71,10 +55,10 @@ export class PopSetting extends BaseView {
     effect_click() {
         if (app.manager.sound.isEffectMute) {
             app.manager.sound.setEffectMute(false, true);
-            this.effect.getComponent(Sprite).spriteFrame = this.On;
+            this.effect.getComponent(Sprite).spriteFrame = this.enabledSpriteFrame;
         } else {
             app.manager.sound.setEffectMute(true, true);
-            this.effect.getComponent(Sprite).spriteFrame = this.Off;
+            this.effect.getComponent(Sprite).spriteFrame = this.disabledSpriteFrame;
         }
 
     }
@@ -82,10 +66,10 @@ export class PopSetting extends BaseView {
     music_click() {
         if (app.manager.sound.isMusicMute) {
             app.manager.sound.setMusicMute(false, true);
-            this.music.getComponent(Sprite).spriteFrame = this.On;
+            this.music.getComponent(Sprite).spriteFrame = this.enabledSpriteFrame;
         } else {
             app.manager.sound.setMusicMute(true, true);
-            this.music.getComponent(Sprite).spriteFrame = this.Off;
+            this.music.getComponent(Sprite).spriteFrame = this.disabledSpriteFrame;
         }
     }
 
@@ -93,10 +77,10 @@ export class PopSetting extends BaseView {
         if (app.manager.vibrate.isVibrateMute) {
             app.manager.vibrate.setVibrateMute(false);
             app.manager.vibrate.playVibrate();
-            this.vibrate.getComponent(Sprite).spriteFrame = this.On;
+            this.vibrate.getComponent(Sprite).spriteFrame = this.enabledSpriteFrame;
         } else {
             app.manager.vibrate.setVibrateMute(true);
-            this.vibrate.getComponent(Sprite).spriteFrame = this.Off;
+            this.vibrate.getComponent(Sprite).spriteFrame = this.disabledSpriteFrame;
         }
 
     }
@@ -104,14 +88,77 @@ export class PopSetting extends BaseView {
     colorArrow_click() {
         if (app.manager.globaldata.getIsColorArrow()) {
             app.manager.globaldata.setIsColorArrow(false);
-            this.colorArrow.getComponent(Sprite).spriteFrame = this.Off;
+            this.colorArrow.getComponent(Sprite).spriteFrame = this.disabledSpriteFrame;
         } else {
             app.manager.globaldata.setIsColorArrow(true);
-            this.colorArrow.getComponent(Sprite).spriteFrame = this.On;
+            this.colorArrow.getComponent(Sprite).spriteFrame = this.enabledSpriteFrame;
         }
 
         //触发一次事件
         app.manager.event.emit(app.config.eventname.colorArrowChange);
+    }
+
+
+    private get enabledSpriteFrame(): SpriteFrame {
+        return i18n.isEnglish && this.OnEnglish ? this.OnEnglish : this.On;
+    }
+
+    private get disabledSpriteFrame(): SpriteFrame {
+        return i18n.isEnglish && this.OffEnglish ? this.OffEnglish : this.Off;
+    }
+
+    private refreshToggleSprites() {
+        this.effect.getComponent(Sprite).spriteFrame = app.manager.sound.isEffectMute
+            ? this.disabledSpriteFrame
+            : this.enabledSpriteFrame;
+        this.music.getComponent(Sprite).spriteFrame = app.manager.sound.isMusicMute
+            ? this.disabledSpriteFrame
+            : this.enabledSpriteFrame;
+        this.vibrate.getComponent(Sprite).spriteFrame = app.manager.vibrate.isVibrateMute
+            ? this.disabledSpriteFrame
+            : this.enabledSpriteFrame;
+        this.colorArrow.getComponent(Sprite).spriteFrame = app.manager.globaldata.getIsColorArrow()
+            ? this.enabledSpriteFrame
+            : this.disabledSpriteFrame;
+    }
+
+    language_zh_click() {
+        this.selectLanguage('zh-CN');
+    }
+
+    language_en_click() {
+        this.selectLanguage('en-US');
+    }
+
+    private selectLanguage(language: GameLanguage) {
+        i18n.setLanguage(language);
+        i18n.apply(this.node);
+        this.refreshLanguageButtons();
+    }
+
+    private refreshLanguageButtons() {
+        const languageRow = this.settingLayout?.getChildByName('bg_language');
+        const zhButton = languageRow?.getChildByName('ZhButton');
+        const enButton = languageRow?.getChildByName('EnButton');
+        const rowFontSize = i18n.isEnglish ? 34 : 40;
+        ['bg_music', 'bg_effect', 'bg_vib', 'bg_color'].forEach((rowName) => {
+            const rowLabel = this.settingLayout?.getChildByName(rowName)
+                ?.getChildByName('name')
+                ?.getComponentInChildren(Label);
+            if (!rowLabel) return;
+            rowLabel.fontSize = rowFontSize;
+            rowLabel.lineHeight = rowFontSize;
+        });
+
+        this.refreshToggleSprites();
+        if (!zhButton || !enButton) return;
+
+        const zhScale = i18n.language === 'zh-CN' ? 1.05 : 0.92;
+        const enScale = i18n.language === 'en-US' ? 1.05 : 0.92;
+        zhButton.setScale(zhScale, zhScale, 1);
+        enButton.setScale(enScale, enScale, 1);
+        zhButton.getComponentInChildren(Label).string = '中文';
+        enButton.getComponentInChildren(Label).string = 'EN';
     }
 
     back_level_click() {

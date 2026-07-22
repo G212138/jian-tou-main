@@ -1,5 +1,6 @@
 import { _decorator, Button, Component, macro, Node } from 'cc';
 import { app } from 'db://assets/app/app';
+import { i18n } from 'db://assets/app/i18n';
 const { ccclass, property } = _decorator;
 
 @ccclass('SpecialLevel')
@@ -16,7 +17,7 @@ export class SpecialLevel extends Component {
     onClickSpecialLevel() {
         const lv = app.store.game.getLevel();
         if (lv <= 5) {
-            app.manager.ui.showToast('第五关后开启！');
+            app.manager.ui.showToast(i18n.t('toast.creative_locked'));
             return;
         }
 

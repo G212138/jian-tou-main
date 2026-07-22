@@ -1,6 +1,7 @@
 import { _decorator, Component, Label, Node, ProgressBar } from 'cc';
 import { LevelActionType, LevelResultType } from 'db://assets/app-builtin/app-manager/report/ReportManager';
 import { app } from 'db://assets/app/app';
+import { i18n } from 'db://assets/app/i18n';
 import { adManager } from 'db://assets/app/tiktok.ads';
 const { ccclass, property } = _decorator;
 
@@ -26,12 +27,16 @@ export class FailDialog extends Component {
 
     public type: 'NoHeart' | 'NoTime' = null;
 
+    onEnable() {
+        i18n.apply(this.node);
+    }
+
     onLoad() {
         
         this.progressBar.progress = app.manager.globaldata.escapeRopeCount / app.manager.globaldata.ropeCount;
         //把progress转换为百分数，保留0位小数
         let progressPercent = (this.progressBar.progress * 100).toFixed(0);
-        this.labelTip.string = `当前进度${progressPercent}%，还差一点点就能通关了！`;
+        this.labelTip.string = i18n.t('result.progress', { progress: progressPercent });
         
     }
 
@@ -65,7 +70,7 @@ export class FailDialog extends Component {
       adManager.showRewardedVideoAd({
         onClose: (success) => {
           if(!success){
-            app.manager.ui.showToast("广告未播放完成");
+            app.manager.ui.showToast(i18n.t('toast.ad_incomplete'));
             // 恢复倒计时
             app.manager.event.emit(app.config.eventname.resumeCountDown);
             
@@ -94,7 +99,7 @@ export class FailDialog extends Component {
             
         },
         onError: () => {
-          app.manager.ui.showToast("广告播放失败");
+          app.manager.ui.showToast(i18n.t('toast.ad_failed'));
           // 恢复倒计时
           app.manager.event.emit(app.config.eventname.resumeCountDown); 
         }

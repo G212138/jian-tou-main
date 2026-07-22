@@ -1,6 +1,7 @@
 import { _decorator, Button, Component, Node } from 'cc';
 import { LevelActionType, LevelResultType } from 'db://assets/app-builtin/app-manager/report/ReportManager';
 import { app } from 'db://assets/app/app';
+import { i18n } from 'db://assets/app/i18n';
 import { adManager } from 'db://assets/app/tiktok.ads';
 const { ccclass, property } = _decorator;
 
@@ -28,7 +29,7 @@ export class DaoJu extends Component {
         adManager.showRewardedVideoAd({
            onClose: (success) => {
                 if(!success){
-                    app.manager.ui.showToast("广告未播放完成");
+                    app.manager.ui.showToast(i18n.t('toast.ad_incomplete'));
                     // 恢复倒计时
                     app.manager.event.emit(app.config.eventname.resumeCountDown);
                    
@@ -50,7 +51,7 @@ export class DaoJu extends Component {
                 
             },
             onError: () => {
-                app.manager.ui.showToast('视频播放失败');
+                app.manager.ui.showToast(i18n.t('toast.video_failed'));
                 // 恢复倒计时
                 app.manager.event.emit(app.config.eventname.resumeCountDown);
                
@@ -64,7 +65,7 @@ export class DaoJu extends Component {
         adManager.showRewardedVideoAd({
             onClose: (success) => {
                 if(!success){
-                    app.manager.ui.showToast("广告未播放完成");
+                    app.manager.ui.showToast(i18n.t('toast.ad_incomplete'));
                     // 恢复倒计时
                     app.manager.event.emit(app.config.eventname.resumeCountDown);
                    
@@ -86,7 +87,7 @@ export class DaoJu extends Component {
                 app.manager.event.emit(app.config.eventname.resumeCountDown);
             },
             onError: () => {
-                app.manager.ui.showToast('视频播放失败');
+                app.manager.ui.showToast(i18n.t('toast.video_failed'));
                 // 恢复倒计时
                 app.manager.event.emit(app.config.eventname.resumeCountDown);
                

@@ -5,6 +5,8 @@ import {
     HorizontalTextAlignment,
     Label,
     Node,
+    Sprite,
+    SpriteFrame,
     UITransform,
     VerticalTextAlignment,
     Widget,
@@ -17,6 +19,7 @@ import { app } from 'db://assets/app/app';
 import { ShouChangDialog } from '../../../pop/result/native/expansion/ShouChangDialog';
 import { platformService } from 'db://assets/app/platform';
 import { tiktokRequiredFeatures } from 'db://assets/app/tiktok.required';
+import { i18n } from 'db://assets/app/i18n';
 const { ccclass, property } = _decorator;
 @ccclass('PageHome')
 export class PageHome extends BaseView {
@@ -44,6 +47,12 @@ export class PageHome extends BaseView {
     @property(Node)
     specialDesc: Node = null;
 
+    @property(SpriteFrame)
+    private homeRewardIcon: SpriteFrame = null;
+
+    @property(SpriteFrame)
+    private revisitRewardIcon: SpriteFrame = null;
+
     private tiktokEntries: Node = null;
 
     // 初始化的相关逻辑写在这
@@ -52,7 +61,7 @@ export class PageHome extends BaseView {
             return app.store.game.tili.toString();
         });
         bindStore(this.level, 'string', () => {
-            return '第' + app.store.game.level.toString() + '关';
+            return i18n.t('level.main', { level: app.store.game.level });
         });
 
         app.manager.sound.playMusic({
@@ -71,6 +80,8 @@ export class PageHome extends BaseView {
 
     // 界面打开时的相关逻辑写在这(onShow可被多次调用-它与onHide不成对)
     onShow(params: any) {
+        i18n.apply(this.node);
+        this.level.string = i18n.t('level.main', { level: app.store.game.level });
         this.showMiniViews({ views: this.miniViews });
 
         this.btnStart.on(Node.EventType.TOUCH_END, this.onClickStart, this);
@@ -110,7 +121,7 @@ export class PageHome extends BaseView {
     // 点击分享按钮
     private onClickShare() {
         platformService.share({
-            title: app.config.localkey.ShareMsg
+            title: i18n.t('share.default')
         });
     }
 
@@ -123,30 +134,30 @@ export class PageHome extends BaseView {
 
         const panel = new Node('TikTokRequiredEntries');
         panel.layer = this.node.layer;
-        panel.addComponent(UITransform).setContentSize(250, 180);
+        panel.addComponent(UITransform).setContentSize(130, 190);
         this.node.addChild(panel);
 
         const widget = panel.addComponent(Widget);
         widget.isAlignLeft = true;
         widget.left = 18;
         widget.isAlignTop = true;
-        widget.top = 230;
+        widget.top = 120;
         widget.updateAlignment();
 
         this.createTikTokEntryButton(
             panel,
             'HomeReward',
-            'Home Reward  +3 Energy',
-            46,
-            new Color(31, 166, 114, 255),
+            this.homeRewardIcon,
+            3,
+            50,
             () => this.onClickTikTokShortcut(),
         );
         this.createTikTokEntryButton(
             panel,
             'RevisitReward',
-            'Revisit Reward  +2 Energy',
-            -46,
-            new Color(254, 44, 85, 255),
+            this.revisitRewardIcon,
+            2,
+            -50,
             () => this.onClickTikTokRevisit(),
         );
 
@@ -156,41 +167,56 @@ export class PageHome extends BaseView {
     private createTikTokEntryButton(
         parent: Node,
         name: string,
-        text: string,
+        icon: SpriteFrame,
+        rewardAmount: number,
         y: number,
-        color: Color,
         onClick: () => void,
     ) {
         const buttonNode = new Node(name);
         buttonNode.layer = this.node.layer;
         parent.addChild(buttonNode);
         buttonNode.setPosition(0, y);
-        buttonNode.addComponent(UITransform).setContentSize(230, 70);
+        buttonNode.addComponent(UITransform).setContentSize(104, 92);
 
-        const background = buttonNode.addComponent(Graphics);
-        background.fillColor = color;
-        background.roundRect(-115, -35, 230, 70, 16);
-        background.fill();
+        const iconNode = new Node(`${name}Icon`);
+        iconNode.layer = this.node.layer;
+        buttonNode.addChild(iconNode);
+        const iconTransform = iconNode.addComponent(UITransform);
+        const sprite = iconNode.addComponent(Sprite);
+        sprite.sizeMode = Sprite.SizeMode.CUSTOM;
+        sprite.spriteFrame = icon;
+        iconTransform.setContentSize(92, 92);
 
         const button = buttonNode.addComponent(Button);
         button.transition = Button.Transition.SCALE;
-        button.zoomScale = 0.96;
+        button.zoomScale = 0.92;
         button.duration = 0.08;
         buttonNode.on(Node.EventType.TOUCH_END, onClick, this);
 
-        const labelNode = new Node(`${name}Label`);
+        const badgeNode = new Node(`${name}Badge`);
+        badgeNode.layer = this.node.layer;
+        buttonNode.addChild(badgeNode);
+        badgeNode.setPosition(32, -30);
+        badgeNode.addComponent(UITransform).setContentSize(44, 26);
+
+        const badge = badgeNode.addComponent(Graphics);
+        badge.fillColor = new Color(30, 55, 112, 245);
+        badge.roundRect(-22, -13, 44, 26, 13);
+        badge.fill();
+
+        const labelNode = new Node(`${name}Amount`);
         labelNode.layer = this.node.layer;
-        buttonNode.addChild(labelNode);
-        labelNode.addComponent(UITransform).setContentSize(210, 56);
+        badgeNode.addChild(labelNode);
+        labelNode.addComponent(UITransform).setContentSize(42, 24);
 
         const label = labelNode.addComponent(Label);
-        label.string = text;
-        label.fontSize = 21;
-        label.lineHeight = 26;
-        label.color = Color.WHITE;
+        label.string = `+${rewardAmount}`;
+        label.fontSize = 18;
+        label.lineHeight = 22;
+        label.isBold = true;
+        label.color = new Color(255, 224, 67, 255);
         label.horizontalAlign = HorizontalTextAlignment.CENTER;
         label.verticalAlign = VerticalTextAlignment.CENTER;
-        label.overflow = Label.Overflow.SHRINK;
     }
 
     private async onClickTikTokShortcut() {

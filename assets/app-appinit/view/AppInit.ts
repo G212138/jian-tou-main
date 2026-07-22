@@ -2,6 +2,7 @@ import { AssetManager, Node, ProgressBar, UIOpacity, _decorator, assetManager, t
 import BaseAppInit from '../../../extensions/app/assets/base/BaseAppInit';
 import { app } from '../../app/app';
 import Core from 'db://app/Core';
+import { i18n } from '../../app/i18n';
 const { ccclass, property } = _decorator;
 
 @ccclass('AppInit')
@@ -29,6 +30,8 @@ export class AppInit extends BaseAppInit {
     }
 
     protected onLoad() {
+        i18n.init();
+        i18n.apply(this.node);
         // 执行初始化操作
         const opacity = this.logo.getComponent(UIOpacity);
         opacity.opacity = 255;

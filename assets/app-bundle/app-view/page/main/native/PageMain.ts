@@ -6,6 +6,7 @@ import { app } from 'db://assets/app/app';
 import { PopSetting } from '../../../pop/setting/native/PopSetting';
 import { LevelActionType } from 'db://assets/app-builtin/app-manager/report/ReportManager';
 import { LevelResultType } from 'db://assets/app-builtin/app-manager/report/ReportManager';
+import { i18n } from 'db://assets/app/i18n';
 const { ccclass, property } = _decorator;
 @ccclass('PageMain')
 export class PageMain extends BaseView {
@@ -54,19 +55,14 @@ export class PageMain extends BaseView {
 
     // 界面打开时的相关逻辑写在这(onShow可被多次调用-它与onHide不成对)
     onShow(params: any) {
+        i18n.apply(this.node);
         this.showMiniViews({ views: this.miniViews });
         // 绑定关卡显示
         bindStore(this.level, 'string', () => {
-            return '第' + app.store.game.level.toString() + '关';
+            return i18n.t('level.main', { level: app.store.game.level });
         });
         // 绑定设置按钮点击事件
         this.settingBtn.on(Node.EventType.TOUCH_END, this.onClickSetting, this);
-
-        //创意关卡
-        // 绑定关卡显示
-        bindStore(this.level, 'string', () => {
-            return '创意关卡 ' + app.store.game.specialLevel.toString();
-        });
 
         //判断是不是创意关卡来的
         if(params && params.isSpecialLevel){
@@ -93,7 +89,7 @@ export class PageMain extends BaseView {
     private onClickSetting() {
         if(app.manager.globaldata.getAlreadyDrawRopeCount() < app.manager.globaldata.getRopeCount()){
             // 还没有绘制完绳子，不能打开设置
-            app.manager.ui.showToast('箭头绘制中...');
+            app.manager.ui.showToast(i18n.t('toast.drawing'));
             return;
         }
         app.manager.ui.show<PopSetting>({name: 'PopSetting', data: {isHome: false}});

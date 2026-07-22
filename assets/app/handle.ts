@@ -5,11 +5,13 @@ import { adManager } from './tiktok.ads';
 import { platformService } from './platform';
 import { tiktokRequiredFeatures } from './tiktok.required';
 import type { TikTokMissionType } from './tiktok.required';
+import { i18n } from './i18n';
 
 /**
  * ccc除物理引擎等外的基础功能已经准备好了
  */
 export function cccReady(app: App) {
+    i18n.init();
     // 为了防止web环境中异常掉帧问题(关键代码在cc.game._pacer._handleRAF中)
     if (sys.isBrowser) {
         // game.frameRate = 100; // 在60、90帧率手机上满帧率运行，120帧率手机上以60帧率运行(可能不够流畅但省电)
@@ -46,7 +48,7 @@ export function appInited(app: App) {
     }
     //分享初始化
     platformService.openMenuShare({
-        title: app.config.localkey.ShareMsg
+        title: i18n.t('share.default')
         // imageUrl: '分享图片URL'
     });
 
@@ -87,8 +89,8 @@ export function appInited(app: App) {
     tiktokRequiredFeatures.initialize({
         onGrantReward: (type: TikTokMissionType, amount: number) => {
             app.store.game.setTiLi(app.store.game.tili + amount);
-            const rewardName = type === 'shortcut' ? 'Home Reward' : 'Revisit Reward';
-            app.manager.ui.showToast(`${rewardName}: +${amount} Energy`);
+            const rewardName = i18n.t(type === 'shortcut' ? 'tiktok.home_reward' : 'tiktok.revisit_reward');
+            app.manager.ui.showToast(i18n.t('tiktok.reward_granted', { name: rewardName, amount }));
         },
         onNotice: (message: string) => app.manager.ui.showToast(message),
     });

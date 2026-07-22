@@ -4,6 +4,7 @@ import { IMiniViewNames } from '../../../../../app-builtin/app-admin/executor';
 import { app } from 'db://assets/app/app';
 import { spLevelItem } from './expansion/spLevelItem';
 import { PageHome } from '../../home/native/PageHome';
+import { i18n } from 'db://assets/app/i18n';
 const { ccclass, property } = _decorator;
 
 export enum LevelStatus {
@@ -26,40 +27,7 @@ export class PageSpLevel extends BaseView {
     @property(Node)
     private homeNode: Node = null;
 
-    //关卡名字存储在配置文件改动太大，直接coding在这里，和datamap中注意匹配
-    private levelNames: string[] = [
-        "米奇头",
-        "猫",
-        "呆呆",
-        "圣诞树",
-        "圣诞袜",
-        "菠萝",
-        "太空人",
-        "糖果",
-        "小蜜蜂",
-        "冰淇淋",
-        "花朵",
-        "企鹅",
-        "摇摇马",
-        "剪刀",
-        "螃蟹",
-        "手柄",
-        "姜饼人",
-        "狐狸",
-        "金鱼",
-        "兔子",
-        "脚掌",
-        "兔子",
-        "城堡",
-        "蝴蝶结",
-        "福",
-        "大黄鸭",
-        "伞",
-        "天鹅",
-         "玩偶",
-        "LABUBU",
-        
-    ];
+    private readonly levelCount = 30;
     //还需要本地记录关卡的状态，分为 已完成 待挑战 未解锁
     private levelStatus: LevelStatus[] = [];
     //初始化关卡状态
@@ -71,15 +39,15 @@ export class PageSpLevel extends BaseView {
             // 如果有保存的状态，解析并赋值
             const parsedStatus = JSON.parse(savedLevelStatus) as LevelStatus[];
             // 确保解析后的数组长度与关卡数量一致
-            this.levelStatus = parsedStatus.slice(0, this.levelNames.length);
+            this.levelStatus = parsedStatus.slice(0, this.levelCount);
             
             // 如果解析后的数组长度不足，补充默认状态
-            while (this.levelStatus.length < this.levelNames.length) {
+            while (this.levelStatus.length < this.levelCount) {
                 this.levelStatus.push(LevelStatus.Unlock);
             }
         } else {
             // 如果没有保存的状态，初始化默认状态
-            for (let i = 0; i < this.levelNames.length; i++) {
+            for (let i = 0; i < this.levelCount; i++) {
                 if (i === 0) {
                     // 第一个关卡设置为待挑战状态
                     this.levelStatus.push(LevelStatus.Challenge);
@@ -159,7 +127,7 @@ export class PageSpLevel extends BaseView {
                 levelItem.parent = this.levelItemContainer;
                 //给item赋值
                 const levelItemComp = levelItem.getComponent(spLevelItem);
-                levelItemComp.setLevelInfo(i, this.levelNames[i], this.levelStatus[i], levelConfig);
+                levelItemComp.setLevelInfo(i, i18n.specialLevelName(i), this.levelStatus[i], levelConfig);
             }
         }
 
@@ -201,6 +169,7 @@ export class PageSpLevel extends BaseView {
 
     // 界面打开时的相关逻辑写在这(onShow可被多次调用-它与onHide不成对)
     onShow(params: any) {
+        i18n.apply(this.node);
         this.showMiniViews({ views: this.miniViews });
         //初始化关卡状态
         this.initLevelStatus(); 
@@ -216,6 +185,7 @@ export class PageSpLevel extends BaseView {
             type: TextAsset,
             onComplete: (asset) => {
                 this.setLevelConfigArrays(JSON.parse(asset.text));
+                i18n.apply(this.node);
                 app.manager.ui.hideLoading(loading);
             }
         });

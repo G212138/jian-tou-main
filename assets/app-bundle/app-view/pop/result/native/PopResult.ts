@@ -4,6 +4,7 @@ import { app } from 'db://assets/app/app';
 import { FailDialog } from './expansion/FailDialog';
 import { adManager } from 'db://assets/app/tiktok.ads';
 import { LevelActionType, LevelResultType } from 'db://assets/app-builtin/app-manager/report/ReportManager';
+import { i18n } from 'db://assets/app/i18n';
 const { ccclass, property } = _decorator;
 @ccclass('PopResult')
 export class PopResult extends BaseView {
@@ -22,14 +23,20 @@ export class PopResult extends BaseView {
 
     private _noTime: boolean = false;
     private _noGameHeart: boolean = false;
+    private readonly onLanguageChanged = () => i18n.apply(this.node);
         
     // 初始化的相关逻辑写在这
     onLoad() {
         app.manager.event.on("ShowRestartDialog", this.showRestart, this);
+        i18n.onChange(this.onLanguageChanged);
+        i18n.apply(this.node);
     }
 
     // 界面打开时的相关逻辑写在这(onShow可被多次调用-它与onHide不成对)
     onShow(params: any) {
+        // 结果弹窗会在语言选择后动态加载，需要翻译全部未激活子弹窗。
+        i18n.apply(this.node);
+
         if(params){
             if(params.noTime){
                 this._noTime = true;
@@ -98,6 +105,10 @@ export class PopResult extends BaseView {
     onHide(result: undefined) {
         // app.manager.ui.show<PopResult>({name: 'PopResult', onHide:(result) => { 接收到return的数据，并且有类型提示 }})
         return result;
+    }
+
+    onDestroy() {
+        i18n.offChange(this.onLanguageChanged);
     }
 
     showRestart(type: 'NoHeart' | 'NoTime'){

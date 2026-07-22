@@ -1,6 +1,7 @@
 import { _decorator, Component, Label, Node, ProgressBar } from 'cc';
 import { LevelActionType, LevelResultType } from 'db://assets/app-builtin/app-manager/report/ReportManager';
 import { app } from 'db://assets/app/app';
+import { i18n } from 'db://assets/app/i18n';
 import { adManager } from 'db://assets/app/tiktok.ads';
 const { ccclass, property } = _decorator;
 
@@ -17,9 +18,13 @@ export class FuoHuoDialog extends Component {
 
     @property(Label)
     private labelTip: Label = null;
+    onEnable() {
+        i18n.apply(this.node);
+    }
+
     onLoad() {
         let remainCount = app.manager.globaldata.ropeCount - app.manager.globaldata.escapeRopeCount;
-        this.labelTip.string = `再消除${remainCount}个箭头即可通关`;
+        this.labelTip.string = i18n.t('result.remaining', { count: remainCount });
         this.progressBar.progress = app.manager.globaldata.escapeRopeCount / app.manager.globaldata.ropeCount;
 
         //上报
@@ -50,7 +55,7 @@ export class FuoHuoDialog extends Component {
         adManager.showRewardedVideoAd({
             onClose: (success) => {
                 if(!success){
-                    app.manager.ui.showToast("广告未播放完成");
+                    app.manager.ui.showToast(i18n.t('toast.ad_incomplete'));
                     // 恢复倒计时
                     app.manager.event.emit(app.config.eventname.resumeCountDown);
                    
@@ -74,7 +79,7 @@ export class FuoHuoDialog extends Component {
                 });
             },
             onError: () => {
-                app.manager.ui.showToast("广告播放失败");
+                app.manager.ui.showToast(i18n.t('toast.ad_failed'));
                 // 恢复倒计时
                 app.manager.event.emit(app.config.eventname.resumeCountDown);
             }

@@ -1,6 +1,7 @@
 import { _decorator, Color, Component, Graphics, Label, Node, Sprite, SpriteFrame, UITransform, Vec2 } from 'cc';
 import { LevelStatus } from '../PageSpLevel';
 import { app } from 'db://assets/app/app';
+import { i18n } from 'db://assets/app/i18n';
 import { adManager } from 'db://assets/app/tiktok.ads';
 import { PageMain } from '../../../main/native/PageMain';
 const { ccclass, property } = _decorator;
@@ -75,12 +76,12 @@ export class spLevelItem extends Component {
                     app.manager.event.emit(app.config.eventname.UpdateSPLevelStatus, this._index, this._status);
                 }else{
                     // 激励视频播放失败，提示用户重新播放
-                    app.manager.ui.showToast("激励视频播放失败，请重新播放");
+                    app.manager.ui.showToast(i18n.t('toast.rewarded_ad_failed'));
                 }
             },
             onError: () => {
                 // 激励视频播放失败，提示用户重新播放
-                app.manager.ui.showToast("激励视频播放失败，请重新播放");
+                app.manager.ui.showToast(i18n.t('toast.rewarded_ad_failed'));
             }
            });
 

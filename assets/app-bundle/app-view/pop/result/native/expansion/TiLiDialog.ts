@@ -1,6 +1,7 @@
 import { _decorator, Component, Node } from 'cc';
 import { LevelActionType, LevelResultType } from 'db://assets/app-builtin/app-manager/report/ReportManager';
 import { app } from 'db://assets/app/app';
+import { i18n } from 'db://assets/app/i18n';
 import { adManager } from 'db://assets/app/tiktok.ads';
 const { ccclass, property } = _decorator;
 
@@ -11,6 +12,10 @@ export class TiLiDialog extends Component {
     CloseNode: Node;
     @property(Node)
     AdNode: Node;
+    onEnable() {
+        i18n.apply(this.node);
+    }
+
     start() {
         this.CloseNode.on(Node.EventType.TOUCH_END, this.CloseDialog, this);
         this.AdNode.on(Node.EventType.TOUCH_END, this.AddTiLi, this);
@@ -31,7 +36,7 @@ export class TiLiDialog extends Component {
         adManager.showRewardedVideoAd({
             onClose: (success) => {
                 if(!success){
-                    app.manager.ui.showToast("广告未播放完成");
+                    app.manager.ui.showToast(i18n.t('toast.ad_incomplete'));
                     // 恢复倒计时
                     app.manager.event.emit(app.config.eventname.resumeCountDown);
                     return;
@@ -53,7 +58,7 @@ export class TiLiDialog extends Component {
                 });
             },
             onError: () => {
-                app.manager.ui.showToast("广告播放失败");
+                app.manager.ui.showToast(i18n.t('toast.ad_failed'));
                 // 恢复倒计时
                 app.manager.event.emit(app.config.eventname.resumeCountDown);
             }

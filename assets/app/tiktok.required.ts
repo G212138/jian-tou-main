@@ -4,6 +4,7 @@ import {
     TIKTOK_REQUIRED_FEATURE_CONFIG,
     TikTokRequiredFeatureConfig,
 } from './config.tiktok';
+import { i18n } from './i18n';
 
 export type TikTokMissionType = 'shortcut' | 'revisit';
 export type TikTokLoginStatus =
@@ -139,7 +140,7 @@ class TikTokRequiredFeatures {
     }
 
     async runShortcutMission(): Promise<TikTokMissionActionResult> {
-        if (!this.shouldShowEntries) return this.unavailable('Home screen shortcut is unavailable');
+        if (!this.shouldShowEntries) return this.unavailable(i18n.t('tiktok.home_unavailable'));
 
         if (DEV && !this.api && this.config.enableDevMock) {
             return this.grantDevReward('shortcut');
@@ -147,29 +148,29 @@ class TikTokRequiredFeatures {
 
         await this.silentLogin();
         if (!this.canUse('getShortcutMissionReward') || !this.canUse('addShortcut')) {
-            return this.unavailable('Please update TikTok to use Home Reward');
+            return this.unavailable(i18n.t('tiktok.update_home'));
         }
 
         try {
             const canReceiveReward = await this.queryMissionReward('getShortcutMissionReward');
             if (canReceiveReward) return this.grantReward('shortcut');
             if (this.hasClaimed('shortcut')) {
-                return { status: 'already_claimed', message: 'Home Reward already claimed' };
+                return { status: 'already_claimed', message: i18n.t('tiktok.home_claimed') };
             }
 
             await this.callVoidApi('addShortcut');
             return {
                 status: 'started',
-                message: 'Added. Reopen from the Home Screen to claim +3 Energy',
+                message: i18n.t('tiktok.home_started'),
             };
         } catch (error) {
             console.error('[TikTokRequired] Home screen shortcut failed', error);
-            return { status: 'error', message: 'Home Reward failed. Please try again' };
+            return { status: 'error', message: i18n.t('tiktok.home_failed') };
         }
     }
 
     async runRevisitMission(): Promise<TikTokMissionActionResult> {
-        if (!this.shouldShowEntries) return this.unavailable('Revisit Reward is unavailable');
+        if (!this.shouldShowEntries) return this.unavailable(i18n.t('tiktok.revisit_unavailable'));
 
         if (DEV && !this.api && this.config.enableDevMock) {
             return this.grantDevReward('revisit');
@@ -177,24 +178,24 @@ class TikTokRequiredFeatures {
 
         await this.silentLogin();
         if (!this.canUse('getEntranceMissionReward') || !this.canUse('startEntranceMission')) {
-            return this.unavailable('Please update TikTok to use Revisit Reward');
+            return this.unavailable(i18n.t('tiktok.update_revisit'));
         }
 
         try {
             const canReceiveReward = await this.queryMissionReward('getEntranceMissionReward');
             if (canReceiveReward) return this.grantReward('revisit');
             if (this.hasClaimed('revisit')) {
-                return { status: 'already_claimed', message: 'Revisit Reward already claimed' };
+                return { status: 'already_claimed', message: i18n.t('tiktok.revisit_claimed') };
             }
 
             await this.callVoidApi('startEntranceMission');
             return {
                 status: 'started',
-                message: 'Open the game from your TikTok Profile to claim +2 Energy',
+                message: i18n.t('tiktok.revisit_started'),
             };
         } catch (error) {
             console.error('[TikTokRequired] Profile revisit mission failed', error);
-            return { status: 'error', message: 'Revisit Reward failed. Please try again' };
+            return { status: 'error', message: i18n.t('tiktok.revisit_failed') };
         }
     }
 
@@ -251,7 +252,7 @@ class TikTokRequiredFeatures {
 
     private grantReward(type: TikTokMissionType): TikTokMissionActionResult {
         if (this.hasClaimed(type)) {
-            return { status: 'already_claimed', message: `${this.rewardName(type)} already claimed` };
+            return { status: 'already_claimed', message: i18n.t(type === 'shortcut' ? 'tiktok.home_claimed' : 'tiktok.revisit_claimed') };
         }
 
         const amount = this.rewardAmount(type);
@@ -260,11 +261,11 @@ class TikTokRequiredFeatures {
             sys.localStorage.setItem(CLAIM_STORAGE_KEYS[type], '1');
             return {
                 status: 'rewarded',
-                message: `${this.rewardName(type)}: +${amount} Energy`,
+                message: i18n.t('tiktok.reward_granted', { name: this.rewardName(type), amount }),
             };
         } catch (error) {
             console.error('[TikTokRequired] Failed to grant mission reward', error);
-            return { status: 'error', message: 'Reward delivery failed. Please try again' };
+            return { status: 'error', message: i18n.t('tiktok.delivery_failed') };
         }
     }
 
@@ -289,7 +290,7 @@ class TikTokRequiredFeatures {
     }
 
     private rewardName(type: TikTokMissionType): string {
-        return type === 'shortcut' ? 'Home Reward' : 'Revisit Reward';
+        return i18n.t(type === 'shortcut' ? 'tiktok.home_reward' : 'tiktok.revisit_reward');
     }
 
     private unavailable(message: string): TikTokMissionActionResult {
