@@ -3,6 +3,7 @@ import { LevelActionType, LevelResultType } from 'db://assets/app-builtin/app-ma
 import { app } from 'db://assets/app/app';
 import { platformService } from 'db://assets/app/platform';
 import { i18n } from 'db://assets/app/i18n';
+import { MAIN_LEVEL_COUNT } from 'db://assets/app/config.level';
 const { ccclass, property } = _decorator;
 
 @ccclass('SuccessDialog')
@@ -45,7 +46,7 @@ export class SuccessDialog extends Component {
             .start();
 
         //获取当前关卡值
-        const lv = 5 - app.store.game.getLevel();
+        const lv = 5 - app.store.game.getMaxUnlockedLevel();
         if (lv > 0) {
             this.specialTips.string = i18n.t('result.unlock_after', { count: lv });
             this.btnShare.on(Node.EventType.TOUCH_END, this.onClickShare, this);
@@ -67,8 +68,6 @@ export class SuccessDialog extends Component {
             levelTime: app.manager.globaldata.getLevelTime(),
         });
 
-        app.store.game.setLevel(app.store.game.level + 1);
-
         //判断是不是创意关卡
         if(app.manager.globaldata.getIsSpecialLevel()){
             //通知修改本地存储
@@ -76,8 +75,16 @@ export class SuccessDialog extends Component {
             this.btnNext.active = false;
             this.btnBackList.active = true;
         }else{
+            const completedLevel = app.store.game.level;
+            const nextLevel = Math.min(completedLevel + 1, MAIN_LEVEL_COUNT);
+            if (completedLevel <= app.store.game.getMaxUnlockedLevel()) {
+                app.store.game.unlockLevel(nextLevel);
+            } else if (nextLevel > completedLevel) {
+                app.store.game.unlockLevelWithAd(nextLevel);
+            }
+            app.store.game.setLevel(nextLevel);
             this.btnBackList.active = false;
-            this.btnNext.active = true;
+            this.btnNext.active = app.store.game.level < MAIN_LEVEL_COUNT;
         }
        
     }

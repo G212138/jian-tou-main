@@ -1,8 +1,8 @@
 /**
  * 小游戏平台广告位配置。
  *
- * TikTok Placement ID 可在 Developer Portal 的
- * Operation -> Monetization -> In-App Ads (IAAs) 中创建并启用。
+ * 抖音小游戏广告位需在抖音开放平台流量主后台创建并启用；
+ * 国际 TikTok 构建仍可复用同一套客户端接口。
  * 广告位 ID 不是密钥，可以随客户端代码发布。
  */
 export interface AdPlacementConfig {
@@ -11,11 +11,11 @@ export interface AdPlacementConfig {
 }
 
 /**
- * TikTok Mini Games 广告位。
+ * 抖音 / TikTok 小游戏广告位。
  *
  * 正式联调前必须替换为空字符串以外的真实 Placement ID：
- * - videoID: Rewarded ad Placement ID
- * - interstitialID: Interstitial ad Placement ID
+ * - videoID: 激励视频广告位 ID（当前游戏的核心广告能力）
+ * - interstitialID: 插屏广告位 ID（可选，受启动和间隔频控）
  */
 export const TIKTOK_AD_CONFIG: AdPlacementConfig = {
     videoID: 'ad7664534731647715348',

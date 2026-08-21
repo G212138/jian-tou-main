@@ -5,6 +5,11 @@ export default class Localkey implements IModel<Localkey> {
     //关卡
     public LEVEL_KEY = 'LEVEL_KEY';
 
+    /** 主线最高已解锁关卡，和当前选择关卡分开保存。 */
+    public MAX_UNLOCKED_LEVEL_KEY = 'MAX_UNLOCKED_LEVEL_KEY';
+    /** 通过激励视频单独解锁的主线关卡。 */
+    public AD_UNLOCKED_LEVELS_KEY = 'AD_UNLOCKED_LEVELS_KEY';
+
     public SpecialLevelKey = 'SpecialLevelKey';
 
     public TILI_KEY = 'TILI_KEY';

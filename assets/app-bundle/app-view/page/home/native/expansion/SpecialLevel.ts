@@ -15,7 +15,7 @@ export class SpecialLevel extends Component {
     }
 
     onClickSpecialLevel() {
-        const lv = app.store.game.getLevel();
+        const lv = app.store.game.getMaxUnlockedLevel();
         if (lv <= 5) {
             app.manager.ui.showToast(i18n.t('toast.creative_locked'));
             return;
@@ -30,5 +30,4 @@ export class SpecialLevel extends Component {
     }
     
 }
-
 

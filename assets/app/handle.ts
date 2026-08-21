@@ -6,6 +6,7 @@ import { platformService } from './platform';
 import { tiktokRequiredFeatures } from './tiktok.required';
 import type { TikTokMissionType } from './tiktok.required';
 import { i18n } from './i18n';
+import { MAIN_LEVEL_COUNT } from './config.level';
 
 /**
  * ccc除物理引擎等外的基础功能已经准备好了
@@ -43,9 +44,29 @@ export function appInited(app: App) {
         app.store.game.setLevel(1);
         console.log('appReady: 初始化关卡为1');
     } else {
-        app.store.game.setLevel(currentLevel);
-        console.log(`appReady: 发现已存在关卡值: ${currentLevel}`);
+        const normalizedLevel = Math.min(MAIN_LEVEL_COUNT, Math.max(1, Number(currentLevel) || 1));
+        app.store.game.setLevel(normalizedLevel);
+        console.log(`appReady: 发现已存在关卡值: ${normalizedLevel}`);
     }
+    const savedMaxLevel = Number(app.lib.storage.get(app.config.localkey.MAX_UNLOCKED_LEVEL_KEY)) || 1;
+    const migratedMaxLevel = Math.min(
+        MAIN_LEVEL_COUNT,
+        Math.max(savedMaxLevel, app.store.game.getLevel()),
+    );
+    app.store.game.setMaxUnlockedLevel(migratedMaxLevel);
+    const savedAdUnlockedLevels = app.lib.storage.get(app.config.localkey.AD_UNLOCKED_LEVELS_KEY);
+    let adUnlockedLevels: number[] = [];
+    if (savedAdUnlockedLevels) {
+        try {
+            const parsedLevels = JSON.parse(savedAdUnlockedLevels);
+            if (Array.isArray(parsedLevels)) adUnlockedLevels = parsedLevels;
+        } catch (error) {
+            console.warn('Invalid ad unlocked level data, resetting it.', error);
+        }
+    }
+    app.store.game.setAdUnlockedLevels(
+        adUnlockedLevels.filter((level) => Number(level) <= MAIN_LEVEL_COUNT),
+    );
     //分享初始化
     platformService.openMenuShare({
         title: i18n.t('share.default')
@@ -54,8 +75,7 @@ export function appInited(app: App) {
 
     const runtime = globalThis as any;
 
-    // TikTok Native Mini Games 官方命名空间为 TTMinis.game；
-    // Cocos/字节兼容构建也可能暴露 tt。
+    // 国际 TikTok 使用 TTMinis.game，国内抖音小游戏由 Cocos 暴露 tt。
     const isTikTokMiniGame = (): boolean => {
         const platform = sys.platform as any;
         const platforms = sys.Platform as any;
@@ -73,19 +93,22 @@ export function appInited(app: App) {
         return '';
     };
 
-    // TikTok 与微信广告位完全分开，禁止在 TikTok 环境回退到 adunit-* 微信广告位。
+    // 字节系小游戏与微信广告位完全分开，禁止回退到 adunit-* 微信广告位。
     const adConfig = isTikTokMiniGame()
         ? TIKTOK_AD_CONFIG
         : getWechatAdConfig(getAppID());
 
-    if (isTikTokMiniGame() && (!adConfig.videoID || !adConfig.interstitialID)) {
-        console.warn('[Ads] TikTok Placement ID 尚未配置，请填写 assets/app/config.ads.ts');
+    if (isTikTokMiniGame() && !adConfig.videoID) {
+        console.warn('[Ads] 抖音激励视频广告位未配置，请填写 assets/app/config.ads.ts');
+    }
+    if (isTikTokMiniGame() && !adConfig.interstitialID) {
+        console.info('[Ads] 抖音插屏广告位未配置，插屏将保持关闭');
     }
 
     adManager.init(adConfig);
 
-    // TikTok Native Mini Game 必接能力：静默登录、桌面快捷方式、个人主页回访。
-    // 服务内部会自行判断平台；Creator DEV 预览启用 mock，便于检查首页入口和奖励流程。
+    // 抖音必接能力：尽早监听启动参数、检测侧边栏并提供侧边栏复访入口。
+    // 国际 TikTok 仍兼容桌面快捷方式和个人主页任务；Creator DEV 预览启用 mock。
     tiktokRequiredFeatures.initialize({
         onGrantReward: (type: TikTokMissionType, amount: number) => {
             app.store.game.setTiLi(app.store.game.tili + amount);

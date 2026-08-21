@@ -23,8 +23,13 @@ interface ResolvedAdApi {
 }
 
 /**
- * Unified ad manager for TikTok Mini Games and the project's legacy mini-game targets.
- * Business code only talks to this class, independent of third-party SDK wrappers.
+ * 抖音 / TikTok 小游戏统一广告管理器。
+ *
+ * 合规约束：
+ * - 激励视频只由业务层明确的用户点击触发；
+ * - 抖音激励视频全局只保留一个实例；
+ * - 插屏启动后 30 秒内不展示，相邻插屏至少间隔 60 秒；
+ * - 激励视频结束后的 60 秒内不展示插屏。
  */
 class AdManager {
     private config: AdPlacementConfig = {
@@ -32,13 +37,26 @@ class AdManager {
         interstitialID: '',
     };
 
+    private readonly appStartedAt = Date.now();
+    private readonly interstitialStartupDelay = 30 * 1000;
+    private readonly interstitialMinInterval = 60 * 1000;
+    private readonly interstitialAfterRewardedDelay = 60 * 1000;
+
     private rewardedShowing = false;
+    private rewardedAd: any = null;
+    private rewardedAdSource: AdApiSource | null = null;
     private interstitialAd: any = null;
     private lastInterstitialShowTime = 0;
-    private readonly interstitialMinInterval = 30 * 1000;
+    private lastRewardedShowTime = 0;
 
     init(config: AdPlacementConfig) {
+        const placementChanged = this.config.videoID !== config.videoID;
         this.config = { ...config };
+        if (placementChanged && this.rewardedAd) {
+            this.destroyAd(this.rewardedAd);
+            this.rewardedAd = null;
+            this.rewardedAdSource = null;
+        }
     }
 
     checkRewardedVideoAd(): boolean {
@@ -52,8 +70,9 @@ class AdManager {
     }
 
     canShowInterstitialAd(): boolean {
-        if (!this.checkInterstitialAd() || this.interstitialAd) return false;
-        return Date.now() - this.lastInterstitialShowTime >= this.interstitialMinInterval;
+        return this.checkInterstitialAd()
+            && !this.interstitialAd
+            && this.getInterstitialWaitMs() <= 0;
     }
 
     showRewardedVideoAd(options: RewardedVideoOptions = {}) {
@@ -69,6 +88,7 @@ class AdManager {
             this.rewardedShowing = true;
             setTimeout(() => {
                 this.rewardedShowing = false;
+                this.lastRewardedShowTime = Date.now();
                 options.onShow?.();
                 options.onClose?.(true);
             }, 100);
@@ -96,12 +116,10 @@ class AdManager {
             source: resolved.source,
             adUnitId: this.config.videoID,
         });
+
         let ad: any;
         try {
-            ad = resolved.api.createRewardedVideoAd({ adUnitId: this.config.videoID });
-            if (!ad || typeof ad.show !== 'function') {
-                throw this.createError('AD_REWARDED_INSTANCE_INVALID', 'Invalid rewarded video instance');
-            }
+            ad = this.getOrCreateRewardedAd(resolved);
         } catch (error) {
             this.finishRewardedError(options, error);
             return;
@@ -109,6 +127,7 @@ class AdManager {
 
         this.rewardedShowing = true;
         let finished = false;
+        const keepInstance = resolved.source === 'tt';
 
         const cleanup = () => {
             ad.offClose?.(handleClose);
@@ -116,13 +135,18 @@ class AdManager {
         };
         const finish = () => {
             cleanup();
-            this.destroyAd(ad);
+            if (!keepInstance) this.destroyAd(ad);
             this.rewardedShowing = false;
         };
         const handleError = (error: any) => {
             if (finished) return;
             finished = true;
             finish();
+            if (keepInstance && this.rewardedAd === ad) {
+                this.destroyAd(ad);
+                this.rewardedAd = null;
+                this.rewardedAdSource = null;
+            }
             console.error('[AdManager] Rewarded video failed', error);
             options.onError?.(error);
         };
@@ -131,8 +155,7 @@ class AdManager {
             finished = true;
             finish();
 
-            // TikTok rewards only when isEnded is explicitly true. Older WeChat
-            // runtimes may omit the result after a completed, non-skippable video.
+            // 抖音仅在完整播放时发奖；旧微信运行时可能不返回关闭参数。
             const completed = result?.isEnded === true
                 || (resolved.source === 'wx' && result === undefined);
             options.onClose?.(completed);
@@ -143,28 +166,32 @@ class AdManager {
 
         this.displayAd(ad, resolved)
             .then(() => {
-                if (!finished) options.onShow?.();
+                if (finished) return;
+                this.lastRewardedShowTime = Date.now();
+                options.onShow?.();
             })
             .catch(handleError);
     }
 
     showInterstitialAd(options: InterstitialOptions = {}) {
+        if (this.interstitialAd) {
+            options.onError?.(this.createError(
+                'AD_INTERSTITIAL_ALREADY_SHOWING',
+                'An interstitial ad is already active',
+            ));
+            return;
+        }
+
+        const waitMs = this.getInterstitialWaitMs();
+        if (waitMs > 0) {
+            options.onError?.(this.createError(
+                'AD_INTERSTITIAL_COOLDOWN',
+                `Interstitial cooldown: ${waitMs}ms remaining`,
+            ));
+            return;
+        }
+
         if (DEV && !this.hasPlatformRuntime) {
-            if (this.interstitialAd) {
-                options.onError?.(this.createError(
-                    'AD_INTERSTITIAL_ALREADY_SHOWING',
-                    'An interstitial ad is already active',
-                ));
-                return;
-            }
-            const elapsed = Date.now() - this.lastInterstitialShowTime;
-            if (elapsed < this.interstitialMinInterval) {
-                options.onError?.(this.createError(
-                    'AD_INTERSTITIAL_COOLDOWN',
-                    `Interstitial cooldown: ${this.interstitialMinInterval - elapsed}ms remaining`,
-                ));
-                return;
-            }
             const mockAd = {};
             this.interstitialAd = mockAd;
             setTimeout(() => {
@@ -189,22 +216,6 @@ class AdManager {
             options.onError?.(this.createError(
                 'AD_INTERSTITIAL_API_UNAVAILABLE',
                 'Interstitial API is unavailable',
-            ));
-            return;
-        }
-        if (this.interstitialAd) {
-            options.onError?.(this.createError(
-                'AD_INTERSTITIAL_ALREADY_SHOWING',
-                'An interstitial ad is already active',
-            ));
-            return;
-        }
-
-        const elapsed = Date.now() - this.lastInterstitialShowTime;
-        if (elapsed < this.interstitialMinInterval) {
-            options.onError?.(this.createError(
-                'AD_INTERSTITIAL_COOLDOWN',
-                `Interstitial cooldown: ${this.interstitialMinInterval - elapsed}ms remaining`,
             ));
             return;
         }
@@ -272,6 +283,35 @@ class AdManager {
         return candidates.find(({ api }) => typeof api?.[apiName] === 'function') || null;
     }
 
+    private getOrCreateRewardedAd(resolved: ResolvedAdApi): any {
+        if (resolved.source === 'tt' && this.rewardedAd && this.rewardedAdSource === 'tt') {
+            return this.rewardedAd;
+        }
+
+        const ad = resolved.api.createRewardedVideoAd({ adUnitId: this.config.videoID });
+        if (!ad || typeof ad.show !== 'function') {
+            throw this.createError('AD_REWARDED_INSTANCE_INVALID', 'Invalid rewarded video instance');
+        }
+
+        if (resolved.source === 'tt') {
+            this.rewardedAd = ad;
+            this.rewardedAdSource = resolved.source;
+        }
+        return ad;
+    }
+
+    private getInterstitialWaitMs(): number {
+        const now = Date.now();
+        const startupRemaining = this.appStartedAt + this.interstitialStartupDelay - now;
+        const interstitialRemaining = this.lastInterstitialShowTime > 0
+            ? this.lastInterstitialShowTime + this.interstitialMinInterval - now
+            : 0;
+        const rewardedRemaining = this.lastRewardedShowTime > 0
+            ? this.lastRewardedShowTime + this.interstitialAfterRewardedDelay - now
+            : 0;
+        return Math.max(0, startupRemaining, interstitialRemaining, rewardedRemaining);
+    }
+
     private displayAd(ad: any, resolved: ResolvedAdApi): Promise<void> {
         if (resolved.needsLoad && typeof ad.load === 'function') {
             return Promise.resolve(ad.load())
@@ -279,8 +319,7 @@ class AdManager {
                 .then((): void => undefined);
         }
 
-        // TikTok Native Mini Games requires show() to remain in the user-action
-        // call stack. Evaluating ad.show() before Promise.resolve preserves it.
+        // 原生 TikTok 要求 show() 保持在用户点击调用栈中。
         try {
             return Promise.resolve(ad.show()).then((): void => undefined);
         } catch (error) {

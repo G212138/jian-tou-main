@@ -39,6 +39,39 @@ export default class Game implements IStore<Game> {
         return this.level;
     }
 
+    // 主线最高已解锁关卡；回选旧关不会覆盖进度。
+    maxUnlockedLevel = 1;
+    setMaxUnlockedLevel(v: number) {
+        this.maxUnlockedLevel = Math.max(1, Math.floor(v));
+        app.lib.storage.set(app.config.localkey.MAX_UNLOCKED_LEVEL_KEY, this.maxUnlockedLevel);
+    }
+    unlockLevel(v: number) {
+        if (v > this.maxUnlockedLevel) this.setMaxUnlockedLevel(v);
+    }
+    getMaxUnlockedLevel() {
+        return this.maxUnlockedLevel;
+    }
+
+    // 广告只解锁玩家点选的关卡，不会自动填平中间未解锁关卡。
+    adUnlockedLevels: number[] = [];
+    setAdUnlockedLevels(levels: number[]) {
+        this.adUnlockedLevels = Array.from(new Set(
+            (levels || [])
+                .map((level) => Math.floor(Number(level)))
+                .filter((level) => level > 0),
+        )).sort((a, b) => a - b);
+        app.lib.storage.set(
+            app.config.localkey.AD_UNLOCKED_LEVELS_KEY,
+            JSON.stringify(this.adUnlockedLevels),
+        );
+    }
+    unlockLevelWithAd(level: number) {
+        if (this.isLevelUnlocked(level)) return;
+        this.setAdUnlockedLevels([...this.adUnlockedLevels, level]);
+    }
+    isLevelUnlocked(level: number) {
+        return level <= this.maxUnlockedLevel || this.adUnlockedLevels.includes(level);
+    }
 
     daojishi:string = "";
     setDaoJiShi(v: string) {
