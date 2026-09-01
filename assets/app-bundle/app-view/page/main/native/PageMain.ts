@@ -1,4 +1,4 @@
-import { _decorator, Color, EventTouch, Graphics, Label, Node, ProgressBar, Sprite, tween, UITransform, UIOpacity } from 'cc';
+import { _decorator, Color, EventTouch, Graphics, Label, Node, ProgressBar, Sprite, tween, UITransform, UIOpacity, Vec3 } from 'cc';
 import BaseView from '../../../../../../extensions/app/assets/base/BaseView';
 import { IMiniViewNames } from '../../../../../app-builtin/app-admin/executor';
 import { bindStore } from 'db://assets/pkg-export/@gamex/cc-store';
@@ -33,6 +33,16 @@ export class PageMain extends BaseView {
 
     private levelProgress: ProgressBar = null;
     private levelProgressGraphics: Graphics = null;
+    private tipButton: Node = null;
+    private hammerButton: Node = null;
+    private tipButtonTargetPosition: Vec3 = null;
+    private hammerButtonTargetPosition: Vec3 = null;
+    private tipButtonTargetScale: Vec3 = null;
+    private hammerButtonTargetScale: Vec3 = null;
+    private toolButtonTimerStarted: boolean = false;
+    private toolButtonsRevealed: boolean = false;
+    private lastEscapedRopeCount: number = 0;
+    private readonly toolButtonRevealDelay: number = 10;
 
     // 初始化的相关逻辑写在这
     onLoad() {
@@ -42,6 +52,8 @@ export class PageMain extends BaseView {
         app.manager.event.on(app.config.eventname.ropeProgressChanged, this.onRopeProgressChanged, this);
         app.manager.event.on(app.config.eventname.themeChanged, this.applyTheme, this);
         app.manager.event.on(app.config.eventname.restart, this.updateTransformFeatureVisibility, this);
+        app.manager.event.on(app.config.eventname.restart, this.resetToolButtonEntrance, this);
+        app.manager.event.on(app.config.eventname.startGameDaoJiShi, this.startToolButtonIdleTimer, this);
         const levelProgressNode = this.node.getChildByPath('UI/LevelProgress');
         this.levelProgress = levelProgressNode?.getComponent(ProgressBar) ?? null;
         // 独立子节点避免与默认 Sprite 共用节点时发生 UI 渲染组件冲突。
@@ -67,6 +79,7 @@ export class PageMain extends BaseView {
         const zoomSliderNode = this.node.getChildByPath('UI/ZoomSlider');
         this.bindZoomIconHitAreas(zoomSliderNode);
         this.bindBackButtonFromPrefab();
+        this.prepareToolButtonEntrance();
         this.onRopeProgressChanged(
             app.manager.globaldata.getEscapeRopeCount(),
             app.manager.globaldata.getRopeCount(),
@@ -260,6 +273,12 @@ export class PageMain extends BaseView {
 
     /** 根据本关已消除箭头数，实时刷新顶部进度条。 */
     private onRopeProgressChanged(escapedCount: number, totalCount: number): void {
+        const hasCorrectAnswer = escapedCount > this.lastEscapedRopeCount;
+        this.lastEscapedRopeCount = escapedCount;
+        if (hasCorrectAnswer && this.toolButtonTimerStarted && !this.toolButtonsRevealed) {
+            this.scheduleToolButtonEntrance();
+        }
+
         if (!this.levelProgress) {
             return;
         }
@@ -267,6 +286,102 @@ export class PageMain extends BaseView {
         const progress = totalCount > 0 ? escapedCount / totalCount : 0;
         this.levelProgress.progress = Math.min(1, Math.max(0, progress));
         this.drawLevelProgressDivider(this.levelProgress.progress);
+    }
+
+    /** 记录两个道具按钮在预制体中的最终布局，并在开局时先将它们隐藏。 */
+    private prepareToolButtonEntrance(): void {
+        this.tipButton = this.node.getChildByPath('UI/daoJu/btn_tips');
+        this.hammerButton = this.node.getChildByPath('UI/daoJu/btn_hammer');
+        this.tipButtonTargetPosition = this.tipButton?.position.clone() ?? null;
+        this.hammerButtonTargetPosition = this.hammerButton?.position.clone() ?? null;
+        this.tipButtonTargetScale = this.tipButton?.scale.clone() ?? null;
+        this.hammerButtonTargetScale = this.hammerButton?.scale.clone() ?? null;
+        this.resetToolButtonEntrance();
+    }
+
+    /** 箭头绘制完成后开始计算连续未答对的等待时间。 */
+    private startToolButtonIdleTimer(): void {
+        this.toolButtonTimerStarted = true;
+        this.scheduleToolButtonEntrance();
+    }
+
+    /** 重新安排十秒后的入场任务，成功消除箭头时会从头计时。 */
+    private scheduleToolButtonEntrance(): void {
+        if (!this.toolButtonTimerStarted || this.toolButtonsRevealed) return;
+        this.unschedule(this.revealToolButtons);
+        this.scheduleOnce(this.revealToolButtons, this.toolButtonRevealDelay);
+    }
+
+    /** 隐藏道具按钮并恢复预制体中的目标位置，供开局和重新开始使用。 */
+    private resetToolButtonEntrance(): void {
+        this.unschedule(this.revealToolButtons);
+        this.toolButtonTimerStarted = false;
+        this.toolButtonsRevealed = false;
+        this.lastEscapedRopeCount = 0;
+
+        if (this.tipButton && this.tipButtonTargetPosition && this.tipButtonTargetScale) {
+            this.tipButton.setPosition(this.tipButtonTargetPosition);
+            this.tipButton.setScale(this.tipButtonTargetScale);
+            this.tipButton.active = false;
+        }
+        if (this.hammerButton && this.hammerButtonTargetPosition && this.hammerButtonTargetScale) {
+            this.hammerButton.setPosition(this.hammerButtonTargetPosition);
+            this.hammerButton.setScale(this.hammerButtonTargetScale);
+            this.hammerButton.active = false;
+        }
+    }
+
+    /** 让左右两个道具按钮分别从屏幕两侧滑入，并使用轻微回弹增强提示感。 */
+    private revealToolButtons(): void {
+        if (this.toolButtonsRevealed) return;
+        this.toolButtonsRevealed = true;
+        this.playToolButtonEntrance(
+            this.tipButton,
+            this.tipButtonTargetPosition,
+            this.tipButtonTargetScale,
+            -1,
+            0,
+        );
+        this.playToolButtonEntrance(
+            this.hammerButton,
+            this.hammerButtonTargetPosition,
+            this.hammerButtonTargetScale,
+            1,
+            0.08,
+        );
+    }
+
+    /** 播放单个道具按钮的侧边滑入、放大和回落动画。 */
+    private playToolButtonEntrance(
+        button: Node | null,
+        targetPosition: Vec3 | null,
+        targetScale: Vec3 | null,
+        direction: -1 | 1,
+        delay: number,
+    ): void {
+        if (!button || !targetPosition || !targetScale) return;
+
+        const startPosition = targetPosition.clone();
+        startPosition.x += direction * 150;
+        const startScale = new Vec3(
+            targetScale.x * 0.88,
+            targetScale.y * 0.88,
+            targetScale.z,
+        );
+        const overshootScale = new Vec3(
+            targetScale.x * 1.06,
+            targetScale.y * 1.06,
+            targetScale.z,
+        );
+
+        button.setPosition(startPosition);
+        button.setScale(startScale);
+        button.active = true;
+        tween(button)
+            .delay(delay)
+            .to(0.4, { position: targetPosition, scale: overshootScale }, { easing: 'cubicOut' })
+            .to(0.12, { scale: targetScale }, { easing: 'sineOut' })
+            .start();
     }
 
     /** 绘制兼具区域分割作用的圆头细线进度条。 */
@@ -426,5 +541,8 @@ export class PageMain extends BaseView {
         app.manager.event.off(app.config.eventname.ropeProgressChanged, this.onRopeProgressChanged, this);
         app.manager.event.off(app.config.eventname.themeChanged, this.applyTheme, this);
         app.manager.event.off(app.config.eventname.restart, this.updateTransformFeatureVisibility, this);
+        app.manager.event.off(app.config.eventname.restart, this.resetToolButtonEntrance, this);
+        app.manager.event.off(app.config.eventname.startGameDaoJiShi, this.startToolButtonIdleTimer, this);
+        this.unschedule(this.revealToolButtons);
     }
 }
