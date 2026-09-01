@@ -68,6 +68,12 @@ export class gameHeartManager extends Component {
         })
     }
 
+    protected onDestroy(): void {
+        app.manager.event.off(app.config.eventname.gameHeartJian, this.updateGameHeartJian, this);
+        app.manager.event.off(app.config.eventname.gameHeartAdd, this.updateGameHeartAdd, this);
+        app.manager.event.off(app.config.eventname.restart, this.resetHeart, this);
+    }
+
     
 }
 

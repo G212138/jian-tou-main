@@ -57,3 +57,6 @@ Thumbs.db
 
 .vscode/
 !.vscode/settings.json
+
+# 本地设计效果图不纳入游戏仓库
+/design/

@@ -40,7 +40,7 @@ export class RopeRun extends Component {
     private isFail: boolean = false;
 
     start() {
-        app.manager.event.on('ROPE_RUN', this.onRopeRun, this);
+        app.manager.event.on(app.config.eventname.ropeRun, this.onRopeRun, this);
        
         app.manager.event.on(app.config.eventname.beiZhuangJiShark, this.onBeiZhuangJiShark, this);
 
@@ -51,7 +51,7 @@ export class RopeRun extends Component {
     private currentTween: any = null;
 
     onDestroy() {
-        app.manager.event.off('ROPE_RUN', this.onRopeRun, this);
+        app.manager.event.off(app.config.eventname.ropeRun, this.onRopeRun, this);
         // 停止当前正在执行的tween动画
         if (this.currentTween) {
             this.currentTween.stop();
@@ -59,6 +59,7 @@ export class RopeRun extends Component {
         }
         
         app.manager.event.off(app.config.eventname.beiZhuangJiShark, this.onBeiZhuangJiShark, this);
+        app.manager.event.off(app.config.eventname.colorArrowChange, this.onChangeRopeColor, this);
     }   
 
 
@@ -266,6 +267,15 @@ export class RopeRun extends Component {
                     }
                 if(this.chazhenTimes == 0){
                    //前进一格
+                    const [releasedGridX, releasedGridY] = ropeConfig.ropeArrays[0];
+                    // 将箭头方向一并传给点阵，用于脉冲放大时产生轻微的同向位移。
+                    app.manager.event.emit(
+                        app.config.eventname.ropeDotPulse,
+                        releasedGridX,
+                        releasedGridY,
+                        dirX,
+                        dirY
+                    );
                     this.runOutTool.ropeArrays = newPathNodes;
                     //重置为2
                     this.chazhenTimes = 2;
@@ -277,10 +287,7 @@ export class RopeRun extends Component {
                 graphics.lineWidth = this.ropeManager.ropeThickness;
                 
                 // 绘制当前帧的绳子路径
-                graphics.moveTo(currentPathNodes[0].x, currentPathNodes[0].y);
-                for (let i = 1; i < currentPathNodes.length; i++) {
-                    graphics.lineTo(currentPathNodes[i].x, currentPathNodes[i].y);
-                }
+                this.ropeManager.drawSmoothPath(graphics, currentPathNodes);
                     
                 // 设置样式
                 graphics.lineCap = Graphics.LineCap.ROUND;
@@ -397,10 +404,7 @@ export class RopeRun extends Component {
             }
             
             // 绘制当前帧的绳子路径
-            graphics.moveTo(worldPoints[0].x, worldPoints[0].y);
-            for (let i = 1; i < worldPoints.length; i++) {
-                graphics.lineTo(worldPoints[i].x, worldPoints[i].y);
-            }
+            this.ropeManager.drawSmoothPath(graphics, worldPoints);
                     
             // 设置样式
             graphics.lineCap = Graphics.LineCap.ROUND;
@@ -548,10 +552,7 @@ export class RopeRun extends Component {
             graphics.clear();
             graphics.lineWidth = this.ropeManager.ropeThickness;
             // 绘制当前帧的绳子路径
-            graphics.moveTo(currentPathNodes[0].x, currentPathNodes[0].y);
-            for (let i = 1; i < currentPathNodes.length; i++) {
-                graphics.lineTo(currentPathNodes[i].x, currentPathNodes[i].y);
-            } 
+            this.ropeManager.drawSmoothPath(graphics, currentPathNodes);
             // 设置样式
             graphics.lineCap = Graphics.LineCap.ROUND;
             graphics.lineJoin = Graphics.LineJoin.ROUND;
@@ -593,10 +594,7 @@ export class RopeRun extends Component {
             graphics.clear();
             graphics.lineWidth = this.ropeManager.ropeThickness;
             // 绘制当前帧的绳子路径
-            graphics.moveTo(currentPathNodes[0].x, currentPathNodes[0].y);
-            for (let i = 1; i < currentPathNodes.length; i++) {
-                graphics.lineTo(currentPathNodes[i].x, currentPathNodes[i].y);
-            } 
+            this.ropeManager.drawSmoothPath(graphics, currentPathNodes);
             // 设置样式
             graphics.lineCap = Graphics.LineCap.ROUND;
             graphics.lineJoin = Graphics.LineJoin.ROUND;
@@ -722,13 +720,11 @@ export class RopeRun extends Component {
             //从default中随机取一个
             this.ropeColor = this.ropeManager.defaultColorList[Math.floor(Math.random()*this.ropeManager.defaultColorList.length)];
         }else{
-            //全局定义一个默认值吧后面
-            this.ropeColor = "#111433";
+            // 纯色箭头跟随浅色/深色主题切换，避免与背景混在一起。
+            this.ropeColor = this.ropeManager.getMonochromeRopeColor();
         }
 
         this.reDrawRope(this.runOutTool.ropeArrays, new Color(this.ropeColor));
         
     }
 }
-
-

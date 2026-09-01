@@ -30,6 +30,9 @@ export default class Localkey implements IModel<Localkey> {
     // 颜色箭头改变
     public isColorArrow = 'isColorArrow';
 
+    // 是否启用深色模式
+    public IsDarkMode = 'IS_DARK_MODE';
+
     // 创意关卡状态
     public LEVEL_STATUS_KEY = 'LEVEL_STATUS_KEY';
 }

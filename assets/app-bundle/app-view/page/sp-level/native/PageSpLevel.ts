@@ -72,6 +72,11 @@ export class PageSpLevel extends BaseView {
     onLoad() {
         //监听更新关卡状态事件
         app.manager.event.on(app.config.eventname.UpdateSPLevelStatus, this.onUpdateLevelStatus, this);
+        this.homeNode.on(Node.EventType.TOUCH_END, this.onClickHome, this);
+    }
+
+    private onClickHome(): void {
+        app.manager.ui.show<PageHome>({name: 'PageHome'});
     }
     //更新关卡状态
     private onUpdateLevelStatus(levelIndex: number, status: LevelStatus) {
@@ -173,10 +178,6 @@ export class PageSpLevel extends BaseView {
         this.showMiniViews({ views: this.miniViews });
         //初始化关卡状态
         this.initLevelStatus(); 
-        this.homeNode.on(Node.EventType.TOUCH_END, ()=>{
-            app.manager.ui.show<PageHome>({name: 'PageHome'});
-        }, this);
-
         const loading = app.manager.ui.showLoading();
         //加载关卡数据
          app.manager.loader.load({
@@ -195,5 +196,9 @@ export class PageSpLevel extends BaseView {
     onHide(result: undefined) {
         // app.manager.ui.show<PageSpLevel>({name: 'PageSpLevel', onHide:(result) => { 接收到return的数据，并且有类型提示 }})
         return result;
+    }
+
+    protected onDestroy(): void {
+        app.manager.event.off(app.config.eventname.UpdateSPLevelStatus, this.onUpdateLevelStatus, this);
     }
 }

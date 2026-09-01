@@ -59,7 +59,7 @@ export class DaoJu extends Component {
         });
     }   
     private onDaoJuHammerUse() {
-      
+
         // 暂停倒计时
         app.manager.event.emit(app.config.eventname.pauseCountDown);
         adManager.showRewardedVideoAd({
@@ -97,6 +97,10 @@ export class DaoJu extends Component {
     private onDaoJuHammerUseOver() {
         this.DaoJuHammerTip.active = false;
         app.manager.globaldata.setDaoJuHammerUse(false);
+    }
+
+    protected onDestroy(): void {
+        app.manager.event.off(app.config.eventname.DaoJuHammerUseOver, this.onDaoJuHammerUseOver, this);
     }
     
 }

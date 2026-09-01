@@ -27,8 +27,20 @@ export default class Eventname implements IModel<Eventname> {
     // 恢复生命值
     public startGameDaoJiShi = 'startGameDaoJiShi';
 
+    // 箭头线段移动
+    public ropeRun = 'ROPE_RUN';
+
+    // 箭头消除进度发生变化
+    public ropeProgressChanged = 'ROPE_PROGRESS_CHANGED';
+
+    // 显示失败重启弹窗
+    public showRestartDialog = 'ShowRestartDialog';
+
     //DianTool  绘制辅助点点
     public DianTool = 'DianTool';
+
+    // 箭头成功移出时，依次触发带方向的辅助点脉冲
+    public ropeDotPulse = 'ROPE_DOT_PULSE';
 
     // 引导
     public showGuideOne = 'showGuideOne';
@@ -53,6 +65,9 @@ export default class Eventname implements IModel<Eventname> {
 
     // 颜色箭头改变
     public colorArrowChange = 'colorArrowChange';
+
+    // 深色模式改变
+    public themeChanged = 'THEME_CHANGED';
 
     // 开始创意关卡
     public StartSpecialLevel = 'StartSpecialLevel';

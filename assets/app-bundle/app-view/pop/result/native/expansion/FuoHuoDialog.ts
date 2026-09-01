@@ -45,7 +45,7 @@ export class FuoHuoDialog extends Component {
     }
 
     private onClickClose() {
-        app.manager.event.emit("ShowRestartDialog","NoHeart");
+        app.manager.event.emit(app.config.eventname.showRestartDialog, "NoHeart");
     }
 
     private onClickAd() {

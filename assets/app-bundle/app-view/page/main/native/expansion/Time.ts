@@ -142,6 +142,11 @@ export class Time extends Component {
      * 组件销毁时取消所有定时器
      */
     onDestroy(): void {
+        app.manager.event.off(app.config.eventname.startGameDaoJiShi, this.startCountdown, this);
+        app.manager.event.off(app.config.eventname.timeAdd, this.addTime, this);
+        app.manager.event.off(app.config.eventname.restart, this.resetTimer, this);
+        app.manager.event.off(app.config.eventname.pauseCountDown, this.pauseCountDown, this);
+        app.manager.event.off(app.config.eventname.resumeCountDown, this.resumeCountDown, this);
         this.unscheduleAllCallbacks();
     }
 
@@ -152,5 +157,4 @@ export class Time extends Component {
         this.startCountdown();
     }
 }
-
 

@@ -36,6 +36,13 @@ export class GlobaldataManager extends BaseManager {
         }else{
             this.newUser = this.newUser as boolean;
         }
+
+        // 初始化深色模式，首次进入时默认使用浅色模式。
+        const savedDarkMode = app.lib.storage.get(app.config.localkey.IsDarkMode);
+        this.isDarkMode = savedDarkMode === true;
+        if (savedDarkMode === undefined || savedDarkMode === null) {
+            this.setIsDarkMode(false);
+        }
      }
 
     // [无序] 自身初始化完成, init执行完毕后被调用
@@ -48,12 +55,19 @@ export class GlobaldataManager extends BaseManager {
         //第一关需要启动
         this.startLevelTimeTimer();
 
-        app.manager.event.on(app.config.eventname.restart, this.startLevelTimeTimer, this);
-         app.manager.event.on(app.config.eventname.restart, ()=>{
-            this.setAlreadyDrawRopeCount(0);
-            this.setEscapeRopeCount(0);
-         }, this);
+        app.manager.event.on(app.config.eventname.restart, this.onRestart, this);
      }
+
+    private onRestart(): void {
+        this.startLevelTimeTimer();
+        this.setAlreadyDrawRopeCount(0);
+        this.setEscapeRopeCount(0);
+    }
+
+    protected onDestroy(): void {
+        app.manager.event.off(app.config.eventname.restart, this.onRestart, this);
+        this.stopLevelTimeTimer();
+    }
 
     // [无序] 所有manager初始化完成
     protected onFinished() { }
@@ -146,9 +160,21 @@ export class GlobaldataManager extends BaseManager {
     escapeRopeCount: number = 0;
     setEscapeRopeCount(count: number) {
         this.escapeRopeCount = count;
+        // 统一通知游戏界面刷新箭头消除进度，避免各类消除方式分别维护 UI。
+        app.manager.event.emit(
+            app.config.eventname.ropeProgressChanged,
+            this.escapeRopeCount,
+            this.ropeCount,
+        );
     }
     addEscapeRopeCount(count: number) {
         this.escapeRopeCount += count;
+        // 普通移出和锤子消除都会经过这里，因此两种方式都能实时更新进度条。
+        app.manager.event.emit(
+            app.config.eventname.ropeProgressChanged,
+            this.escapeRopeCount,
+            this.ropeCount,
+        );
     }
     getEscapeRopeCount() {
         return this.escapeRopeCount;
@@ -198,16 +224,26 @@ export class GlobaldataManager extends BaseManager {
     /**
     *  游戏内提前加载推荐组件数据
     */
-    public async loadRecommend() {
+    public async loadRecommend(): Promise<boolean> {
+        const runtime = globalThis as any;
+        const platformApi = [runtime.TTMinis?.game, runtime.TTMinis, runtime.tt, runtime.wx]
+            .find((api) => typeof api?.createPageManager === 'function');
         //@ts-ignore
-        if (!wx.createPageManager) {
-            return;
+        if (typeof platformApi?.createPageManager !== 'function') {
+            return false;
         }
         //@ts-ignore
-        this.recommendPageManager = wx.createPageManager();
-        await this.recommendPageManager.load({
+        this.recommendPageManager = platformApi.createPageManager();
+        try {
+            await this.recommendPageManager.load({
             openlink: 'TWFRCqV5WeM2AkMXhKwJ03MhfPOieJfAsvXKUbWvQFQtLyyA5etMPabBehga950uzfZcH3Vi3QeEh41xRGEVFw', // 推荐组件OPENLINK常量，直接复制即可，无需理解含义
-        });
+            });
+            return true;
+        } catch (error) {
+            this.recommendPageManager = null;
+            console.warn('[GlobaldataManager] Failed to load recommend page', error);
+            return false;
+        }
     }
 
     /**
@@ -218,7 +254,16 @@ export class GlobaldataManager extends BaseManager {
         if (!this.recommendPageManager) {
             await this.loadRecommend();
         }
-        return await this.recommendPageManager.show();
+        if (typeof this.recommendPageManager?.show !== 'function') {
+            return false;
+        }
+
+        try {
+            return await this.recommendPageManager.show();
+        } catch (error) {
+            console.warn('[GlobaldataManager] Failed to show recommend page', error);
+            return false;
+        }
     }
 
 
@@ -256,6 +301,19 @@ export class GlobaldataManager extends BaseManager {
     }
     getIsColorArrow() {
         return app.lib.storage.get(app.config.localkey.isColorArrow) as boolean;
+    }
+
+    private isDarkMode: boolean = false;
+
+    /** 保存深色模式状态，供所有页面在重新进入时继续使用。 */
+    setIsDarkMode(enabled: boolean): void {
+        this.isDarkMode = enabled;
+        app.lib.storage.set(app.config.localkey.IsDarkMode, enabled);
+    }
+
+    /** 获取当前深色模式状态。 */
+    getIsDarkMode(): boolean {
+        return this.isDarkMode;
     }
 
 

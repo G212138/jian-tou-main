@@ -77,6 +77,7 @@ const staticTranslations: Array<{ 'zh-CN': string; 'en-US': string }> = [
     { 'zh-CN': '音 效', 'en-US': 'Sound' },
     { 'zh-CN': '震 动', 'en-US': 'Vibration' },
     { 'zh-CN': '彩色箭头', 'en-US': 'Color Arrows' },
+    { 'zh-CN': '深色模式', 'en-US': 'Dark Mode' },
     { 'zh-CN': '返回主页', 'en-US': 'Home' },
     { 'zh-CN': '重新开始', 'en-US': 'Restart' },
     { 'zh-CN': '设置', 'en-US': 'Settings' },

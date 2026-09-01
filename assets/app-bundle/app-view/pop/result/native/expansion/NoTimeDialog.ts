@@ -44,7 +44,7 @@ export class NoTimeDialog extends Component {
     }
     
     private onClickClose() {
-        app.manager.event.emit("ShowRestartDialog","NoTime");
+        app.manager.event.emit(app.config.eventname.showRestartDialog, "NoTime");
     }
     
     private onClickAd() {

@@ -27,6 +27,14 @@ export class Guide extends Component {
         app.manager.event.on(app.config.eventname.guideTwoEnd, this.guideTwoEnd, this);
     }
 
+    protected onDestroy(): void {
+        app.manager.event.off(app.config.eventname.showGuideOne, this.showGuideOne, this);
+        app.manager.event.off(app.config.eventname.guideOneMove, this.guideOneMove, this);
+        app.manager.event.off(app.config.eventname.showGuideTwo, this.showGuideTwo, this);
+        app.manager.event.off(app.config.eventname.guideOneEnd, this.guideOneEnd, this);
+        app.manager.event.off(app.config.eventname.guideTwoEnd, this.guideTwoEnd, this);
+    }
+
     // 显示新手引导一
     private showGuideOne() {
           // 移除新手引导一
@@ -82,5 +90,4 @@ export class Guide extends Component {
         }
     }
 }
-
 

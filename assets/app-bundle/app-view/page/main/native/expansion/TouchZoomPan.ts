@@ -9,10 +9,10 @@ export class TouchZoomPan extends Component {
     targetNode: Node = null!;
 
     @property({ tooltip: "最小缩放值" })
-    minScale: number = 0.7;
+    minScale: number = 0.8;
 
     @property({ tooltip: "最大缩放值" })
-    maxScale: number = 1.5;
+    maxScale: number = 2.0;
 
     @property({ tooltip: "鼠标滚轮缩放速度" })
     wheelSpeed: number = 0.1;
@@ -73,6 +73,7 @@ export class TouchZoomPan extends Component {
     }
 
     private onTouchStart(event: EventTouch) {
+        if (!this.isTransformFeatureEnabled()) return;
         // 这里的逻辑其实可以简化，主要逻辑放在 Move 里处理会更稳健
         // 仅仅用来清理状态
         if (event.getTouches().length < 2) {
@@ -81,6 +82,7 @@ export class TouchZoomPan extends Component {
     }
 
     private onTouchMove(event: EventTouch) {
+        if (!this.isTransformFeatureEnabled()) return;
         const touches = event.getTouches();
 
         // =========================
@@ -147,6 +149,7 @@ export class TouchZoomPan extends Component {
     }
 
     private onMouseWheel(event: EventMouse) {
+        if (!this.isTransformFeatureEnabled()) return;
         const scrollY = event.getScrollY();
         const scaleDiff = (scrollY > 0 ? 1 : -1) * this.wheelSpeed;
         let newScale = this.targetNode.scale.x + scaleDiff;
@@ -163,6 +166,7 @@ export class TouchZoomPan extends Component {
 
     /** 底部拖动条回调：把 0-1 的进度映射为实际缩放倍率。 */
     private onZoomSliderChanged(slider: Slider) {
+        if (!this.isTransformFeatureEnabled()) return;
         const newScale = this.minScale + (this.maxScale - this.minScale) * slider.progress;
         this.applyScale(newScale, false);
 
@@ -191,6 +195,11 @@ export class TouchZoomPan extends Component {
         this._zoomSlider.progress = range > 0
             ? Math.max(0, Math.min(1, (this.targetNode.scale.x - this.minScale) / range))
             : 0;
+    }
+
+    /** 普通第一关关闭玩家主动缩放和移动，创意关卡不受主线关卡编号限制。 */
+    private isTransformFeatureEnabled(): boolean {
+        return app.manager.globaldata.getIsSpecialLevel() || app.store.game.getLevel() !== 1;
     }
 
     /**

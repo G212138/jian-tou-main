@@ -123,6 +123,7 @@ private checkPosition(){
 }
 
 onDestroy() {
+    app.manager.event.off(app.config.eventname.restart, this._onRestart, this);
 
     // 注销触摸事件
 

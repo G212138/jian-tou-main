@@ -77,6 +77,10 @@ export class PageHome extends BaseView {
         this.bindTikTokRequiredEntries();
         this.createLevelSelectEntry();
         game.on(Game.EVENT_SHOW, this.onPlatformShow, this);
+        this.btnStart.on(Node.EventType.TOUCH_END, this.startSelectedMainLevel, this);
+        this.settingBtn.on(Node.EventType.TOUCH_END, this.onClickSetting, this);
+        this.btnShare.on(Node.EventType.TOUCH_END, this.onClickShare, this);
+        this.btnShouChang.on(Node.EventType.TOUCH_END, this.onClickShouChang, this);
     }
 
     // 点击设置按钮
@@ -93,11 +97,6 @@ export class PageHome extends BaseView {
         this.showMiniViews({ views: this.miniViews });
 
         this.btnStart.active = true;
-        this.btnStart.on(Node.EventType.TOUCH_END, this.startSelectedMainLevel, this);
-        this.settingBtn.on(Node.EventType.TOUCH_END, this.onClickSetting, this);
-        this.btnShare.on(Node.EventType.TOUCH_END, this.onClickShare, this);
-        this.btnShouChang.on(Node.EventType.TOUCH_END, this.onClickShouChang, this);
-
         //创意关卡
         if(app.store.game.getMaxUnlockedLevel() > 5){
             this.specialDesc.active = false;

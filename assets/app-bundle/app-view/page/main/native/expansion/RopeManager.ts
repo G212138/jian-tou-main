@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Graphics, Vec2, Color, Label, Sprite, Layers, UITransform, JsonAsset, EventTouch, Input, instantiate, Prefab, v3, TextAsset, tween, CCFloat, CCString } from 'cc';
+import { _decorator, Component, Node, Graphics, Vec2, Color, Label, Sprite, Layers, UITransform, JsonAsset, EventTouch, Input, instantiate, Prefab, v3, TextAsset, tween, Tween, CCFloat, CCString } from 'cc';
 import { app } from 'db://assets/app/app';
 import { RopeRun } from './RopeRun';
 const { ccclass, property } = _decorator;
@@ -28,7 +28,7 @@ export class RopeManager extends Component {
     // ceilPrefab: Prefab = null;
 
     @property({ type: CCFloat , tooltip: "绳子端点圆角半径" })
-    ropeCornerRadius: number = 3; // 圆角效果，0 为直角
+    ropeCornerRadius: number = 2; // 圆角效果，0 为直角
 
     // 新增：箭头样式配置（可在编辑器中调整）
     @property({ type: CCFloat , tooltip: "箭头三角形边长（像素）" })
@@ -59,6 +59,9 @@ export class RopeManager extends Component {
 
     private drawGeneration: number = 0;
     private completedDrawCount: number = 0;
+    private readonly initialDrawDuration: number = 1;
+    private isInitialDrawing: boolean = true;
+    private isInitialScaleCompleted: boolean = false;
 
     onLoad() {
         //监听restart事件 和 下一关事件
@@ -80,6 +83,8 @@ export class RopeManager extends Component {
 
     }
     onDestroy() {
+        app.manager.event.off(app.config.eventname.restart, this.start, this);
+        app.manager.event.off(app.config.eventname.DaoJuTipUse, this.onDaoJuTipUse, this);
         // 移除节点事件监听
         this.node.off(Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
         this.node.off(Node.EventType.TOUCH_START, this.onTouchStart, this);
@@ -111,7 +116,7 @@ export class RopeManager extends Component {
         const gridPos = this.worldToGridPos(worldPos.x, worldPos.y);
         // console.log(`RopeManager: 转换结果 - 格子坐标: (${gridPos.x}, ${gridPos.y})`);
 
-        app.manager.event.emit('ROPE_RUN', gridPos);
+        app.manager.event.emit(app.config.eventname.ropeRun, gridPos);
     }
 
     // 动态调整格子尺寸，适配屏幕
@@ -124,7 +129,8 @@ export class RopeManager extends Component {
         this.cellPixelSize = Math.min(maxCellWidth, maxCellHeight) * 0.9; // 留10%边距
         app.manager.event.emit(app.config.eventname.DianTool,this.gridWidth,this.gridHeight,this);
 
-        this.ropeThickness = Math.min(Math.max(this.cellPixelSize*0.4,4),14);
+        // 最大线宽收窄到 12px，让密集关卡更清爽，同时保留 4px 的最小可读线宽。
+        this.ropeThickness = Math.min(Math.max(this.cellPixelSize * 0.4, 4), 12);
         this.arrowSize = this.ropeThickness * 2;
 
         console.log(`RopeManager: 调整后的格子尺寸为 ${this.cellPixelSize}px`);
@@ -172,19 +178,6 @@ export class RopeManager extends Component {
         self.geneArray(self.currentLevel.ropes);
         
         self.drawAllRopes();
-
-        //如果是第一关，需要判断是否需要引导
-        if(currentLevelId == 1){
-            if(app.manager.globaldata.getNeedGuideOne()){
-                //需要引导
-                this.showGuideOne();
-            }
-        }else if(currentLevelId == 2){
-            if(app.manager.globaldata.getNeedGuideTwo()){
-                //需要引导
-                this.showGuideTwo();
-            }
-        }
        
     }
 
@@ -216,7 +209,10 @@ export class RopeManager extends Component {
 
         const drawGeneration = ++this.drawGeneration;
         this.completedDrawCount = 0;
+        this.isInitialDrawing = true;
+        this.isInitialScaleCompleted = false;
         app.manager.globaldata.setAlreadyDrawRopeCount(0);
+        this.playInitialScaleAnimation(drawGeneration);
 
         // 清空格子容器（删除之前绘制的所有绳子）
         this.gridContainer.destroyAllChildren();
@@ -225,16 +221,50 @@ export class RopeManager extends Component {
          
         for(let i = 0; i < this.currentLevel.ropes.length; i++){
             const ropeConfig = this.currentLevel.ropes[i];
-            //异步执行
-            setTimeout(() => {
-                if (drawGeneration !== this.drawGeneration) return;
-                this.drawSingleRope(ropeConfig, i, drawGeneration);
-            }, Math.random()*1000);
-
-
+            // 所有箭头同时开始绘制，避免随机延迟破坏统一的一秒开场节奏。
+            this.drawSingleRope(ropeConfig, i, drawGeneration);
         }
-        
-        
+
+        // 空关卡没有箭头回调，仍需在缩放动画完成后正常结束初始化。
+        this.tryCompleteInitialDrawing(drawGeneration);
+
+    }
+
+    /** 让箭头和点阵区域在绘制期间从半尺寸平滑放大到正常尺寸，并记录缩放完成状态。 */
+    private playInitialScaleAnimation(drawGeneration: number): void {
+        Tween.stopAllByTarget(this.gridContainer);
+        this.gridContainer.setScale(v3(0.5, 0.5, 1));
+        tween(this.gridContainer)
+            .to(this.initialDrawDuration, { scale: v3(1, 1, 1) }, { easing: 'sineOut' })
+            .call(() => {
+                if (drawGeneration !== this.drawGeneration) return;
+                this.isInitialScaleCompleted = true;
+                this.tryCompleteInitialDrawing(drawGeneration);
+            })
+            .start();
+    }
+
+    /** 仅在所有箭头与整体缩放都完成后启动倒计时并显示对应新手引导。 */
+    private tryCompleteInitialDrawing(drawGeneration: number): void {
+        if (drawGeneration !== this.drawGeneration || !this.isInitialDrawing) return;
+        if (!this.currentLevel || !this.isInitialScaleCompleted) return;
+        if (this.completedDrawCount < this.currentLevel.ropes.length) return;
+
+        this.isInitialDrawing = false;
+        this.gridContainer.setScale(v3(1, 1, 1));
+        app.manager.event.emit(app.config.eventname.startGameDaoJiShi);
+
+        const currentLevelId = app.store.game.getLevel();
+        if (currentLevelId === 1 && app.manager.globaldata.getNeedGuideOne()) {
+            this.showGuideOne();
+        } else if (currentLevelId === 2 && app.manager.globaldata.getNeedGuideTwo()) {
+            this.showGuideTwo();
+        }
+    }
+
+    /** 根据当前主题返回纯色箭头颜色，保证浅色和深色背景都有足够对比度。 */
+    public getMonochromeRopeColor(): string {
+        return app.manager.globaldata.getIsDarkMode() ? '#ABB7F4' : '#111433';
     }
 
     // 绘制单条绳子（连续线段+起点标记）
@@ -245,7 +275,7 @@ export class RopeManager extends Component {
             //从default中随机取一个
             this.strokeColor = this.defaultColorList[Math.floor(Math.random()*this.defaultColorList.length)];
         }else{
-            this.strokeColor ="#111433";
+            this.strokeColor = this.getMonochromeRopeColor();
         }
 
         // 创建绳子节点
@@ -279,6 +309,54 @@ export class RopeManager extends Component {
 
     }
 
+    /**
+     * 使用二次贝塞尔曲线绘制带圆角的折线路径。
+     * 仅柔化转弯处，直线方向和格子坐标保持不变，避免改变关卡判定。
+     */
+    public drawSmoothPath(graphics: Graphics, points: Vec2[], cornerRadius?: number): void {
+        if (points.length === 0) return;
+
+        graphics.moveTo(points[0].x, points[0].y);
+        if (points.length === 1) return;
+
+        // 圆角只做轻微柔化，避免密集路径的拐弯看起来过度弯曲。
+        const preferredRadius = cornerRadius ?? Math.min(this.ropeCornerRadius, this.ropeThickness * 0.24);
+        for (let i = 1; i < points.length - 1; i++) {
+            const previous = points[i - 1];
+            const current = points[i];
+            const next = points[i + 1];
+            const incomingX = current.x - previous.x;
+            const incomingY = current.y - previous.y;
+            const outgoingX = next.x - current.x;
+            const outgoingY = next.y - current.y;
+            const incomingLength = Math.hypot(incomingX, incomingY);
+            const outgoingLength = Math.hypot(outgoingX, outgoingY);
+
+            if (incomingLength < 0.001 || outgoingLength < 0.001) {
+                graphics.lineTo(current.x, current.y);
+                continue;
+            }
+
+            const cross = incomingX * outgoingY - incomingY * outgoingX;
+            if (Math.abs(cross) < 0.001) {
+                graphics.lineTo(current.x, current.y);
+                continue;
+            }
+
+            const radius = Math.min(preferredRadius, incomingLength * 0.14, outgoingLength * 0.14);
+            const enterX = current.x - incomingX / incomingLength * radius;
+            const enterY = current.y - incomingY / incomingLength * radius;
+            const exitX = current.x + outgoingX / outgoingLength * radius;
+            const exitY = current.y + outgoingY / outgoingLength * radius;
+
+            graphics.lineTo(enterX, enterY);
+            graphics.quadraticCurveTo(current.x, current.y, exitX, exitY);
+        }
+
+        const lastPoint = points[points.length - 1];
+        graphics.lineTo(lastPoint.x, lastPoint.y);
+    }
+
     // 用 Graphics 绘制绳子路径和起点箭头（连续线段+圆角端点+箭头）
     drawRopePath(graphics: Graphics, points: Vec2[], ropeNode: Node, ropeConfig: [number, number][], index: number, strokeColor: string, drawGeneration: number) {
         const self = this;
@@ -291,17 +369,43 @@ export class RopeManager extends Component {
         // console.log(`RopeManager: 清空画布，开始绘制路径`);
         
         let currentIndex = 1; // 当前绘制到的点索引
+        let elapsedDrawTime = 0;
         // 第一部分：绘制绳子路径
         graphics.moveTo(points[0].x, points[0].y); // 移动到起点
         graphics.lineCap = Graphics.LineCap.ROUND; // 端点圆角
         graphics.lineJoin = Graphics.LineJoin.ROUND; // 转角圆角
          
         // 逐帧绘制（每帧画一个线段）
-        const drawStep = () => {
+        const drawStep = (deltaTime: number = 1 / 60) => {
+                elapsedDrawTime = Math.min(this.initialDrawDuration, elapsedDrawTime + deltaTime);
+                const drawProgress = this.initialDrawDuration > 0
+                    ? elapsedDrawTime / this.initialDrawDuration
+                    : 1;
+                const targetIndex = Math.min(
+                    points.length,
+                    1 + Math.ceil((points.length - 1) * drawProgress),
+                );
+
+                // 每帧按时间进度补齐若干线段，长路径也能在限定时间内绘制完成。
+                while (currentIndex < targetIndex) {
+                    graphics.lineTo(points[currentIndex].x, points[currentIndex].y);
+                    currentIndex++;
+                }
+                graphics.stroke();
+
                 if (currentIndex >= points.length) {
                     // 绘制完成，停止调度
                     graphics.unschedule(drawStep);
                     if (drawGeneration !== self.drawGeneration) return;
+
+                    // 初始绘制结束后重新生成圆角路径，消除直角折线的生硬感。
+                    graphics.clear();
+                    graphics.lineWidth = self.ropeThickness;
+                    graphics.lineCap = Graphics.LineCap.ROUND;
+                    graphics.lineJoin = Graphics.LineJoin.ROUND;
+                    graphics.strokeColor = new Color(strokeColor);
+                    self.drawSmoothPath(graphics, points);
+                    graphics.stroke();
 
                     // 绘制箭头
                     drawArrow();
@@ -309,22 +413,17 @@ export class RopeManager extends Component {
                     self.completedDrawCount++;
                     app.manager.globaldata.setAlreadyDrawRopeCount(self.completedDrawCount);
 
-                    // 最新批次的全部箭头绘制完成后再开始倒计时。
+                    // 最新批次的全部箭头与整体缩放都完成后再启动倒计时和引导。
                     if (self.completedDrawCount >= self.currentLevel.ropes.length) {
-                        app.manager.event.emit(app.config.eventname.startGameDaoJiShi);
+                        self.tryCompleteInitialDrawing(drawGeneration);
                     }
                 return;
                 }
 
-                // 同步绘制当前线段（保证顺序）
-                 graphics.lineTo(points[currentIndex].x, points[currentIndex].y);
-                graphics.stroke(); // 提交绘制（可选：也可最后统一stroke）
-        
-                currentIndex++;
             };
 
-            // 启动逐帧绘制（每50ms画一段，和原setTimeout间隔一致）
-        graphics.schedule(drawStep, 50 / 1000); // schedule的间隔单位是秒
+        // 每帧按总进度绘制，让完整路径与区域放大动画同时在 1 秒内结束。
+        graphics.schedule(drawStep, 0);
 
         // // 绘制线段：连接所有路径节点
         // for (let i = 1; i < points.length; i++) {
@@ -452,7 +551,7 @@ export class RopeManager extends Component {
     // 绳子点击处理函数
     private onRopeClick(ropeConfig: [number, number][],index:number) {
         console.log(`RopeManager: 点击绳子索引 ${index}`);
-        app.manager.event.emit('ROPE_RUN', index);
+        app.manager.event.emit(app.config.eventname.ropeRun, index);
     }
 
     

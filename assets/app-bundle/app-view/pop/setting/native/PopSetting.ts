@@ -12,6 +12,7 @@ export class PopSetting extends BaseView {
     @property(Node) music: Node = null;
     @property(Node) vibrate: Node = null;
     @property(Node) colorArrow: Node = null;
+    @property(Node) darkMode: Node = null;
 
     @property(SpriteFrame)
     On: SpriteFrame = null;
@@ -101,6 +102,17 @@ export class PopSetting extends BaseView {
         app.manager.event.emit(app.config.eventname.colorArrowChange);
     }
 
+    /** 切换深色模式并立即通知游戏背景、点阵和纯色箭头刷新。 */
+    darkMode_click() {
+        const enabled = !app.manager.globaldata.getIsDarkMode();
+        app.manager.globaldata.setIsDarkMode(enabled);
+        this.darkMode.getComponent(Sprite).spriteFrame = enabled
+            ? this.enabledSpriteFrame
+            : this.disabledSpriteFrame;
+        app.manager.event.emit(app.config.eventname.themeChanged);
+        app.manager.event.emit(app.config.eventname.colorArrowChange);
+    }
+
 
     private get enabledSpriteFrame(): SpriteFrame {
         return i18n.isEnglish && this.OnEnglish ? this.OnEnglish : this.On;
@@ -123,6 +135,11 @@ export class PopSetting extends BaseView {
         this.colorArrow.getComponent(Sprite).spriteFrame = app.manager.globaldata.getIsColorArrow()
             ? this.enabledSpriteFrame
             : this.disabledSpriteFrame;
+        if (this.darkMode) {
+            this.darkMode.getComponent(Sprite).spriteFrame = app.manager.globaldata.getIsDarkMode()
+                ? this.enabledSpriteFrame
+                : this.disabledSpriteFrame;
+        }
     }
     private bindLanguageToggles(): void {
         const languageRow = this.settingLayout?.getChildByName('bg_language');
@@ -165,7 +182,7 @@ export class PopSetting extends BaseView {
         const enButton = languageRow?.getChildByName('EnButton');
         const rowFontSize = i18n.isEnglish ? 34 : 40;
 
-        ['bg_music', 'bg_effect', 'bg_vib', 'bg_color', 'bg_language'].forEach((rowName) => {
+        ['bg_music', 'bg_effect', 'bg_vib', 'bg_color', 'bg_theme', 'bg_language'].forEach((rowName) => {
             const labelNode = this.settingLayout?.getChildByName(rowName)
                 ?.getChildByName('name')
                 ?.getChildByName('Label');

@@ -27,7 +27,7 @@ export class PopResult extends BaseView {
         
     // 初始化的相关逻辑写在这
     onLoad() {
-        app.manager.event.on("ShowRestartDialog", this.showRestart, this);
+        app.manager.event.on(app.config.eventname.showRestartDialog, this.showRestart, this);
         i18n.onChange(this.onLanguageChanged);
         i18n.apply(this.node);
     }
@@ -108,6 +108,7 @@ export class PopResult extends BaseView {
     }
 
     onDestroy() {
+        app.manager.event.off(app.config.eventname.showRestartDialog, this.showRestart, this);
         i18n.offChange(this.onLanguageChanged);
     }
 
