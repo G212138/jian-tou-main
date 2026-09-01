@@ -1,6 +1,7 @@
 import { _decorator, instantiate, Label, Node, Prefab, TextAsset } from 'cc';
 import BaseManager from '../../../../extensions/app/assets/base/BaseManager';
 import { app } from 'db://assets/app/app';
+import type { UnfinishedGameSnapshot } from 'db://assets/app/game.resume';
 const { ccclass, property } = _decorator;
 
 @ccclass('GlobaldataManager')
@@ -9,6 +10,8 @@ export class GlobaldataManager extends BaseManager {
     ceilPrefab: Prefab = null;
 
     private gridArray: boolean[][] = [];
+    private pendingResumeSession: UnfinishedGameSnapshot | null = null;
+    private skipAutoResumeOnce: boolean = false;
     // [无序] 加载完成时触发
     protected onLoad() {
 
@@ -99,6 +102,28 @@ export class GlobaldataManager extends BaseManager {
     // 获取格子是否被占用的二维数组
     getGridArray() {
         return this.gridArray;
+    }
+
+    /** 暂存本次即将恢复的游戏快照，供关卡、计时器和生命组件共同读取。 */
+    setPendingResumeSession(snapshot: UnfinishedGameSnapshot | null): void {
+        this.pendingResumeSession = snapshot;
+    }
+
+    /** 获取本次即将恢复的游戏快照，不提前消费，避免多个组件只能有一个读到。 */
+    getPendingResumeSession(): UnfinishedGameSnapshot | null {
+        return this.pendingResumeSession;
+    }
+
+    /** 标记刚从游戏页返回首页，防止首页立即自动跳回未完成关卡。 */
+    setSkipAutoResumeOnce(skip: boolean): void {
+        this.skipAutoResumeOnce = skip;
+    }
+
+    /** 消费一次首页自动恢复抑制标记，应用重启后该内存标记会自然清空。 */
+    consumeSkipAutoResumeOnce(): boolean {
+        const shouldSkip = this.skipAutoResumeOnce;
+        this.skipAutoResumeOnce = false;
+        return shouldSkip;
     }
 
     // 设置格子是否被占用的二维数组

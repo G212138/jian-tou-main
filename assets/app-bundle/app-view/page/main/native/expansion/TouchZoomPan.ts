@@ -189,6 +189,17 @@ export class TouchZoomPan extends Component {
         }
     }
 
+    /** 供左右放大镜按钮按固定档位缩放，并同步刷新中间滑块。 */
+    public stepZoom(step: number): void {
+        if (!this.isTransformFeatureEnabled()) return;
+        this.applyScale(this.targetNode.scale.x + step);
+
+        if (app.manager.globaldata.getNeedGuideTwo()) {
+            app.manager.globaldata.setNeedGuideTwo(false);
+            app.manager.event.emit(app.config.eventname.guideTwoEnd);
+        }
+    }
+
     private syncZoomSlider() {
         if (!this._zoomSlider) return;
         const range = this.maxScale - this.minScale;

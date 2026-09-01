@@ -21,6 +21,7 @@ import { tiktokRequiredFeatures } from 'db://assets/app/tiktok.required';
 import { i18n } from 'db://assets/app/i18n';
 import { MAIN_LEVEL_COUNT } from 'db://assets/app/config.level';
 import { adManager } from 'db://assets/app/tiktok.ads';
+import type { UnfinishedGameSnapshot } from 'db://assets/app/game.resume';
 const { ccclass, property } = _decorator;
 @ccclass('PageHome')
 export class PageHome extends BaseView {
@@ -57,6 +58,7 @@ export class PageHome extends BaseView {
     private levelAdShowing = false;
     private levelSelectPage = 0;
     private readonly levelsPerPage = 30;
+    private resumeScheduled = false;
 
 
     // 初始化的相关逻辑写在这
@@ -101,6 +103,7 @@ export class PageHome extends BaseView {
         if(app.store.game.getMaxUnlockedLevel() > 5){
             this.specialDesc.active = false;
         }
+        this.tryAutoResumeUnfinishedGame();
     }
 
     // 界面关闭时的相关逻辑写在这(已经关闭的界面不会触发onHide)
@@ -110,6 +113,10 @@ export class PageHome extends BaseView {
     }
 
     private startSelectedMainLevel() {
+        // 首页存在未完成断点时直接继续，不重复扣除体力。
+        if (this.resumeUnfinishedGame()) {
+            return;
+        }
         // 检查是否有足够的体力
         if (app.store.game.tili < 1) {
             // app.manager.ui.showToast('体力不足');
@@ -123,6 +130,65 @@ export class PageHome extends BaseView {
         app.manager.globaldata.setIsSpecialLevel(false);
         app.manager.ui.show({name: 'PageMain'});
         app.manager.event.emit(app.config.eventname.restart);
+    }
+
+    /** 应用启动进入首页时自动恢复断点；刚从游戏页返回时只跳过这一次。 */
+    private tryAutoResumeUnfinishedGame(): void {
+        if (this.resumeScheduled || app.manager.globaldata.consumeSkipAutoResumeOnce()) return;
+        const snapshot = this.readUnfinishedGameSnapshot();
+        if (!snapshot) return;
+
+        this.resumeScheduled = true;
+        this.scheduleOnce(() => {
+            this.resumeScheduled = false;
+            if (this.node?.isValid && this.node.activeInHierarchy) {
+                this.resumeUnfinishedGame(snapshot);
+            }
+        }, 0);
+    }
+
+    /** 校验并读取本地未完成关卡，异常或已完成的数据会被自动清理。 */
+    private readUnfinishedGameSnapshot(): UnfinishedGameSnapshot | null {
+        const snapshot = app.lib.storage.get(
+            app.config.localkey.UnfinishedGame,
+        ) as UnfinishedGameSnapshot | null;
+        const isValid = snapshot?.version === 1
+            && Number.isFinite(snapshot.level)
+            && snapshot.level > 0
+            && Number.isFinite(snapshot.remainingSeconds)
+            && Number.isFinite(snapshot.heartNum)
+            && Number.isFinite(snapshot.totalRopeCount)
+            && Array.isArray(snapshot.remainingLevelConfig?.ropes)
+            && snapshot.remainingLevelConfig.ropes.length > 0
+            && Array.isArray(snapshot.originalLevelConfig?.ropes)
+            && snapshot.originalLevelConfig.ropes.length > 0;
+
+        if (!isValid) {
+            if (snapshot) app.lib.storage.remove(app.config.localkey.UnfinishedGame);
+            return null;
+        }
+        return snapshot;
+    }
+
+    /** 把断点注入各运行组件后进入游戏页，并恢复对应主线或创意关卡。 */
+    private resumeUnfinishedGame(snapshot = this.readUnfinishedGameSnapshot()): boolean {
+        if (!snapshot) return false;
+
+        app.store.game.setLevel(snapshot.level);
+        app.manager.globaldata.setIsSpecialLevel(snapshot.isSpecialLevel);
+        app.manager.globaldata.setSpecialLevelIndex(snapshot.specialLevelIndex);
+        if (snapshot.isSpecialLevel) {
+            app.manager.globaldata.setSpecialConfig(snapshot.originalLevelConfig);
+        }
+        app.manager.globaldata.setPendingResumeSession(snapshot);
+        app.manager.ui.show({
+            name: 'PageMain',
+            data: snapshot.isSpecialLevel
+                ? { isSpecialLevel: true, name: snapshot.levelName }
+                : undefined,
+        });
+        app.manager.event.emit(app.config.eventname.restart);
+        return true;
     }
 
 

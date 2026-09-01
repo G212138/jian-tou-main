@@ -33,6 +33,9 @@ export default class Localkey implements IModel<Localkey> {
     // 是否启用深色模式
     public IsDarkMode = 'IS_DARK_MODE';
 
+    // 玩家主动返回首页时保存的未完成关卡快照
+    public UnfinishedGame = 'UNFINISHED_GAME';
+
     // 创意关卡状态
     public LEVEL_STATUS_KEY = 'LEVEL_STATUS_KEY';
 }

@@ -16,7 +16,7 @@ export class gameHeartManager extends Component {
     onLoad() {
         this.heartLayout.children.forEach((heart) => {
             heart.active = true;
-        })
+        });
         // 保持计时器节点启用，等待箭头绘制完成事件。
         this.time.active = true;
 
@@ -24,13 +24,25 @@ export class gameHeartManager extends Component {
         app.manager.event.on(app.config.eventname.gameHeartAdd, this.updateGameHeartAdd, this);
 
         app.manager.event.on(app.config.eventname.restart, this.resetHeart, this);
+        this.resetHeart();
     }
 
+    /** 重置生命值；恢复未完成关卡时优先使用快照中的剩余生命。 */
     resetHeart(){
-        this.heartNum = 3;
+        const resumeSession = app.manager.globaldata.getPendingResumeSession();
+        this.heartNum = resumeSession
+            ? Math.max(0, Math.min(3, Math.floor(resumeSession.heartNum)))
+            : 3;
         this.heartLayout.children.forEach((heartNode, index) => {
-            heartNode.getComponent(Sprite).spriteFrame = this.heartRed;
-        })
+            heartNode.getComponent(Sprite).spriteFrame = index < this.heartNum
+                ? this.heartRed
+                : this.heartLose;
+        });
+    }
+
+    /** 返回当前剩余生命值，供返回首页时生成断点快照。 */
+    public getHeartNum(): number {
+        return this.heartNum;
     }
 
     updateGameHeartJian() {

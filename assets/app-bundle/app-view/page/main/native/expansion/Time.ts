@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, Label } from 'cc';
+import { _decorator, Component, Node, Label, UIOpacity } from 'cc';
 import { app } from 'db://assets/app/app';
 const { ccclass, property } = _decorator;
 
@@ -49,10 +49,18 @@ export class Time extends Component {
      */
     private resetTimer(): void {
         this._isCountdownRunning = false;
-        this.remainingSeconds = this.totalSeconds;
+        const resumeSession = app.manager.globaldata.getPendingResumeSession();
+        this.remainingSeconds = resumeSession
+            ? Math.max(0, Math.floor(resumeSession.remainingSeconds))
+            : this.totalSeconds;
         this.updateTimeLabel();
-        this.timeLabel.enabled = false;
+        this.setCountdownVisible(false);
         this.isStopCountDown = false;
+    }
+
+    /** 返回当前剩余秒数，供返回首页时生成断点快照。 */
+    public getRemainingSeconds(): number {
+        return Math.max(0, Math.floor(this.remainingSeconds));
     }
 
     /**
@@ -72,7 +80,7 @@ export class Time extends Component {
         this.unschedule(this.updateCountdown);
         // 立即更新一次时间显示
         this.updateTimeLabel();
-        this.timeLabel.enabled = true;
+        this.setCountdownVisible(true);
         // 每1秒执行一次updateCountdown方法
         this.schedule(this.updateCountdown, 1);
     }
@@ -82,8 +90,20 @@ export class Time extends Component {
      */
     public stopCountdown(): void {
         this._isCountdownRunning = false;
-        this.timeLabel.enabled = false;
+        this.setCountdownVisible(false);
         this.unschedule(this.updateCountdown);
+    }
+
+    /** 同步控制倒计时底框、秒表和数字显隐，避免底框早于时间文字出现。 */
+    private setCountdownVisible(visible: boolean): void {
+        const countdownPanel = this.timeLabel?.node.parent;
+        const opacity = countdownPanel?.getComponent(UIOpacity);
+        if (opacity) {
+            opacity.opacity = visible ? 255 : 0;
+        }
+        if (this.timeLabel) {
+            this.timeLabel.enabled = visible;
+        }
     }
 
     /**
@@ -157,4 +177,3 @@ export class Time extends Component {
         this.startCountdown();
     }
 }
-

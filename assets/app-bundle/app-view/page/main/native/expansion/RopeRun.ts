@@ -71,6 +71,11 @@ export class RopeRun extends Component {
         this.runOutTool.ropeArrays = ropeConfig;
     }
 
+    /** 返回箭头是否已进入移除动画，保存断点时不再把它计入剩余路径。 */
+    public isRemovalInProgress(): boolean {
+        return this.isRunning;
+    }
+
     //id: number, ropeConfig: [number, number][]
     onRopeRun(gridPos: Vec2) {
         //判断坐标在不在自己绳子上
@@ -90,6 +95,7 @@ export class RopeRun extends Component {
 
         if(app.manager.globaldata.getDaoJuHammerUse()){
             //使用道具2，不检查是否能移动
+            this.isRunning = true;
             app.manager.event.emit(app.config.eventname.DaoJuHammerUseOver);
             this.qiaoSuiRope();
             this.clearRopeCells(this.runOutTool.ropeArrays);

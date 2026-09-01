@@ -1,5 +1,6 @@
 import { _decorator, Component, Node, Graphics, Vec2, Color, Label, Sprite, Layers, UITransform, JsonAsset, EventTouch, Input, instantiate, Prefab, v3, TextAsset, tween, Tween, CCFloat, CCString } from 'cc';
 import { app } from 'db://assets/app/app';
+import type { ResumeLevelConfig } from 'db://assets/app/game.resume';
 import { RopeRun } from './RopeRun';
 const { ccclass, property } = _decorator;
 
@@ -41,6 +42,7 @@ export class RopeManager extends Component {
     strokeColor: string = "#111433";
 
     private currentLevel: LevelConfig = null;
+    private originalLevel: LevelConfig = null;
 
     private gridWidth: number = 30;
 
@@ -142,9 +144,19 @@ export class RopeManager extends Component {
         const self = this;
         //获取当前是第几关
         const currentLevelId = app.store.game.getLevel();
+        const resumeSession = app.manager.globaldata.getPendingResumeSession();
+        const shouldResume = !!resumeSession
+            && resumeSession.level === currentLevelId
+            && resumeSession.isSpecialLevel === app.manager.globaldata.getIsSpecialLevel();
+
+        if (shouldResume) {
+            this.currentLevel = this.cloneLevelConfig(resumeSession.remainingLevelConfig);
+            this.originalLevel = this.cloneLevelConfig(resumeSession.originalLevelConfig);
+        }
          //创意关卡入侵
-        if(app.manager.globaldata.getIsSpecialLevel()){
+        else if(app.manager.globaldata.getIsSpecialLevel()){
             this.currentLevel = app.manager.globaldata.getSpecialConfig();
+            this.originalLevel = this.cloneLevelConfig(this.currentLevel);
         }else{
            
             console.log(`RopeManager: 当前是第 ${currentLevelId} 关`);
@@ -161,6 +173,7 @@ export class RopeManager extends Component {
                 return;
             }
             self.currentLevel = levelConfig as LevelConfig;
+            self.originalLevel = self.cloneLevelConfig(self.currentLevel);
         }
 
         
@@ -171,14 +184,55 @@ export class RopeManager extends Component {
         self.adjustCellSize();
 
         //记录一下当前关卡有多少个绳子
-        app.manager.globaldata.setRopeCount(self.currentLevel.ropes.length);
-        app.manager.globaldata.setEscapeRopeCount(0);
+        app.manager.globaldata.setRopeCount(
+            shouldResume
+                ? Math.max(resumeSession.totalRopeCount, self.currentLevel.ropes.length)
+                : self.currentLevel.ropes.length,
+        );
+        app.manager.globaldata.setEscapeRopeCount(
+            shouldResume
+                ? Math.max(0, Math.min(resumeSession.escapedRopeCount, resumeSession.totalRopeCount))
+                : 0,
+        );
 
          //根据关卡配置文件，维护一个二维数组，用于存储每个格子是否被占用
         self.geneArray(self.currentLevel.ropes);
         
         self.drawAllRopes();
        
+    }
+
+    /** 深拷贝关卡路径，避免运行中的数组变化污染原始关卡配置。 */
+    private cloneLevelConfig(config: ResumeLevelConfig): LevelConfig {
+        return {
+            grid_width: config.grid_width,
+            grid_height: config.grid_height,
+            ropes: config.ropes.map(
+                (rope) => rope.map(([x, y]) => [x, y] as [number, number]),
+            ),
+        };
+    }
+
+    /** 收集仍在棋盘上的箭头路径，已进入移除动画的箭头不会被重复保存。 */
+    public getRemainingLevelConfig(): ResumeLevelConfig | null {
+        if (!this.currentLevel || !this.gridContainer) return null;
+
+        const ropes = this.gridContainer.children
+            .map((child) => child.getComponent(RopeRun))
+            .filter((ropeRun): ropeRun is RopeRun => !!ropeRun && !ropeRun.isRemovalInProgress())
+            .map((ropeRun) => ropeRun.getRopeConfig().map(([x, y]) => [x, y] as [number, number]))
+            .filter((rope) => rope.length >= 2);
+
+        return {
+            grid_width: this.gridWidth,
+            grid_height: this.gridHeight,
+            ropes,
+        };
+    }
+
+    /** 返回完整原始关卡，用于创意关卡恢复后仍能执行真正的“重新开始”。 */
+    public getOriginalLevelConfig(): ResumeLevelConfig | null {
+        return this.originalLevel ? this.cloneLevelConfig(this.originalLevel) : null;
     }
 
     // 生成一个二维数组，用于存储每个格子是否被占用
